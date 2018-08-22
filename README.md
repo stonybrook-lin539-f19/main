@@ -22,19 +22,18 @@ Using the Lecture Notes
 The lecture notes are made available as [Jupyter notebooks](http://jupyter.org/) in the [notebooks folder](./tree/master/notebooks) of the [main github repository](https://github.com/StonyBrook-Lin539-F17/main). 
 A Jupyter notebook is a mixture of text and Python code, which allows for a more interactive learning environment.
 You can view the notebooks directly on github, but this does not work perfectly as github ignores some layout instructions and does not allow you to execute any of the Python code --- you'd be looking at a static, impoverished snapshot of the interactive notebook.
-I urge you to read the [instructions on how to get the Jupyter notebooks to work on your computer][instructions].
+
+If you are a Stony Brook student, you should instead use the [preconfigured Jupyter server for this course](https://dev.tlt.stonybrook.edu:8000).
+The server can only be accessed from a campus network.
+If you are off-campus, use a VPN or VirtualSINC.
+
+Everybody else should consult the [instructions on how to get the Jupyter notebooks to work on your computer][instructions].
 
 
 Assigned Units per Week
 --------------------------
 
-- 09-08: everything in `01_intro` and `02_foundations` up to `04_app_grammars`; exercises and missing units will be uploaded on Tuesday
-- 09-15: folders `05` and `06` in `02_foundations`; exercises have been added to the existing file
-- 09-22: `03_infinity` and `04_relations` up to `01_app_precedencegrammars`
-- 09-29: `04_relations` on tree relations; exercises have been added to the existing file
-- 10-06: everything in `05_orderings`
-- 10-13: the first unit in `06_graphs`
-- 10-20: units `03` to `06` in `06_graph`
+- will be announced each week
 
 
 Link List
@@ -80,6 +79,5 @@ This way you can check some of your own calculations with Python or play around 
 - [Automate the Boring Stuff with Python](https://automatetheboringstuff.com/) is an excellent introduction that covers the basics of Python and applies them to real-world tasks.
 
 
-[private]: ../../../private
 [syllabus]: ./source/00_syllabus/syllabus.mdown
 [instructions]: ./source/00_syllabus/setup.mdown
