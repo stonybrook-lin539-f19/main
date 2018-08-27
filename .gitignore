@@ -27,3 +27,4 @@
 !templates/**/
 !build/
 !build/**/
+**/.ipynb_checkpoints/
