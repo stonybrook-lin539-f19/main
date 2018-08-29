@@ -80,7 +80,7 @@ Even skipping all questions is perfectly fine, this is **not** a test of your ab
     - 1.0: S $\rightarrow$ NP VP
     - 0.8: NP $\rightarrow$ A N
     - 0.2: NP $\rightarrow$ V ing N
-    - 0.4: VP $\rightarrow$ V
+    - 0.4: VP $\rightarrow$ can VP
     - 0.4: VP $\rightarrow$ V NP
     - 0.2: VP $\rightarrow$ V A
 
