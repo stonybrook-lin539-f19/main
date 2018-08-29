@@ -1,7 +1,7 @@
 Mathematical Methods in Linguistics
 ===================================
 
-**A friendly plug:** If you are interested in this class, also consider attending the department's [Mathematical Linguistics Reading Group](http://complab-stonybrook.github.io/mlrg/).
+**A friendly plug:** If you are interested in this class, also consider attending the department's [Mathematical Linguistics Reading Group](http://mlrg.thomasgraf.net).
 
 Course Outline
 --------------
@@ -25,7 +25,7 @@ You can view the notebooks directly on github, but this does not work perfectly 
 
 If you are a Stony Brook student, you should instead use the [preconfigured Jupyter server for this course](https://dev.tlt.stonybrook.edu:8000).
 The server can only be accessed from a campus network.
-If you are off-campus, use a VPN or VirtualSINC.
+Right now you have to use Stony Brook's [VirtualSINC](https://it.stonybrook.edu/services/virtual-sinc-site) to connect, but hopefully the server will soon be accessible online without jumping through this extra hoop.
 
 Everybody else should consult the [instructions on how to get the Jupyter notebooks to work on your computer][instructions].
 
@@ -33,7 +33,7 @@ Everybody else should consult the [instructions on how to get the Jupyter notebo
 Assigned Units per Week
 --------------------------
 
-- will be announced each week
+- will be announced each week per email
 
 
 Link List
@@ -41,7 +41,7 @@ Link List
 
 ### Using git
 
-I recommend that you clone this repository to your computer and issue `git pull -s recursive -X theirs` on a regular basis to keep your clone up-to-date.
+You can clone this repository to your computer and issue `git pull -s recursive -X theirs` on a regular basis to keep your clone up-to-date.
 
 - Our department's [git tutorial](https://github.com/CompLab-StonyBrook/git_training)
 - [Github app for Windows](http://windows.github.com); supports only Windows 7 or later
