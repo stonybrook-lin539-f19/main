@@ -2,18 +2,18 @@ Mathematical Methods in Linguistics
 ===================================
 
 
-| Course        | Info                          |
-| --:           | :--                           |
-| Course#       | lin539                        |
-| Time          | M 5:30-8:20pm                 |
-| Location      | CompLab (SBS N-250)           |
-| Website       | lin539.thomasgraf.net         |
-|               |                               |
-| Instructor    | Thomas Graf                   |
-| Email         | [coursenumber]@thomasgraf.net |
-| Office hours  | M 3:30-4:00                   |
-|               | F 1:20-2:20 (by appointment)  |
-| Office        | SBS N-249                     |
+| Course        | Info                            |
+| --:           | :--                             |
+| Course#       | lin539                          |
+| Time          | M 5:30-8:20pm                   |
+| Location      | CompLab (SBS N-250)             |
+| Website       | lin539.thomasgraf.net           |
+|               |                                 |
+| Instructor    | Thomas Graf                     |
+| Email         | [coursenumber]@thomasgraf.net   |
+| Office hours  | M 3:30-4:00                     |
+|               | F 11:30-12:00 (by appointment)  |
+| Office        | SBS N-249                       |
 
 **A friendly plug:** If you are interested in this class, also consider attending the department's [Mathematical Linguistics Reading Group](http://mlrg.thomasgraf.net).
 
