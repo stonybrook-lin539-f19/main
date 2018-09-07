@@ -1,0 +1,31 @@
+lead-in: example of bigrams and finite-state automata
+    simple bigram example for third person singular
+        - positive
+        - negative
+    deterministic FSA for third person singular
+    non-deterministic FSA
+    Questions:
+        - are those different or the same?
+        - in what sense?
+        - can we transform one into the other?
+        - how can we combine them?
+        - are there other representations that are more efficient?
+
+n-grams
+    prereqs: none
+
+    basics/SL
+        ->sets
+        ->union, intersection, (relative) complement
+        conversion between positive and negative
+
+    going deeper
+        ->strings, tuples (mathematically the same, but not in programming), concatenation
+        ->basic string notation
+
+    closure properties
+
+Advanced n-grams
+    skip n-grams and TSL
+
+    SP
