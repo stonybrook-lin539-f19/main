@@ -1,0 +1,124 @@
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="/desktop/css/styles.css" />
+<!--[if gte IE 8]>
+<link rel="stylesheet" href="/desktop/css/ie8plus.css" />
+<![endif]-->
+<script src="/js/jquery-1.10.1.min.js"></script>
+<script src="/js/jquery-migrate-1.2.1.min.js"></script>
+<script language="javascript" src="js/ind.min.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="bodyWrap">
+	<div id="smWrap">
+		<div class="topBar"></div>
+		<div class="bottomBodysm">
+			<div class="headersm">
+				<div class="logoBoxsm">
+					<img border="0" src="/desktop/images/optlogo.png" width="152" height="32" alt="Optimum" title="Optimum" />
+				</div>
+			</div>
+			<div class="contentBodysm">
+				<h1 class="purpleHeader">Please sign in to Optimum WiFi</h1>
+				<div id="error" style="color: Red; text-align:left; "></div>
+
+				<form name="loginform" action="https://optimumwifi4.optimum.net/login.jsp" method="post" novalidate>
+				<input type="hidden" name="uid" value="a088.b49d.a85c@optimumwifi.com">
+				<fieldset>
+					<label for="username">My Optimum ID</label>
+					<div class="clearfix">
+						<div class="floatLeft"><input class="lgtxtfield" type="text" id="username" name="username" required="y" validationmsg="Please enter your Optimum ID" tabindex="1"/></div>
+						<div class="forgotLink"><a href="https://idcenter.services.optimum.net/Services/IDRecovery?successUrl=https://optimumwifi4.optimum.net"><strong>I forgot my Optimum ID</strong></a></div>
+					</div>
+                    <label class="mt20" for="password">Password</label>
+					<div class="clearfix">
+						<div class="floatLeft"><input class="lgtxtfield" type="password" id="password" name="password" required="y" validationmsg="Please enter your password"/></div>
+						<div class="forgotLink"><a href="https://idcenter.services.optimum.net/Services/PasswordReset?successUrl=https://optimumwifi4.optimum.net"><strong>I forgot my password</strong></a></div>
+					</div>
+				</fieldset>
+				
+				<div class="linePad"><hr /></div>
+				
+				<div class="regular clearfix">
+					<div class="checkBoxStyle">
+						<input type="checkbox" id="checkBoxStyleInput" name="tos" checked>
+						<label for="checkBoxStyleInput"></label>
+					</div> 
+					<div class="floatLeft" id="tosAgree">I have read and agree to the <a href="https://www.optimum.net/pages/WiFi/TOS.html">Optimum WiFi Terms of Use</a></div>
+				</div>
+				
+				<!--#autoManualBtns to show/hide-->
+				<div id="autoManualBtns">
+					<div class="clearfix">
+						<div class="leftBtn"><input type="image" border="0" src="/desktop/images/autosignin_btn.gif" width="135" height="30" name="auto"/></div>
+						<div class="rightBtn"><input type="image" border="0" src="/desktop/images/manualsignin_btn.gif" width="135" height="30" name="manual"/></div>
+					</div>
+					<!--
+					<div class="clearfix">
+						<div class="grayBanner floatLeft"><a href="https://optimumwifi4.optimum.net/guest_options.jsp">Click here if you're not an Optimum Online customer</a></div>
+					</div>
+					-->
+                </div>
+                <!--#deviceReg to show/hide-->
+                <!--
+				<div id="deviceReg">
+					<div class="fullBtnWrap">
+						<div class="regular">Tired of manually entering your Optimum ID and password to access the internet? Optimum WiFi can automatically recognize your device to get you online even faster.</div>
+						<div class="subHeader">All information is required</div>
+		
+						<fieldset>
+							<label>Device</label>
+							<select class="full" name="devicetype">
+								<option value="iPhone" selected>iPhone</option>
+								<option value="iPad">iPad</option>
+								<option value="iPod Touch">iPod Touch</option>
+							</select>
+			
+							<label>Device name</label>
+							<input type="text" class="lgtxtfield" name="alias"/>
+			
+							<label>Email address</label>
+							<input type="text" class="lgtxtfield" name="email"/>
+						</fieldset>
+					</div>
+		
+					<div class="linePad"><hr /></div>
+		
+					<div class="fullBtnWrap submitCloseBtns">
+						<div class="clearfix">
+						<div class="leftBtn"><img border="0" src="/desktop/images/submit_btn.gif" width="125" height="30" /></div>
+					<div class="rightBtn"><img border="0" src="/desktop/images/close_btn.gif" width="115" height="30" /></div>
+				</div>
+				-->
+				</form>
+			</div>
+			<!--
+			</div>
+                <div class="grayBanner">
+					<span class="regularBold">Optimum Online Subscribers</span>
+			
+					<p>Don't have or forgot your Optimum ID? Text "WiFi" to 74499 to receive a temporary ID for Optimum WiFi access. It's FREE*</p>
+			
+					<p>*Standard text message rates apply.</p>
+				</div>
+			</div>
+			-->
+		</div>
+	</div>
+</div>
+<div class="footer">
+	<div class="footerContent">
+		<ul class="footerList">
+			<li class="first">&copy; 2013 CSC Holdings, LLC.</li>
+			<li><a href="https://www.optimum.net/pages/WiFi/TOS.html">Terms of Use</a></li>
+			<li><a href="https://www.optimum.net/pages/PrivacyExisting.html">Privacy Notice</a></li>
+		</ul>
+	</div>
+</div>
+<script language="javascript" src="js/tosMove.js" type="text/javascript"></script>
+</body>
+</html>
