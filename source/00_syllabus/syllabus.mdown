@@ -168,7 +168,6 @@ Student grades are determined by the following components:
 1.  **Peer grading of exercises (30%)**  
     Each week a group of students (usually 2 or 3) collect all student homeworks after the deadline to grade them.
     This breaks down into two phases:
-
     - From Thursday to Monday, the peer graders look at the homeworks, but do not grade them yet. 
     - On Monday, the peer graders meet with the instructor during the exercise session to discuss their own solutions and any issues they encountered with other students' homeworks.
     - After the meeting, they grade the homeworks and return them to the students by Wednesday, 2pm.
