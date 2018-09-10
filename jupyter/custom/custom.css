@@ -231,6 +231,39 @@ h1, h2, h3 {
 
 }
 
+.exercise {
+
+    display: block;
+
+    margin: 12px 0;
+
+    font-size: 12pt;
+
+    font-style: normal;
+
+    background: #eeebca;
+
+    border-color: #c8c375;
+
+    border-style: solid;
+
+    border-width: thin;
+
+    padding: .5%;
+
+    counter-increment: exercise;
+}
+
+.exercise:before {
+
+    content: "Exercise "counter(exercise)".";
+
+    font-weight: bold;
+
+    font-style: normal;
+
+}
+
 .advice {
 
     display: block;

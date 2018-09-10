@@ -11,6 +11,7 @@ import subprocess as sp
 source = Path("source")
 build = Path("build")
 notebooks = Path("notebooks")
+pdf = Path("pdf")
 templates = Path("templates")
 
 # generator for all standalone tikz files
@@ -99,7 +100,7 @@ def process_tikzfile(f: Path,
     # use sp.call so that latexmk gets to finish before we call pdf2svg
     sp.call(["latexmk", "-pdf", "-quiet", str(f.absolute())],
             cwd=str(pdf.parent),  # put compilation files in same subfolder
-            stdout=sp.DEVNULL)  # and don't print output to shell
+            stdout=sp.DEVNULL)    # and don't print output to shell
     sp.Popen(["pdf2svg", str(pdf), str(svg)],
              stdout=sp.DEVNULL)
 
@@ -125,30 +126,44 @@ def header_preprocess(line: str) -> str:
     return re.sub(r"\\ensuremath{([^}]*)}", r"\1", line)
 
 
-def regexes(line: str) -> str:
-    """Replace Latex code for processing with notedown."""
-    # replace input tikz/forest by image link to svg, with size as alt text
-    line = re.sub(r"\\input_?(.*?){(.*?).(tikz|forest)}",
-                  r"![\1](\2.svg)", line)
-    # replace math environments by div containers
-    line = re.sub(r"\\begin{(definition|theorem|lemma|proof|example|remark|advice)}",
-                  r"<div class=\1>", line)
-    line = re.sub(r"\\end{(definition|theorem|lemma|proof|example|remark|advice)}",
-                  r"</div>", line)
-    # wrap math environments between $$
-    line = re.sub(r"(\\begin{(multline|array)\*?})",
-                  r"$$\1", line)
-    line = re.sub(r"(\\end{(multline|array)\*?})",
-                  r"\1$$", line)
-    # replace --- by - in markdown
-    line = re.sub(r" --- ", " - ", line)
+def regexes(line: str, target: str="ipynb") -> str:
+    """Modify code for processing with notedown or Latex."""
+    if target == "ipynb":
+        # replace input tikz/forest by image link to svg, with size as alt text
+        line = re.sub(r"\\input_(.*?){(.*?).(tikz|forest)}",
+                      r"![\1](\2.svg)", line)
+        # replace math environments by div containers
+        line = re.sub(r"\\begin{(definition|theorem|lemma|proof|example|remark|advice|exercise)}",
+                      r"<div class=\1>", line)
+        line = re.sub(r"\\end{(definition|theorem|lemma|proof|example|remark|advice|exercise)}",
+                      r"</div>", line)
+        # wrap math environments between $$
+        line = re.sub(r"(\\begin{(multline|array)\*?})",
+                      r"$$\1", line)
+        line = re.sub(r"(\\end{(multline|array)\*?})",
+                      r"\1$$", line)
+        # replace --- by - in markdown
+        line = re.sub(r" --- ", " - ", line)
+    if target == "latex":
+        # remove underscore from \input_{small,mid,large};
+        # this is needed to avoid Latex complaints
+        line = re.sub(r"\\input_.*?{(.*?)}",
+                      r"\\begin{center}\\input{\1}\\end{center}", line)
+        # replace <li>xyz</li> by \item xyz
+        line = re.sub(r"<li>(.*?)</li>", r"\\item \1", line)
+        # replace <ul> and </ul> by itemize
+        line = re.sub(r"<ul>", r"\\begin{itemize}", line)
+        line = re.sub(r"</ul>", r"\\end{itemize}", line)
+        # replace <ol> and </ol> by enumerate
+        line = re.sub(r"<ol>", r"\\begin{enumerate}", line)
+        line = re.sub(r"</ol>", r"\\end{enumerate}", line)
     return line
 
 
-def process_mdfile(f: Path,
-                   header: List[str]=[],
-                   footer: List[str]=[],
-                   copy_css: bool=False) -> None:
+def mdown2ipynb(f: Path,
+                header: List[str]=[],
+                footer: List[str]=[],
+                copy_css: bool=False) -> None:
     """
     Convert markdown file to Jupyter notebook.
 
@@ -183,7 +198,7 @@ def process_mdfile(f: Path,
 
         # replace latex by html or markdown
         for line in text:
-            preproc.write(regexes(line))
+            preproc.write(regexes(line, target="ipynb"))
 
         # add footer
         if footer:
@@ -215,10 +230,87 @@ def process_mdfile(f: Path,
                   str(target)],
                  stdout=sp.DEVNULL)
 
+def mdown2pdf(f: Path,
+              yaml: Path,
+              header: Path,
+              footer: List[str]=[],
+              mycommands: Path=Path("./templates/mycommands.mdown")) -> None:
+    """
+    Convert markdown file to pdf.
+
+    This requires Latex and pandoc to be installed and available in the user's
+    PATH. The markdown file is concatenated with specified footer files,
+    preprocessed by regexes, and then fed into pandoc using the supplied header
+    and yaml.
+
+    The notebook is created in the folder indicated by the notebooks variable,
+    replicating the same folder hierarchy as in the source directory: if
+    markdown file F is found at source/A/B/C/F, then the corresponding notebook
+    file N is at notebook/A/B/C/N.
+
+    Parameters
+    ----------
+    f: Path
+        path to file
+    yaml: Path
+        yaml file with layout information for pandoc
+    header: Path
+        Latex header to be prepended by pandoc
+    footer: List[str]
+        list of footer templates to append
+    """
+    with f.open("r") as text:
+        for folder in [build, pdf]:
+            mirror_subfolders(f, folder)
+        preproc_path = change_subfolder(f, build, with_file=True)
+        preproc = open(str(preproc_path), "w")
+
+        # replace html by Latex
+        for line in text:
+            preproc.write(regexes(line, target="latex"))
+
+        # add footer
+        if footer:
+            preproc.write(load_template(footer))
+
+        # clean-up
+        preproc.close()
+
+        # create mycommands.sty in build folder
+        create_mycommands(mycommands, build)
+        mycommands = change_subfolder(
+            mycommands, build, with_file=True).with_suffix('.sty')
+
+        # run conversion
+        target = change_subfolder(
+            f, pdf, with_file=True).with_suffix('.pdf')
+        # we use sp.Popen for asynchronous processing
+        sp.Popen(["pandoc",
+                  "--verbose",
+                  "--latex-engine=xelatex",
+                  "-H", str(header.absolute()),
+                  "-H", str(mycommands.absolute()),
+                  str(yaml.absolute()),
+                  str(preproc_path.absolute()),
+                  "-o", str(target.absolute())],
+                 stdout=sp.DEVNULL,
+                 cwd=str(f.parent))
+
 
 # time for the actual processing
-for f in tikz:
-    process_tikzfile(f)
+# for f in tikz:
+#     process_tikzfile(f)
 
 for f in mdown:
-    process_mdfile(f, header=['mycommands'])
+    mdown2ipynb(f, header=['mycommands'])
+#     mdown2pdf(f,
+#               yaml= templates / Path("format.yaml"),
+#               header= templates / Path("header.tex"))
+
+# todo:
+    # [ ] separate build directories for latex and notedown
+    # [ ] more elegant path handling
+    # [ ] commmand line parameters
+    # [ ] documentation
+    # [ ] easy way of processing only one file with sane defaults for file structure
+    # [ ] absolute paths for robustness
