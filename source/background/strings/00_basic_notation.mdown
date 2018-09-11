@@ -1,0 +1,221 @@
+**Prerequisites**
+
+- sets (basic notation)
+
+# Strings: Basic notation
+
+Strings play a very prominent role in computational linguistics.
+Mathematically, they can be regarded as tuples or a particular kind of function --- see the interdefinability section in the background material for details (once it has been unlocked).
+Intuitively, a string is a sequence of symbols, like $\mathit{nfm}$, *wendigo*, or *105§/*.
+In contrast to sets, strings are ordered and can contain duplicates.
+
+\begin{example}
+The sets $\setof{m,a,d}$, $\setof{d,a,m}$, and $\setof{a,d,a,m}$  are equivalent, but for strings $\mathit{mad} \neq \mathit{dam} \neq \mathit{adam}$.
+\end{example}
+
+\begin{exercise}
+Fill in $=$ or $\neq$ as appropriate for each pair of strings below.
+<ol>
+<li>$\mathit{abba}$ \_ $\mathit{ABBA}$</li>
+<li>$10$ \_ $5 + 5$</li>
+<li>$\setof{m,a,d} \_ \setof{d,a,m}$</li>
+</ol>
+
+Caution: all of these are strings over a suitable alphabet!
+\end{exercise}
+
+## Alphabet
+
+When talking about strings, one usually fixes a finite set of symbols over which the strings are built.
+This is called an **alphabet**.
+Alphabets are often given labels like $\Sigma$ or $\Omega$.
+A string over alphabet $\Sigma$ is also called a $\Sigma$-string.
+
+\begin{example}
+The set of Latin characters (A-Z, a-z) is an alphabet that's familiar to all of you.
+Strings over it include:
+
+<ul>
+<li>
+string
+</li>
+<li>
+alphabet
+</li>
+<li>
+aaaaaaa
+</li>
+<li>
+c
+</li>
+</ul>
+\end{example}
+
+\begin{example}
+The set of Arabic digits is an alphabet with symbols 0, 1, 2, 3, 4, 5, 6, 7, 8, and 9.
+Every natural number, when represented in decimal as usual, is a string over this alphabet.
+But not every string over this alphabet is a number of the decimal system.
+For instance, 000134095 is not a valid number, although 134095 is.
+\end{example}
+
+## String length
+
+The length of a $\Sigma$-string $s$ is indicated by $\length{s}$.
+For instance,
+$\length{\text{ant}} = 3$,
+$\length{0770001} = 7$,
+and $\length{\text{a}} = 1$.
+
+The set of all strings over $\Sigma$ whose length is exactly $n$ is denoted by $\Sigma^n$.
+
+\begin{example}
+Let $\Sigma \is \setof{a,b}$.
+Then $\Sigma^3$ contains all of the following strings, and only those:
+
+<ol>
+<li>$aaa$,</li>
+<li>$aab$,</li>
+<li>$aba$,</li>
+<li>$abb$,</li>
+<li>$baa$,</li>
+<li>$bab$,</li>
+<li>$bba$,</li>
+<li>$bbb$,</li>
+</ol>
+\end{example}
+
+The size of $\Sigma^n$ is always fixed.
+If $\Sigma$ has $m$ members, then $\Sigma^n$ contains $m^n$ strings.
+
+\begin{example}
+In the previous example, $\Sigma$ contains two symbols, so $\Sigma^n$ should consist of $2^3 = 8$ distinct strings.
+That's exactly what we found.
+\end{example}
+
+\begin{exercise}
+Which one of the following are members of $\setof{a,b}^4$?
+<ol>
+<li>$\mathit{aaab}$</li>
+<li>$\mathit{aba}$</li>
+<li>$\mathit{aaaaa}$</li>
+<li>$\mathit{b}$</li>
+</ol>
+\end{exercise}
+
+\begin{exercise}
+List all members of $\setof{k,o,z}^2$.
+\end{exercise}
+
+Very often expressions like $a^n$ are used as a shorthand for $\setof{a}^n$.
+
+\begin{example}
+The expression $\mathit{b a^5 c^3 d}$ is a shorthand for $\mathit{baaaaacccd}$.
+\end{example}
+
+\begin{exercise}
+Write each one of the following in a more compact fashion using exponents.
+
+<ol>
+<li>ABBA</li>
+<li>loool</li>
+<li>aardvark</li>
+</ol>
+\end{exercise}
+
+## Infinite string sets over $\Sigma$
+
+Since alphabets must be finite, $\Sigma^n$ is necessarily finite for any alphabet $\Sigma$ and $n \geq 0$.
+But the set of all strings over $\Sigma$ is infinite.
+
+\begin{example}
+Let $\Sigma \is \setof{a}$.
+Then $a$ is a string over $\Sigma$, and so are $\mathit{aa}$, $\mathit{aaa}$, $\mathit{aaaa}$, and so on.
+This enumeration continues indefinitely, so there must be infinitely many distinct strings over $\Sigma$.
+\end{example}
+
+Two infinite string sets are commonly defined over $\Sigma$.
+They are $\Sigma^*$ and $\Sigma^+$, respectively.
+The former contains all strings over $\Sigma$, whereas the latter contains all strings whose length is at least $1$.
+The only difference between the two is that $\Sigma^*$ also contain the **empty string** $\emptystring$.
+The empty string is the string counterpart of the number 0: it represents nothing.
+In fact, $\emptystring$ is the only string whose length is 0.
+
+\begin{example}
+Let $\Sigma = \setof{a,b}$.
+Then $\Sigma^*$ contains
+
+<ul>
+<li>$\emptystring$,</li>
+<li>$\mathit{a}$,</li>
+<li>$\mathit{b}$,</li>
+<li>$\mathit{aa}$,</li>
+<li>$\mathit{ab}$,</li>
+<li>$\mathit{ba}$,</li>
+<li>$\mathit{bb}$,</li>
+<li>$\mathit{aaa}$,</li>
+<li>$\mathit{aab}$,</li>
+<li>$\mathit{aba}$,</li>
+<li>$\mathit{abb}$,</li>
+<li>and so on.</li>
+</ul>
+
+All these strings are also members of $\Sigma^+$, except $\emptystring$.
+\end{example}
+
+$\Sigma^*$ is also called the **Kleene closure**, named after [Stephen C. Kleene](https://en.wikipedia.org/wiki/Stephen_Cole_Kleene).
+
+Here's a little bit of background to make it easier for you to remember the difference between $\Sigma^*$ and $\Sigma^+$.
+As you might know from search engines, the Kleene star `*` is sometimes used as a wildcard that matches everything.
+So $\Sigma^*$ can be translated as "every string built over $\Sigma$".
+On the other hand $\Sigma^+$ only contains those strings whose length is at least 1, or in other words, whose length is positive.
+And $+$ is a common abbreviation for positive (just think of batteries).
+
+\begin{exercise}
+Enumerate the five shortest members of $\setof{a}^*$.
+\end{exercise}
+
+## Concatenation
+
+Given two $\Sigma$-strings $u$ and $v$, their **concatenation** $u \stringcat v$ is the result of "glueing" the left end of $v$ to the right end of $u$.
+Concatenation is associative, so $u \stringcat (v \stringcat w) = (u \stringcat v) \stringcat w$.
+
+\begin{example}
+Here are a few examples:
+
+<ol>
+<li>$\mathit{math} \stringcat \mathit{ematics} = \mathit{mathematics}$,</li>
+<li>$2000 \stringcat 18 = 200018$,</li>
+<li>$\text{Thomas} \stringcat \text{Graf} = \text{ThomasGraf}$.</li>
+</ol>
+\end{example}
+
+Even though concatenation is associative, it is not commutative.
+That is to say, $u \stringcat v$ and $v \stringcat u$ are not necessarily the same.
+
+\begin{example}
+Let $u \is \text{house}$ and $v \is \text{boat}$.
+Then $u \stringcat v$ is *houseboat*, whereas $v \stringcat u$ is *boathouse*.
+Those are not the same strings (and they also happen to mean completely different things).
+\end{example}
+
+Note the special behavior of the empty string: $u \stringcat \emptystring = \emptystring \stringcat u = u$. 
+This makes sense: adding nothing to $u$ does not change $u$, just like adding 0 to a number does not change that number.
+
+Sometimes concatenation is not explicitly indicated, so that instead of $u \stringcat v$ one may simply write $\mathit{uv}$.
+
+\begin{exercise}
+Given an example of distinct $u$ and $v$ such that $u \stringcat v = v \stringcat u$ and neither $u$ nor $v$ is the empty string.
+\end{exercise}
+
+
+## Recap
+
+- A string is a sequence of symbols drawn from some alphabet.
+- A $\Sigma$-string is a string over alphabet $\Sigma$.
+- The length of string $s$ is denoted by $\length{s}$.
+- The empty string $\emptystring$ is the unique string of length $0$.
+- $\Sigma^n$ is the set of all $\Sigma$-strings $s$ such that $\length{s} = n$.
+- $a^n$ is a shorthand for $\setof{a}^n$.
+- The Kleene closure $\Sigma^*$ is the set of all $\Sigma$-strings (including $\emptystring$).
+- The positive closure $\Sigma^+$ contains all $\Sigma$-strings except $\emptystring$.
+- Concatenation of strings $u$ and $v$ is denoted by $u \stringcat v$.
