@@ -210,7 +210,7 @@ Assume that words are annotated with their part of speech in this fashion.
 Then what would be the corresponding set of words?
 \end{exercise}
 
-## Summary
+## Recap
 
 - Sets are collections of arbitrary objects.
 - Sets are unordered and idempotent (= duplicates are ignored).
