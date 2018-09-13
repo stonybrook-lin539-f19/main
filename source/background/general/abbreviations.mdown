@@ -1,0 +1,21 @@
+# Common abbreviations
+
+## w.l.o.g. - without loss of generality
+
+This abbreviation is often used in proofs.
+It means that we assume a specific property or condition that does not affect the validity of the proof.
+Here is an example:
+
+\begin{theorem}
+If somebody is holding three marvels in their hands, then at least one hand is holding at least two marvels.
+\end{theorem}
+
+\begin{proof}
+Assume w.l.o.g. that the right hand is holding strictly less than two marvels.
+So it is holding either no marvels or exactly one marvel.
+Either way the left hand is holding at least two marvels.
+\end{proof}
+
+The use of *w.l.o.g.* here modifies the restriction to the *right* hand.
+This restriction is made so that one does not have to speak of *one hand* and *the other hand*, which makes the proof slightly more readable.
+But obviously the proof would work just as well if we had assumed that the left hand holds less than two marvels.
