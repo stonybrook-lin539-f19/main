@@ -1,3 +1,7 @@
+**Prerequisites**
+
+- sets (notation, operations)
+
 # Comparing sets
 
 Two sets can stand in several distinct relations to each other:
