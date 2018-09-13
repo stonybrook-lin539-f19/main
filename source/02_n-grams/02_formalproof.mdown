@@ -22,7 +22,7 @@ We will continue at a leisurely pace, with optional formal sections sprinkled in
 
 \begin{definition}
 Let $\Sigma$ be some alphabet, and $\Sigma_\$$ its extension with a distinguished edge marker symbol $\$$.
-An $n$-gram over $\Sigma_\$$ is an element of $\Sigma_\$^n$ ($n \geq 0$).
+An $n$-gram over $\Sigma_\$$ is an element of $\Sigma_\$^n$ ($n \geq 1$).
 A **negative $n$-gram grammar** $G$ over alphabet $\Sigma$ is a finite set of $n$-grams over $\Sigma_\$$.
 A string $s$ over $\Sigma$ is well-formed with respect to $G$ iff there are no $u, v$ over $\Sigma_\$$ and no $g \in G$ such that
 $ \$^{n-1} \stringcat s \stringcat \$^{n-1} = u \stringcat g \stringcat v$.
