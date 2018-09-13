@@ -1,0 +1,55 @@
+**Prerequisites**
+
+- sets (notation, operations, comparisons)
+
+# Sets with Counters: Multisets
+
+Sets are an abstract mathematical object that we may think of as collections in a lose sense.
+They are sometimes likened to bags, but this can be misleading.
+While bags convey the intuition that sets are unordered, they are unlike sets in that idempotency does not hold: a bag containing two apples is not the same thing as a bag containing one apple.
+Bags thus are closer to what mathematicians call **multisets**.
+Like sets, multisets are unordered, but idempotency does not hold; a multiset can contain multiple instances of the same object.
+
+\begin{definition}
+    A **multiset** is a set where each element has a numerosity.
+    We indicate that a set $S$ is a multiset by subscripting it with $M$, as in $S_M$.
+    For all $s \in S_M$, $S_M(s)$ indicates the numerosity or **count** of $s$ in $S_M$.
+    We may write $S_M(s) = 0$ instead of $s \notin S_M$.
+\end{definition}
+
+\begin{example}
+    The multiset $\setof{a,a,b}_M$ contains two occurrences of $a$ and one occurrence of $b$.
+    Hence $\setof{a,a,b}_M \neq \setof{a,b}_M$ even though $\setof{a,a,b} = \setof{a,b}$.
+    However, it still holds that order does not matter: $\setof{a,a,b}_M = \setof{a,b,a}_M = \setof{b, a, a}_M$, just like $\setof{a,b} = \setof{b,a}$.
+\end{example}
+
+The notation for multisets is much less standardized than that for sets, and not everybody follows the convention of subscripting multisets with $M$.
+If an author uses multisets, pay close attention to how they define their notation.
+Also, it is often convenient to explicitly list the count of each element rather than listing the element multiple times.
+
+\begin{example}
+    The multiset $A_M \is \setof{a,a,a,b,b,c}$ can be more conveniently written as $A_M \is \setof{a: 3, b: 2, c: 1}$.
+    Elements with a count of $0$ are usually omitted, but may be included if this is relevant information.
+\end{example}
+
+```python
+from collections import Counter
+
+def set_equals(A, B):
+    print("{} same set as {}?".format(A,B), set(A) == (B))
+
+def multiset_equals(A, B):
+    print("{} same multiset as {}?".format(A,B), Counter(A) == Counter(B))
+
+multiset_equals(["a", "a", "b", "b", "c"], ["a", "b", "c", "c", "d"])
+set_equals(["a", "a", "b", "b", "c"], ["a", "b", "c", "c", "d"])
+multiset_equals(["a", "a", "b", "b", "c"], ["a", "b", "c", "a", "b"])
+```
+
+With this kind of notation, it also becomes possible to define multisets with set-builder notation.
+For example, $\setof{n: 2n \mid n \in \mathbb{N}}$ is the set that contains $2n$ occurrences of every natural number $n$: $\setof{0:0, 1:2, 2:4, 3:6, \ldots}$.
+
+```python
+multiset = Counter({n: 2*n for n in range(10)})
+print(multiset)
+```
