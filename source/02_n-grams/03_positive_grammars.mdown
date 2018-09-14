@@ -18,7 +18,7 @@ For some of them, you have to rephrase the phenomenon as a phonotactic constrain
 <li>**intervocalic voicing**: voiceless fricatives (assume *s* and *f*) may not occur between vowels (assume *a*, *i*, *u*)</li>
 <li>**local assimilation**: *n* becomes *m* before *b* or *p*</li>
 <li>**local disimilation**: *rVr* becomes *lVr*, where V is *a*, *i*, or *u*</li>
-<li>**penultimate stress**: in words with at least two syllables, stress falls on the last but one syllable (assume that words are strings of stress syllables ($\acute{\sigma}$) and unstressed syllables ($\sigma$)</li>
+<li>**penultimate stress**: in words with at least two syllables, stress falls on the last but one syllable (assume that words are strings of stress syllables ($\acute{\sigma}$) and unstressed syllables ($\sigma$))</li>
 </ol>
 \end{exercise}
 
@@ -71,7 +71,7 @@ Let's first write down the conditions in plain English:
 
 
 Easy peasy, so let's write it down as a negative grammar.
-The following lists the forbidden $n$-grams that correspond to each one of the conditions.
+Here's the list of the forbidden $n$-grams that correspond to each one of the conditions.
 
 1. start with *de-*
     1. *\$ \$*
@@ -254,8 +254,8 @@ def posneg_conversion(grammar, alphabet, n):
     """
     return all_ngrams(alphabet, n) - grammar
 
-neg_gram = set(['aa', 'bb'])
-alphabet = set(['a', 'b'])
+neg_gram = set(['aa', 'ba'])
+alphabet = set(['a', 'b', '$'])
 pos_gram = posneg_conversion(neg_gram, alphabet, 2)
 
 print("The original grammar is:")

@@ -32,22 +32,22 @@ For every $n$-gram grammar $G$ there exists a grammar $G'$ of opposite polarity 
 
 \begin{proof}
 We assume w.l.o.g. that $G$ is a positive grammar and denote it by $^+G$.
-We define a negative counterpart $^-G$ as $\Sigma_\$^n - ^+G$ and show that $L(^+G) = L(^-G)$.
+We define a negative counterpart $^-G'$ as $\Sigma_\$^n - ^+G$ and show that $L(^+G) = L(^-G')$.
 
 <br>
-First, every $s \in L(^+G)$ is also a member of $L(^-G)$.
-Assume towards a contradiction that $s \notin L(^-G)$.
-Then there must be some $g \in ^-G$ such that $\$^{n-1} s \$^{n-1} = u \stringcat g \stringcat v$ ($u,v, \in \Sigma_\$^*$).
-But since $^-G \is \Sigma_\$^n - ^+G$, it must hold that $g \notin ^+G$, wherefore $s \notin L(^+G)$.
-As this contradicts our initial assumption that $s \in L(^+G)$, it cannot be the case that $s \notin L(^-G)$.
-So $s \in L(^-G)$ after all.
+First, every $s \in L(^+G)$ is also a member of $L(^-G')$.
+Assume towards a contradiction that $s \notin L(^-G')$.
+Then there must be some $g \in ^-G'$ such that $\$^{n-1} s \$^{n-1} = u \stringcat g \stringcat v$ ($u,v, \in \Sigma_\$^*$).
+But since $^-G' \is \Sigma_\$^n - ^+G$, it must hold that $g \notin ^+G$, wherefore $s \notin L(^+G)$.
+As this contradicts our initial assumption that $s \in L(^+G)$, it cannot be the case that $s \notin L(^-G')$.
+So $s \in L(^-G')$ after all.
 
 <br>
 In the other direction, suppose that $s \notin L(^+G)$.
 Then by definition there are $u, v \in \Sigma_\$^*$ and $\Sigma_\$^n \ni g \notin ^+G$ such that $\$^{n-1} s \$^{n-1} = u \stringcat g \stringcat v$.
-But then $g \in ^-G$, which entails $s \notin L(^-G)$.
+But then $g \in ^-G'$, which entails $s \notin L(^-G')$.
 
 <br>
-This shows that $s \in L(^+G)$ iff $s \in L(^-G)$.
-As $s$ was arbitrary, this holds for all strings and establishes $L(^+G) = L(^-G)$, which concludes our proof.
+This shows that $s \in L(^+G)$ iff $s \in L(^-G')$.
+As $s$ was arbitrary, this holds for all strings and establishes $L(^+G) = L(^-G')$, which concludes our proof.
 \end{proof}

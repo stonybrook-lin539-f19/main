@@ -6,7 +6,7 @@
 
 I have a horrible confession to make: the previous unit contains a lie.
 The set-of-words model isn't actually used in practice.
-Instead, one finds a bag-of-words model.
+Instead, it's a bag-of-words model.
 The bag-of-words model works like the set-of-words model, except that every word type also gets a number to indicate how often it occurs in the text.
 Mathematically, this corresponds to the step from sets to multisets.
 
@@ -18,12 +18,16 @@ So whereas $S$ denotes a set, $_MS$ denotes a multiset.
 
 \begin{example}
 The set-of-words model converts the mini-text *Only John could like John* (modulo capitalization) to the set $\setof{\text{only}, \text{john}, \text{could}, \text{like}}$.
-The sentence *If police police police police police, then police police police police police* it converts to $\setof{\text{if}, \text{police}, \text{then}}$.
+The sentence *If police police police police police, then police police police police police* is converted to $\setof{\text{if}, \text{police}, \text{then}}$.
 
+<br>
 The bag-of-words model gives different results.
 The first sentence is mapped to the multiset $\setof{\text{only}: 1, \text{john}: 2, \text{could}: 1, \text{like}: 1}$.
 The second one yields $\setof{\text{if}: 1, \text{police}: 10, \text{then}: 1}$.
 \end{example}
+
+Just like sets, multisets aren't limited to unigrams.
+One can just as well count bigrams, trigrams, and so on.
 
 ```python
 from collections import Counter
@@ -41,28 +45,39 @@ sentence1 = ["only", "john", "could", "like", "john"]
 sentence2 = ["if", "police", "police", "police", "police", "police",
              "then", "police", "police", "police", "police", "police"]
 
-print("Set for {}: {}".format(" ".join(sentence1), ngram_set(sentence1, 2)))
-print("Multiset for {}: {}".format(" ".join(sentence1), ngram_multiset(sentence1, 2)))
+print("Set for\n{}\n is\n{}".format(" ".join(sentence1), ngram_set(sentence1, 2)))
+print("Multiset for\n {}\n is\n{}".format(" ".join(sentence1), ngram_multiset(sentence1, 2)))
 print()
-print("Set for {}: {}".format(" ".join(sentence2), ngram_set(sentence2, 2)))
-print("Multiset for {}: {}".format(" ".join(sentence2), ngram_multiset(sentence2, 2)))
+print("Set for\n{}\n is\n{}".format(" ".join(sentence2), ngram_set(sentence2, 2)))
+print("Multiset for\n{} is\n{}".format(" ".join(sentence2), ngram_multiset(sentence2, 2)))
 ```
 
-## Counts for Frequencies and Probabilities
+\begin{exercise}
+Construct the trigram multiset for *if police police police police police, then police police police police police*.
+\end{exercise}
+
+## Counts for frequencies
 
 One major advantage the proper bag-of-words model has over the set-of-words model is that the counts provide direct information about frequency, which can be used in various ways.
 Given a multiset $_MS$, the frequency of some $s \in _MS$ is the count of $s$ divided by the total of all counts.
-In mathematical notation, the frequency of $s$ is $\freq{s} \is \frac{_MS(s)}{\card{_MS}}$, where $\card{_Ms}$ is the total of all counts.
-It is often convenient to replace the absolute counts in a bag-of-words by relative frequencies.
+In mathematical notation, the frequency of $s$ is
+$$\freq{s} \is \frac{_MS(s)}{\card{_MS}}$$
+where $\card{_M S}$ is the total of all counts.
+
+We can replace the absolute counts in a bag-of-words by relative frequencies.
 Strictly speaking this is no longer a multiset, since the values for a multiset can only be natural numbers.
 It's impossible for a multiset to contain an item .73 times.
-In practice this is unproblematic as long as one does not try to treat bags-of-words with frequencies as if they were multisets.
+In addition, relative frequencies destroy information: an item with frequency .5 could have occurred 5 times, 500, or 5 trillion.
+It's impossible to tell unless one knows the total size of the corpus that the counts were collected from.
+
+In practice, it is best to keep the bag of words untouched and store the frequencies separately.
+But just for notation, it is often nicer to have frequencies instead of counts.
 
 \begin{example}
 Let's go back to the multiset 
 $_MS \is \setof{\text{if police}: 1, \text{police police}: 8, \text{police then}: 1, \text{then police}: 1}$.
-The cardinality of this set is $\sum_{s \in _MS} _MS(s) = 1 + 8 + 1 + 1 = 11$.
-Hence $\freq{_MS} =  \setof{\text{if police}: \frac{1}{11}, \text{police police}: \frac{8}{11}, \text{police then}: \frac{1}{11}, \text{then police}: \frac{1}{11}}$.
+The total number of counts is $11$.
+So after we replace counts by frequencies, $_MS$ becomes $\setof{\text{if police}: \frac{1}{11}, \text{police police}: \frac{8}{11}, \text{police then}: \frac{1}{11}, \text{then police}: \frac{1}{11}}$ (which is no longer a multiset).
 \end{example}
 
 ```python
@@ -93,9 +108,22 @@ for ngrams in [unigrams, bigrams, trigrams]:
     plt.show()
 ```
 
+\begin{exercise}
+Construct a bag of words from the following text, then compute the relative frequency of each word:
+
+<ul>
+<li>John misses Mary</li>
+<li>Mary misses Misses Chives</li>
+<li>I hate chives with a passion</li>
+<li>I love passion fruit</li>
+</ul>
+
+It is up to you to decide what should be treated as different words.
+But take the opportunity to reflect on whether a computer program could easily make the distinctions you are making.
+\end{exercise}
+
 Counts and frequency information can be used in various ways, for example for search engines.
 One can measure the relevance of a text for a given search query based on how much of the text consists of the words in the search query.
-In this case, it is particularly important to remove all stop words because they would otherwise obscure the relevance of keywords in a text.
 
 \begin{example}
 The sentence *Only John thinks John thinks John likes John* corresponds to the multiset
@@ -105,13 +133,18 @@ $_MS \is \setof{\text{only}: 0.125, \text{john}: 0.5, \text{thinks}: 0.25, \text
 So the relevance score to the query *john* would be $0.5$.
 \end{example}
 
+\begin{exercise}
+Suppose the sentence were *Only John thinks he thinks he thinks he likes himself*.
+What would be the score of *john* in this case?
+\end{exercise}
+
 For practical purposes, both absolute counts and relative frequency can provide important information.
 Absolute counts by themselves are not enough because a document that mentions *rules* 10 times might still not be a good match for "rules and representations" if the whole document contains 10,000 words.
 On the other hand, a document containing just the phrase *rules schmules* would also be a horrible match despite 50% of it being mentions of *rules*.
 There are many different strategies for optimising matches, and we will not go into details here.
 However, it is instructive to see how queries consisting of multiple words can be handled mathematically.
 
-## Multi-set Sums and Scalar Multiplication for Multi-Word Queries
+## Multi-set sums and scalar multiplication for multi-word queries
 
 Suppose a student has heard that the term *metaphysics* is somehow related to Aristotle and would like to learn more about that.
 So they go to their search engine of choice and enter the search query *Aristotle metaphysics*.
@@ -148,6 +181,10 @@ $$
 $$
 \end{example}
 
+\begin{exercise}
+Construct similar multisets for *ethics* and *Plato*.
+\end{exercise}
+
 At this point we have two multisets over websites that tell us how well each website fits the individual terms *Aristotle* and *metaphysics*.
 However, we still need to combine them into some kind of aggregate score.
 This is easily accomplished with **multiset sum**.
@@ -170,6 +207,10 @@ $$
 $$
 The best match according to this measure is the website $w_2$, closely followed by $w_1$ and $w_3$.
 \end{example}
+
+\begin{exercise}
+Calculate the multiset sum of the two multisets you constructed for *ethics* and *Plato* in the previous exercise.
+\end{exercise}
 
 While multiset sum offers an easy way to convert the multisets produced according to the query into a single score for each website, it is also a bit too simplistic.
 Multiset sum is *commutative*, which means that the order of arguments does not matter: $_MA + _MP = _MP + _MA$.
@@ -206,3 +247,9 @@ $$
 As you can see, $w_1$ is now the best match, followed by $w_3$ and $w_4$.
 Considering that $w_1$ does not contain any mention of metaphysics, we actually ended up making things worse.
 \end{example}
+
+\begin{exercise}
+Suppose the user entered *ethics Plato Aristotle*.
+Use scalar multiplication to assign appropriate weights to each word (it is up to you to decide what is appropriate).
+Then compute the multiset sum and determine which website is the best fit for the query.
+\end{exercise}
