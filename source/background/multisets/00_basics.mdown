@@ -2,7 +2,7 @@
 
 - sets (notation, operations, comparisons)
 
-# Sets with Counters: Multisets
+# Sets with counters: Multisets
 
 Sets are an abstract mathematical object that we may think of as collections in a lose sense.
 They are sometimes likened to bags, but this can be misleading.
@@ -22,6 +22,26 @@ Like sets, multisets are unordered, but idempotency does not hold; a multiset ca
     Hence $\setof{a,a,b}_M \neq \setof{a,b}_M$ even though $\setof{a,a,b} = \setof{a,b}$.
     However, it still holds that order does not matter: $\setof{a,a,b}_M = \setof{a,b,a}_M = \setof{b, a, a}_M$, just like $\setof{a,b} = \setof{b,a}$.
 \end{example}
+
+\begin{exercise}
+Fill in the gaps with $=$ and $\neq$ as appropriate.
+
+<ol>
+<li>
+$\setof{5, 5, 7, 8}_M \_ \setof{7, 5, 8, 7}_M$
+</li>
+<li>
+$\setof{5, 3, 4} \_ \setof{5,3,4,4,3,5,5,4,3}$
+</li>
+<li>
+$\setof{\text{peanut butter}, \text{jelly}}_M \_ \setof{\text{peanut butter}, \text{jelly}}_M$
+</li>
+<li>
+$\setof{\text{John}, \text{John}, \text{John}}_M \_ \setof{\text{John}}_M$
+</li>
+$\setof{a}_M \_ \setof{a,a}$
+</ol>
+\end{exercise}
 
 The notation for multisets is much less standardized than that for sets, and not everybody follows the convention of subscripting multisets with $M$.
 If an author uses multisets, pay close attention to how they define their notation.
@@ -46,6 +66,10 @@ set_equals(["a", "a", "b", "b", "c"], ["a", "b", "c", "c", "d"])
 multiset_equals(["a", "a", "b", "b", "c"], ["a", "b", "c", "a", "b"])
 ```
 
+\begin{exercise}
+Represent all the multisets in the exercise above with explicit counts.
+\end{exercise}
+
 With this kind of notation, it also becomes possible to define multisets with set-builder notation.
 For example, $\setof{n: 2n \mid n \in \mathbb{N}}$ is the set that contains $2n$ occurrences of every natural number $n$: $\setof{0:0, 1:2, 2:4, 3:6, \ldots}$.
 
@@ -53,3 +77,17 @@ For example, $\setof{n: 2n \mid n \in \mathbb{N}}$ is the set that contains $2n$
 multiset = Counter({n: 2*n for n in range(10)})
 print(multiset)
 ```
+
+\begin{exercise}
+Write down the multiset defined by each set-builder expression.
+These are not entirely straight-forward, and you'll have to make some educated guesses as to how to handle special cases.
+
+<ol>
+<li>
+$\setof{n: 10 - n \mid 0 \leq n \leq 10}$
+</li>
+<li>
+$\setof{a: b, b: a \mid a,b \geq 0, a + b = 10}$
+</li>
+</ol>
+\end{exercise}

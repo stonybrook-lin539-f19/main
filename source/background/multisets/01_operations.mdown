@@ -1,7 +1,7 @@
 **Prerequisites**
 
 - general (big operators)
-- sets (cardinality)
+- <s>sets (cardinality)</s> (no longer needed)
 - multisets (basics)
 
 # Operations on multisets
@@ -53,7 +53,33 @@ print("Relative complement of\n{} and\n{} is\n{}\n".format(A, B, A-B))
 print("Relative complement of\n{} and\n{} is\n{}\n".format(B, A, B-A))
 ```
 
-The cardinality of a multiset with finitely many elements is the sum of all its counts.
+\begin{exercise}
+Fill each gap with a matching multiset or operator.
+
+<ol>
+<li>
+$\setof{a:3, b:2, c:1} \cup \setof{a:5, b:1, d:8} = \_$
+</li>
+<li>
+$\setof{c:17} \_ \setof{a:5, b:1, d:8} = \setof{c:17}$
+</li>
+<li>
+$\setof{a:3, b:3} \cup \_ = \setof{a:5, b:3, c:5, d:6}$
+</li>
+<li>
+$\_ \_ \setof{a:5, b:1, d:8} = \setof{a:3, b:1}$
+</li>
+</ol>
+\end{exercise}
+
+Given a multiset $S_M$, we also write $S_M(a)$ for the count of $a$ in $S_M$.
+
+\begin{example}
+Let $A_M \is \setof{a:3, b:2, c:1}$ and $B_M \is \setof{a:1, b:1, c:1, d:1}$.
+Then $A_M(a) = 3$ and $B_M(a) = 1$, whereas $A_M(c) = B_M(c) = 1$.
+\end{example}
+
+The **cardinality** of a multiset with finitely many elements is the sum of all its counts.
 As a formula, this looks as follows:
 
 $$
@@ -95,6 +121,21 @@ print("Intersection of {} and {} is {}".format(A, B, multiset_intersection(A, B)
 print("Relative complement of {} and {} is {}".format(A, B, A-B))
 ```
 
+\begin{exercise}
+Calculate the cardinality of the following multisets:
+
+<ol>
+<li>
+$\setof{a:17}$
+</li>
+<li>
+$\setof{\text{John}: 5, \text{Mary}: 5, \text{Bill}: 10}$
+</li>
+<li>
+$\setof{a: 0, b: 0, c:0}$
+</li>
+</ol>
+\end{exercise}
 
 ## Special operations for multisets
 
@@ -124,3 +165,20 @@ print("{} + {} = {}".format(A, B, A+B))
 print("{} * {} = {}".format(3, A, scalar_multiplication(A, 3)))
 print("{} * {} = {}".format(3, B, scalar_multiplication(B, 3)))
 ```
+
+\begin{exercise}
+Calculate the final result of the equations below.
+If the result cannot be uniquely determined without additional assumptions, explain why.
+
+<ol>
+<li>
+$3 \multimult (\setof{a:5, b:3}_M \multisum \setof{a:1, c:5, d:6}_M) - (\setof{a:5, b:3}_M \cap \setof{a:1, c:5, d:6}_M)$
+</li>
+<li>
+$\setof{\text{John}, \text{John}} \multisum 3 \multimult \setof{\text{Mary}, \text{Mary}, \text{Mary}, \text{John}}_M$
+</li>
+<li>
+$\setof{a:5, c:1}_M \cup \setof{a:3, b:3, c:3, d:3}_M \multisum \setof{a:1}_M$
+</li>
+</ol>
+\end{exercise}
