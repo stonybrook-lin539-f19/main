@@ -1,0 +1,16 @@
+\documentclass[tikz]{standalone}
+\usetikzlibrary{matrix,positioning}
+\usepackage{tipa}
+\begin{document}
+\begin{tikzpicture}
+\matrix (m) at (0,0) [matrix of nodes, column sep=.5em, row sep=2em] {
+      &   & s &   &   &   &   &   &   &   &   &   & \textipa{S}\\
+    h & a & s & x & i & n & t & i & l & a & w & a & \textipa{S}\\
+};
+\foreach \Segment in {3,13}
+    \draw (m-1-\Segment) to (m-2-\Segment);
+
+\node (word) [left=1em of m-2-1] {Word};
+\node [above=2em of word] {Tier};
+\end{tikzpicture}
+\end{document}

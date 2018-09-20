@@ -213,7 +213,7 @@ Calculate the multiset sum of the two multisets you constructed for *ethics* and
 \end{exercise}
 
 While multiset sum offers an easy way to convert the multisets produced according to the query into a single score for each website, it is also a bit too simplistic.
-Multiset sum is *commutative*, which means that the order of arguments does not matter: $_MA + _MP = _MP + _MA$.
+Multiset sum is *commutative*, which means that the order of arguments does not matter: $_MA \multisum _MP = _MP \multisum _MA$.
 But the same arguably isn't true for the order of unigrams in a search query.
 The fact that the student typed *Aristotle metaphysics* rather than *metaphysics Aristotle* suggests that *Aristotle* may be more important. 
 In line with this interpretation we can use **scalar multiplication** to assign $_MA$ a greater weight relative to $_MP$.
@@ -240,7 +240,7 @@ $$
 As before, we combine the two multisets via multiset sum.
 $$
 \begin{align*}
-    3 \multimult _MA + 2 \multimult _MP &= \setof{w_1: 27 + 0, w_2: 3 + 18, w_3: 12 + 10, w_4: 0 + 6}\\
+    3 \multimult _MA \multisum 2 \multimult _MP &= \setof{w_1: 27 \multisum 0, w_2: 3 \multisum 18, w_3: 12 \multisum 10, w_4: 0 \multisum 6}\\
                                         &= \setof{w_1: 27, w_2: 21, w_3: 22, w_4: 6}\\
 \end{align*}
 $$
@@ -253,3 +253,10 @@ Suppose the user entered *ethics Plato Aristotle*.
 Use scalar multiplication to assign appropriate weights to each word (it is up to you to decide what is appropriate).
 Then compute the multiset sum and determine which website is the best fit for the query.
 \end{exercise}
+
+## Recap
+
+- Multisets are the formal foundation of bag of words models.
+- Each text can be compressed into a multiset to keep track of counts for relevant words.
+- Counts can be combined and manipulated with multiset sum and scalar multiplication.
+- Counts are often converted to percentages, but the result is no longer a multiset.

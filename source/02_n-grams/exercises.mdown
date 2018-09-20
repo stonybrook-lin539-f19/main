@@ -12,12 +12,12 @@ Continuing the previous exercise, fill in the cells in the table below with Y or
 The first row has already been completed as an example.
 \end{exercise}
 
-|          | $G_1$ | $G_2$ | $G_3$ | $G_{1,2,3}$
-| --:      | :-:   | :-:   | :-:   | :-:
-| *a*      | Y     | N     | Y     | N   |
-| *b*      |       |       |       |     |
-| *aab*    |       |       |       |     |
-| *aabba*  |       |       |       |     | 
-| *abbba*  |       |       |       |     | 
-| *aaaaaa* |       |       |       |     | 
-| *aabbab* |       |       |       |     | 
+|          | $G_1$ | $G_2$ | $G_3$ | $G_{1,2,3}$ |
+| --:      | :-:   | :-:   | :-:   | :-:         |
+| *a*      | Y     | N     | Y     | N           |
+| *b*      |       |       |       |             |
+| *aab*    |       |       |       |             |
+| *aabba*  |       |       |       |             |
+| *abbba*  |       |       |       |             |
+| *aaaaaa* |       |       |       |             |
+| *aabbab* |       |       |       |             |
