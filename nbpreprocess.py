@@ -298,8 +298,8 @@ def mdown2pdf(f: Path,
 
 
 # time for the actual processing
-# for f in tikz:
-#     process_tikzfile(f)
+for f in tikz:
+    process_tikzfile(f)
 
 for f in mdown:
     mdown2ipynb(f, header=['mycommands'])
