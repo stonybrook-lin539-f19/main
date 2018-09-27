@@ -1,4 +1,5 @@
 **Prerequisites**
+
 - general(abbreviations[w.l.o.g.])
 - sets(notation, operations)
 - strings(notation)
