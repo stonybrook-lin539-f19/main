@@ -1,0 +1,72 @@
+**Prerequisite**
+
+- Relations (notation)
+
+# Monotonicity
+
+When the domain and co-domain of a function each have an order defined over them, one can ask whether the function is order-preserving.
+
+\begin{example}
+Consider the function $f: \mathbb{N} \rightarrow \mathbb{N}$ with $x \mapsto 2x$.
+The (co-)domain $\mathbb{N}$ is the set of natural numbers, which can be ordered by $\leq$ in the usual fashion.
+The function $f$ respects the order induced by $\leq$.
+For any two $x$ and $y$ such that$x \leq y$, it also holds that $f(x) \leq f(y)$.
+For instance, $4 \leq 10$ and $f(4) = 8 \leq 20 = f(10)$.
+\end{example}
+
+\begin{example}
+The function $f: \mathbb{R} \rightarrow \mathbb{R}$ with $f(x) = x^2 - 5x$ does not preserve order in all cases.
+We have $3 < 5$ and $f(3) = 9 - 5 \mult 3 = -6 < 0 = 25 - 5 \mult 5 = f(5)$.
+But we also have $0 < 1$ yet $f(0) = 0 - 5 \mult 0 = 0 > -4 = 1 - 5 \mult 1 = f(1)$.
+\end{example}
+
+This property of order preservation is known as **monotonicity**.
+You might know monotonicity in the special case of a function from reals to reals.
+In this case, one can draw the function as a line in a coordinate system.
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+
+f = lambda x: 2*x
+g = lambda x: x**2
+h = lambda x: 2*x - 2**(x - 5) + 2**10
+i = lambda x: x/2 - 2**x
+
+for func in [f, g, h, i]:
+    plt.plot(np.linspace(-10, 10), func(x))
+    plt.show()
+```
+
+Such function is monotonic iff it does not change direction: once it goes up, it cannot go down, and the other way round.
+Among the functions above, only the first and the last are monotonic.
+
+While such numerical functions are a good starting point for grasping the intuition behind monotonicity, the concept is much broader.
+See the unit on universals for various linguistic applications of monotonicity, none of which have anything to do with numbers.
+
+## Isotonicity and antitonicity
+
+Monotonicity is actually an umbrella term for two distinct properties: **isotonic** (**monotonic increasing**) and **antitonic** (**monotonic decreasing**).
+
+\begin{definition}
+Let $A$ and $B$ be arbitrary sets and $\leq_A$ and $\leq_B$ ordering relations over these respective sets.
+Then a function $f: A \rightarrow B$ is **isotonic** iff $x \leq_A y$ implies $f(x) \leq_B f(y)$.
+We call $f$ *antitonic** iff $x \leq_A y$ implies $f(y) \leq_B f(x)$.
+\end{definition}
+
+A function is monotonic iff it is isotonic or antitonic.
+
+\begin{exercise}
+For each one of the following functions say whether it is isotonic, antitonic, or neither.
+
+<ol>
+<li>$f: \mathbb{R} \rightarrow \mathbb{R}$, $x \mapsto x - 10$</li>
+<li>$f: \mathbb{R} \rightarrow \mathbb{R}$, $x \mapsto x^2$</li>
+<li>$f: \mathbb{R} \rightarrow \mathbb{R}$, $x \mapsto \frac{x}{2}$</li>
+<li>$f: \mathbb{N} \rightarrow \mathbb{N}$, $f(n)$ is $1$ if $n = 0$ and $n \mult f(n-1)$ otherwise</li>
+</ol>
+\end{exercise}
+
+\begin{exercise}
+Given an example of a function that is both isotonic and antitonic.
+\end{exercise}
