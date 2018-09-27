@@ -1,0 +1,160 @@
+**Prerequisites**
+
+- functions (basic notation, monotonicity)
+
+# Morphological paradigms
+
+A morphological paradigm lists related forms of the same words.
+For example, the adjectival gradation paradigm of *good* is *good* - *better* - *best*.
+The inflectional paradigm of English *like* in the present tense is
+
+Person | Singular form | Plural form
+--:    | :--           | :--
+1      | like          | like
+2      | like          | like
+3      | likes         | like
+
+German *mögen*, on the other hand, looks as follows:
+
+Person | Singular form | Plural form
+--:    | :--           | :--
+1      | mag           | mögen
+2      | magst         | mögt
+3      | mag           | mögen
+
+You might think that paradigms can take any form you want.
+But that does not seem to be the case, some patterns simply do not arise
+There are certain principled gaps in the linguistic typology, like the holes in a Swiss cheese.
+The Swiss-cheese nature of language suggests that a substantive universal is at play.
+
+## The $^*$ABA generalization
+
+Adjectives usually come in three degrees:
+
+1. a *positive* form, e.g. *good* or *hard*
+1. a *comparative* form, e.g. *better* or *harder*
+1. a *superlative* form, e.g. *best* or *hardest*
+
+The contrast between *good* and *hard* already shows that these three forms are not always built the same way.
+In *good*-*better*-*best*, the comparative and superlative look very similar, but they are both different from the positive.
+We might call this an ABB pattern.
+In *hard*-*harder*-*hardest*, all three forms are very similar.
+That's an AAA pattern.
+
+Additional patterns can be found in other languages.
+The Latin counterpart to *good*-*better*-*best* is *bonus*-*melior*-*optimus*.
+Here all three forms are distinct, which is why this is called an ABC pattern.
+
+Curiously absent is anything like *good*-*better*-*goodest*, which would be an ABA pattern.
+The curious absence of such ABA patterns across all known languages is known as the *$^*$ABA generalization*. 
+
+The ban against ABA patterns can also be found in pronoun paradigms.
+If we ignore number, English has a separate pronoun form for each person.
+First person is *I*, second person is *you*, and third person is *he*/*she*/*it*.
+This is an ABC pattern.
+But looking across languages, we also find languages with AAA, AAB, and ABB.
+Only ABA is again curiously absent.
+
+The absence of ABA patterns is an intriguing puzzle, and it can be given a very natural mathematical explanation.
+
+## $^*$ABA as a No-Crossing constraint
+
+Some linguists have argued for a person hierarchy of the form $1 < 2 < 3$.
+This means that first person is somehow more prominent or important than second person, which in turn is more important than third person.
+There's several linguistic reasons for positing such a hierarchy, but for our purposes a loose analogy is sufficient: people in general care most about themselves and their peers (*we*), then the people they interact with (*you*), and everybody else is at best irrelevant and at worst an enemy (*they*).
+
+If this hierarchy is indeed a substantive universal of natural languages, then a simple mathematical idea is sufficient to explain why pronoun systems can be of the form AAA, AAB, ABB, and ABC, but not ABA.
+But let's start with the intuition, first.
+Suppose that we line up 1, 2, 3, for person as below, with A, B, C underneath it.
+
+\input_mid{./123_lineup.tikz}
+
+Using this visual format, we can represent an ABC pattern by connecting each person to the form below it.
+
+\input_mid{./123_ABC.tikz}
+
+By contrast, the AAA pattern is the result of linking each person to A.
+
+\input_mid{./123_AAA.tikz}
+
+\begin{exercise}
+What patterns do the two pictures below represent?
+\end{exercise}
+
+\input_mid{./123_AAB.tikz}
+
+\input_mid{./123_ABB.tikz}
+
+Now contrast the figures above against the one below, which displays an ABA pattern:
+
+\input_mid{./123_ABA.tikz}
+
+The ABA pattern is different from the others because the lines cross at some point.
+Linguists have noticed over the years that language in general does not like crossing lines.
+For instance, there is a theory known as *Autosegmental phonology*, which served as the inspiration for the TSL class of $n$-gram grammars.
+In this theory, a sound in a word can occupy a position in the word as well as on a specific tier.
+This connection can be made explicit with an association line.
+But association lines are never allowed to cross.
+So at least for pronoun paradigms, the $^*$ABA generalization might just be an instance of a general ban against crossing lines.
+
+What is really interesting is that this ban corresponds to a very natural mathematical property...
+
+## Monotonicity
+
+The figures above can be regarded as functions from $\setof{1,2,3}$ to $\setof{A, B, C}$.
+For example, the AAB pattern corresponds to a function $f_{AAB}$ such that
+
+- $1 \mapsto A$,
+- $2 \mapsto A$,
+- $3 \mapsto B$.
+
+\begin{exercise}
+Define
+$f_{AAA}$,
+$f_{ABB}$,
+$f_{ABC}$,
+and
+$f_{ABA}$.
+\end{exercise}
+
+But this is a bit too simplistic.
+In the pictures above, the elements of $\setof{1,2,3}$ and $\setof{A,B,C}$ are put in a left-to-right order.
+So we aren't just dealing with sets, but with sets that have an order defined over them.
+What differentiates $f_{ABA}$ from the others is that it does not respect this order.
+It is the only function that is not **monotonic**.
+
+\begin{definition}
+Let $f: S \rightarrow T$ be a function from $S$ to $T$.
+Assume that $\leq_S$ is an ordering of elements of $S$, whereas $\leq_T$ is an ordering of the elements of $T$.
+Then $f$ is **monotonic** iff $x \leq_S y$ implies $f(x) \leq_T f(y)$.
+\end{definition}
+
+\begin{example}
+The function $f_{AAB}$ is monotonic because
+
+<ul>
+<li>$1 \leq_S 2$ and $f(1) = A \leq_T A = f(2)$</li>
+<li>$2 \leq_S 3$ and $f(2) = A \leq_T B = f(3)$</li>
+<li>$1 \leq_S 3$ and $f(1) = A \leq_T B = f(3)$</li>
+</ul>
+\end{example}
+
+\begin{exercise}
+Show that $f_{ABA}$ is not monotonic.
+\end{exercise}
+
+One can show that no matter how one orders A, B, and C, no monotonic function can produce an ABA pattern as long as the hierarchy for person is $1 < 2 < 3$.
+So the $^*$ABA generalization for pronouns follows from two substantive universals:
+
+1. All languages use a person hierarchy $1 < 2 < 3$.
+1. For every morphological paradigm, the mapping from the underlying hierarchy to the output forms must be monotonic.
+
+\begin{exercise}
+Show that monotonicity also explains the absence of adjectival gradation paradigms like *good*-*better*-*goodest* if one assumes the hierarchy $\text{positive} < \text{comparative} < \text{superlative}$.
+Explain why this is an intuitively plausible hierarchy.
+\end{exercise}
+
+You might wonder why we restated the No-Crossing constraint in terms of the mathematical property of monotonicity.
+Doesn't the former get the job done just as well?
+In the case at hand, certainly.
+But monotonicity is a more abstract property, and as we will see in the next two notebooks, this abstractness allows it to be easily generalized to a number of phenomena which the No-Crossing constraint has little to say about.

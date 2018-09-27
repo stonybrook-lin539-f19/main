@@ -1,0 +1,119 @@
+**Prerequisites**
+
+- Relations (basic orders)
+
+# Monotonicity in case syncretism
+
+Monotonicity also seems to play a role in case syncretism.
+In languages with a morphologically realized case system, some cases may receive the same form in some paradigms.
+This is shown below for Latin *rex* 'king', where nominative and accusative are syncretic in the plural, as are dative and ablative.
+
+| Case | Singular | Plural   | 
+| --:  | :--      | :--      | 
+| Nom  | rex      | reg-es   | 
+| Gen  | reg-is   | reg-um   | 
+| Dat  | reg-i    | reg-ibus | 
+| Acc  | reg-em   | reg-es   | 
+| Abl  | reg-e    | reg-ibus | 
+
+As with person pronoun paradigms and adjectival gradation, some conceivable case syncretisms never show up in any language. 
+Again we are forced to explain some typological gaps, and again monotonicity provides an answer.
+
+## Genitive, Dative and Accusative
+
+Case systems can be very complex and convoluted, so we will only focus on a few simple problems here.
+We will use *Blake's case hierarchy* as our starting point.
+Slightly truncated, it postulates that
+$\text{Nom} <
+\text{Acc} <
+\text{Gen} <
+\text{Dat} <
+\text{others}$.
+The $^*$ABA generalization can be extended to this hierarchy.
+In this broader form, it states two cases $x$ and $z$ cannot have the same form in a paradigm unless every case $y$ that occurs between them in the hierarchy also has this form in the paradigm.
+
+\begin{example}
+The paradigm for Latin *rex* displays syncretism of nominative and accusative to the exclusion of genitive, dative, and ablative.
+But since these cases do not occur between nominative and accusative in Blake's case hierarchy, this obeys the $^*$ABA generalization.
+\end{example}
+
+\begin{exercise}
+The paradigm for *rex* also has syncretism of dative and ablative in the plural.
+Is this allowed?
+Justify your answer.
+\end{exercise}
+
+There is a problem, though.
+In many Germanic languages, dative and accusative are syncretic to the exclusion of genitive.
+
+\begin{example}
+In German, it is very common for nominative, dative and accusative to take the base form, whereas genitive receives a special affix.
+So *Papa* 'dad' could be nominative, dative, or accusative, whereas the genitive must be *Papas*.
+German is not an ideal example, though, as the genitive is becoming increasingly unproductive and the dative allows for a special suffix *-e* for nouns that end in a consonant.
+The dative of *Mann* can be either *Mann* or *Manne*, although the latter sounds very archaic.
+Nonetheless, it is conceivable that the dative of *Papa* is underlyingly *Papae*, with the final vowel subsequently deleted by some phonological process.
+\end{example}
+
+\begin{example}
+A better example comes from Icelandic *faðir* (father).
+Its dative and accusative are *föður*, whereas the genitive is *föðurs*.
+\end{example}
+
+Blake's hierarchy in its current form cannot handle this, so it needs to be modified.
+But the easy options do not work.
+
+\begin{exercise}
+Explain why the following hierarchy does not work: 
+$\text{Nom} <
+\text{Gen} <
+\text{Acc} <
+\text{Dat} <
+\text{others}$.
+\end{exercise}
+
+\begin{exercise}
+Icelandic also has some nouns where nominative and genitive are syncretic to the exclusion of dative and accusative.
+Which variants of Blake's hierarchy does this rule out?
+\end{exercise}
+
+## Partial orders to the rescue
+
+It seems that no matter how we order the cases, at least one attested syncretism will violate monotonicity.
+But perhaps we are accidentally limiting ourselves.
+So far, we have implicitly assumed that linguistic hierarchies must be total: for any given $x$ and $y$, it holds that $x < y$, or $y < x$, or $x = y$.
+This is a natural starting point, but it isn't a necessary one.
+Monotonicity also works if we consider **partial orders**.
+
+In a partial order, some elements may be unordered with respect to each other.
+This allows us to make a small but important modification to Blake's hierarchy.
+
+\input_mid{./blake_partialorder.tikz}
+
+Notice how genitive and accusative are now unordered with respect to each other.
+This allows accusative and dative to be syncretic to the exclusion of genitive.
+
+\begin{example}
+Let $a$, $d$, $g$ be shorthands for accusative, dative, and genitive, respectively.
+Now suppose that $a$ and $d$ are both mapped to the same exponent, which is different to the realization of genitive: $f(a) = f(d) \neq f(g)$.
+This obeys monotonicity.
+First, $a < d$ implies $f(a) \leq f(d)$, which clearly holds since $f(a) = f(d)$.
+We also have $g < d$, so it must be the case that $f(g) \leq f(d)$.
+Whether this holds depends on how one orders the surface forms, but it is always possible to pick an ordering for which this holds.
+Finally, $a$ and $g$ are unordered with respect to each other, so the relative order of $f(a)$ and $f(g)$ has no bearing on monotonicity.
+\end{example}
+
+\begin{exercise}
+For each one of the following syncretisms, state whether it can be realized by a monotonic mapping assuming the modified Blake hierarchy (if necessary, you may assume a different linear order of output forms for each syncretism).
+Justify your answer.
+
+<ol>
+<li>Syncretism of nominative and genitive to the exclusion of accusative</li>
+<li>Syncretism of nominative and dative to the exclusion of accusative</li>
+<li>Syncretism of nominative, accusative, and dative to the exclusion of genitive</li>
+<li>Syncretism of nominative, accusative, and genitive to the exclusion of dative</li>
+<li>Syncretism of nominative and genitive to the exclusion of accusative</li>
+</ol>
+\end{exercise}
+
+It seems, then, that monotonicity does a lot of work even in the richer domain of case syncretisms.
+The crucial step is to move from a total order to a partial order.

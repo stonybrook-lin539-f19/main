@@ -1,0 +1,5 @@
+Do not read, under construction for next homework
+
+- what's the nature?
+- weakly connected
+- syncretism: strongly connected components

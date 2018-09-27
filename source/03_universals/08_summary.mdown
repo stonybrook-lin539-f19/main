@@ -1,0 +1,4 @@
+Do not read, under construction for next homework
+
+- formal universal: monotonicity, restriction to SL-n, adjunction
+- substantive universal: hierarchies

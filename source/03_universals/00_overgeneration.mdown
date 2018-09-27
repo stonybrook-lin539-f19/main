@@ -1,0 +1,79 @@
+# The problem of overgeneration
+
+In our discussion of $n$-gram models, we were largely concerned with specifying grammars for specific phenomena.
+Among other things, you wrote grammars for word-final devoicing, intervocalic voicing, and penultimate stress.
+This shows that many phenomena can be accounted for by very simple models.
+But there is a problem: the opposite also holds.
+This whole unit is dedicated to explaining what this means, why it is a problem, and how it can be addressed in at least some domains.
+The first two points are handled in this notebook, whereas the latter is spread out over the remainder.
+
+## Overgeneration and undergeneration
+
+There is a major problem with $n$-gram models, in fact every computational model.
+All these models take for granted that there is a fixed alphabet, and the elements of these alphabet are treated as unanalyzable atoms without any additional properties.
+As far as an $n$-gram grammar is concerned, *s* and *f* do not differ in any relevant sense from *z* and *v*.
+So just like one can write a grammar for intervocalic voicing, one can also write one for intervocalic devoicing.
+But the former is a very natural process, whereas the latter has not been found in even a single language.
+
+\begin{exercise}
+Write a negative grammar for intervocalic devoicing, assuming that the alphabet consists only of *a*, *i*, *u*, *s*, *z*, *f*, and *v*.
+\end{exercise}
+
+\begin{exercise}
+Assuming the same alphabet as before,
+write an $n$-gram grammar (it may be positive or negative) that requires every word to consist of exactly 5 symbols.
+\end{exercise}
+
+\begin{exercise}
+Assuming the same alphabet as before,
+write an $n$-gram grammar (it may be positive or negative) that requires every word to start with *a* and end with *f*.
+\end{exercise}
+
+\begin{exercise}
+Assuming the same alphabet as before,
+write an $n$-gram grammar (it may be positive or negative) for "penultimate f": if a word has at least two symbols, then the last but one symbol must be f and no other position may be f.
+\end{exercise}
+
+\begin{exercise}
+Suppose that English only contains the words *the*, *old*, *man*, *woman*, *sleep*, *sleeps*, *snore*, and *snores*.
+Assume furthermore that the English subject verb agreement system works as follows: if the subject does not contain an adjective (like *old*), then use the inflected verb form; otherwise, use the base form.
+So we would get *The old man snore* but *The man snores*.
+Write an $n$-gram grammar that captures this unnatural condition.
+\end{exercise}
+
+This shows that our models **overgenerate** from a typological perspective as they can not only express constraints that occur in natural languages, but also phenomena that do not.
+Overgeneration is a better position to be in than **undergeneration**, when a formalism cannot capture all relevant phenomena.
+It's better to do too much than too little.
+Unfortunately, many formalisms suffer from both: not all phenomena can be handled, and the formalism can also express unnatural patterns (yes, $n$-gram models are in this unfortunate situation as we will learn in a later unit).
+
+Ideally, a formalism would provide a perfect fit for natural language, which means that it neither overgenerates nor undergenerates.
+No such formalism exists at the point of writing.
+There have been many attempts to design more expressive models that do not undergenerate.
+Overgeneration, on the other hand, has seen a lot less work.
+This is not ideal because the larger the range of phenomena that can be described, the harder it is to design a learning algorithm for the model.
+The intuition here is that you'll have a much easier time picking the right language among, say, 100 candidates rather than 1000.
+A learning algorithm that assumes that a natural language could display an unnatural process like intervocalic devoicing needs more data to rule out this hypothesis.
+Data isn't cheap, so overgeneration should be avoided if possible.
+
+
+## Universals
+
+Linguists use the term **universals** to refer to the fact that natural languages do not vary in all logically conceivable ways.
+A process that can be described by an $n$-gram grammar may still never arise because it violates certain universals.
+The idea of universals is very powerful: if we can identify a reliable list of universals, then we have a very good idea of what our models have to be capable of and what is superfluous.
+This would allow us to design more restrictive and efficient models that can be learned from less data.
+Unfortunately we do not have such a list yet, and this is one of the reasons why computer models still do much worse than humans in several respects.
+In particular, children learn their native language effortlessly with relatively little input, whereas current machine learning models need huge amounts of data.
+And children will never try to do anything like intervocalic devoicing.
+
+Linguists distinguish two types of universals:
+
+1.  **Formal universals**  
+    These identify abstract properties of the "grammar machine".
+    For example, if all linguistic phenomena could be described by $n$-gram grammars (they can't, unfortunately), that would be a formal universal.
+
+1.  **Substantive universals**  
+    These identify properties of the "building material" used by the grammar machine.
+    A substantive universal might explain, for example, why intervocalic voicing is common and intervocalic devoicing unattested even though both could be produced by the grammar machine.
+
+The next notebook discusses some mathematical properties that might be substantive universals.

@@ -1,0 +1,5 @@
+Do not read, under construction for next homework
+
+- cross algebra
+- cartesian product
+- pointwise definition
