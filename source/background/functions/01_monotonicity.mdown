@@ -34,11 +34,12 @@ h = lambda x: 2*x - 2**(x - 5) + 2**10
 i = lambda x: x/2 - 2**x
 
 for func in [f, g, h, i]:
-    plt.plot(np.linspace(-10, 10), func(x))
+    values = np.linspace(-10, 10)
+    plt.plot(values, func(values))
     plt.show()
 ```
 
-Such function is monotonic iff it does not change direction: once it goes up, it cannot go down, and the other way round.
+A function is monotonic iff it does not change direction: once it goes up, it cannot go down, and the other way round.
 Among the functions above, only the first and the last are monotonic.
 
 While such numerical functions are a good starting point for grasping the intuition behind monotonicity, the concept is much broader.
@@ -51,7 +52,7 @@ Monotonicity is actually an umbrella term for two distinct properties: **isotoni
 \begin{definition}
 Let $A$ and $B$ be arbitrary sets and $\leq_A$ and $\leq_B$ ordering relations over these respective sets.
 Then a function $f: A \rightarrow B$ is **isotonic** iff $x \leq_A y$ implies $f(x) \leq_B f(y)$.
-We call $f$ *antitonic** iff $x \leq_A y$ implies $f(y) \leq_B f(x)$.
+We call $f$ **antitonic** iff $x \leq_A y$ implies $f(y) \leq_B f(x)$.
 \end{definition}
 
 A function is monotonic iff it is isotonic or antitonic.

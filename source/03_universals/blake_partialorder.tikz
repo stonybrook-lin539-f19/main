@@ -3,17 +3,17 @@
 \begin{document}
 \begin{tikzpicture}
 \node (nom) at (0,0) {Nom};
-\node (acc) [below=of nom] {Acc};
-\node (gen) [below left=of acc] {Gen};
+\node (acc) [below left=of nom] {Acc};
+\node (gen) [below right=of nom] {Gen};
 \node (dat) [below right=of acc] {Dat};
-\node (inst) [below right=of gen] {Inst};
+\node (inst) [below=of dat] {Inst};
 \node (other) [below=of inst] {Others};
 
 \foreach \Source/\Target in {%
     nom/acc,
-    acc/gen,
+    nom/gen,
     acc/dat,
-    gen/inst,
+    gen/dat,
     dat/inst,
     inst/other}
     \draw (\Source) to (\Target);

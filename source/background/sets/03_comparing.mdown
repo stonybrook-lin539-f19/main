@@ -66,7 +66,7 @@ else:
 
 \begin{exercise}
 Say whether the following statement is true or false and justify your answer:
-for any two sets $A$ and $B$, $A \subsetneq B$ iff $A \cap B = A$.
+for any two sets $A$ and $B$, $A \subseteq B$ iff $A \cap B = A$.
 \end{exercise}
 
 ## Identity
