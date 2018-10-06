@@ -1,0 +1,76 @@
+**Prerequisite**
+
+- Tuples (basics)
+
+# Crossproduct
+
+One often wants to define an entire set of tuples.
+This can be done with set-builder notation.
+
+\begin{example}
+Let $N$ be a set of names and $P$ a set of phone numbers.
+Then we might define an address book as the set
+$$
+A \is \setof{ \tuple{n, p} \mid n \in N, p \in P, \text{ and } p  \text{ is } n \text{'s phone number}}
+$$
+\end{example}
+
+But when we want to allow all possible combinations, there is an easier option.
+Consider the colored object depicted below:
+
+\input_mid{./shapes.tikz}
+
+We can represent each object as a pair $\tuple{s,c}$ where $s$ and $c$ are drawn from a set $S \is \setof{\text{square}, \text{circle}}$ of shapes and a set $C \is \setof{\text{blue}, \text{red}}$ of colors, respectively.
+The figure above contains every possible combination of shapes and colors.
+We can still use set-builder notation in this case: $\setof{ \tuple{s,c} \mid s \in S, c \in C}$.
+
+\begin{exercise}
+Why shouldn't we use a set $\setof{s,c}$ instead of the pair $\tuple{s,c}$?
+What might go wrong in this case depending on our choice of $S$ and $C$?
+\end{exercise}
+
+A more elegant alternative to set-builder notation, however, is the **crossproduct** or **Cartesian product**.
+
+\begin{definition}
+For any two sets $S$ and $T$, their crossproduct $S \times C$ is defined as $\setof{ \tuple{s,c} \mid s \in S, c \in C}$.
+\end{definition}
+
+\begin{example}
+For $S \is \setof{\text{square}, \text{circle}}$ and $C \is \setof{\text{blue}, \text{red}}$, $S \times C$ contains the pairs 
+
+<ol>
+<li>$\tuple{\text{square}, \text{blue}}$</li>
+<li>$\tuple{\text{circle}, \text{blue}}$</li>
+<li>$\tuple{\text{square}, \text{red}}$</li>
+<li>$\tuple{\text{circle}, \text{red}}$</li>
+</ol>
+
+This is different from $C \times S$, which contains
+
+<ol>
+<li>$\tuple{\text{blue}, \text{square}}$</li>
+<li>$\tuple{\text{blue}, \text{circle}}$</li>
+<li>$\tuple{\text{red}, \text{square}}$</li>
+<li>$\tuple{\text{red}, \text{circle}}$</li>
+</ol>
+\end{example}
+
+\begin{exercise}
+Suppose $S$ consists of \emph{John}, \emph{Mary}, and \emph{the old man}, whereas $V$ contains only *slept* and *left*.
+Compute $S \times V$.
+\end{exercise}
+
+\begin{exercise}
+In a certain sense, the crossproduct is the result of generalization tuple concatenation from strings to sets.
+Explain why.
+\end{exercise}
+
+\begin{remark}
+The name Cartesian product makes more sense if you consider the special case of $\mathbb{N} \times \mathbb{N}$.
+Here $\mathbb{N} \is \setof{0, 1, 2, 3, \ldots}$ is the set of all natural numbers.
+So $\mathbb{N} \times \mathbb{N}$ is the set of all possible pairs of natural numbers.
+We can take these two components to represent $(x,y)$-coordinates in the upper right quadrant of a coordinate system.
+Such a coordinate system is also called a **Cartesian plane**, and that is why the crossproduct is sometimes called the Cartesian product.
+\end{remark}
+
+Just like tuple concatenation, the crossproduct operation is associative but not commutative.

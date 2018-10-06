@@ -1,0 +1,14 @@
+**Prerequisites**
+
+- tuples (basics, crossproduct)
+- relations (basic orders)
+
+# Posets
+
+While sets are unstructured, they can be combined with an ordering relation to yield a structured object.
+
+\begin{definition}
+A **partially ordered set**, or simple **poset**, is a pair $\tuple{S, R}$ such that $S$ is some set and $R \subseteq S \times S$ is a weak partial order over $S$.
+\end{definition}
+
+Sometimes, $S$ is also called the **carrier* of the poset $\tuple{S, R}$.

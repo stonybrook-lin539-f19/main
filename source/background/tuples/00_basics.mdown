@@ -1,0 +1,61 @@
+# Tuples: Basics
+
+Tuples are similar to strings in that they care a built from a set of elements and care about both order and numerosity.
+An $n$-tuple consists of exactly $n$ elements.
+Tuples are usually written between pointy brackets, e.g. $\tuple{a,b}$.
+
+\begin{example}
+The pair $\tuple{a,a}$ is distinct from the 1-tuple $\tuple{a}$ and the triple $\tuple{a,a,a}$.
+Since order matters, we also have $\tuple{a,b} \neq \tuple{b,a}$.
+\end{example}
+
+\begin{exercise}
+Fill in the gaps with $=$ and $\neq$ as appropriate:
+
+<ol>
+<li>$\tuple{a} \_ \tuple{b}$</li>
+<li>$\tuple{a,b,a} \_ \tuple{a,b,b}$</li>
+<li>$\tuple{a,b,a,a} \_ \tuple{a,b,a,a}$</li>
+<li>$\tuple{a,a,b,a} \_ \tuple{a,b,a,a}$</li>
+</ol>
+\end{exercise}
+
+Like strings, tuples can be concatenated.
+
+\begin{definition}
+Given an $m$-tuple $a \is \tuple{a_1, \ldots, a_m}$ and an $n$-tuple $b \is \tuple{b_1, \ldots, b_n}$,
+their concatenation is the $m+n$-tuple
+$a \tuplecat b \is \tuple{a_1, \ldots, a_m, b_1, \ldots, b_n}$.
+\end{definition}
+
+Tuple concatenation is associative.
+This means that for any tuples $a$, $b$, and $c$, it holds that $a \tuplecat (b \tuplecat c) = (a \tuplecat b) \tuplecat c$.
+
+\begin{exercise}
+Calculate all of the following
+
+<ol>
+<li>$\tuple{a,b} \tuplecat ((\tuple{c} \tuplecat \tuple{a,b}) \tuplecat \tuple{a,c,e})$</li>
+<li>$(\tuple{a,b} \tuplecat \tuple{c}) \tuplecat (\tuple{a,b} \tuplecat \tuple{a,c,e})$</li>
+</ol>
+\end{exercise}
+
+\begin{exercise}
+Tuple concatenation is not commutative.
+Illustrate this with an example.
+\end{exercise}
+
+Mirror $\emptystring$ for strings, there is also the empty tuple $\tuple{}$.
+It is the only 0-tuple.
+
+\begin{exercise}
+Compute $\tuple{a} \tuplecat \tuple{}$ and $\tuple{} \tuplecat \tuple{a,a,a}$.
+\end{exercise}
+
+
+## Recap
+
+- Tuples are similar to strings.
+  In fact, strings are often defined as just a shorthand notation for tuples.
+- Like strings, tuples are ordered ($\tuple{a,b} \neq \tuple{b,a}$) but not idempotent ($\tuple{a} \neq \tuple{a,a}$).
+- Tuples can be concatenated as usual.
