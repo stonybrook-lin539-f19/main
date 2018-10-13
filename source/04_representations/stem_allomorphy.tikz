@@ -1,0 +1,20 @@
+\documentclass[tikz]{standalone}
+\usetikzlibrary{arrows,arrows.meta,positioning}
+\tikzset{arrow/.style = {-{Latex[length=.5em]}}}
+\begin{document}
+\begin{tikzpicture}
+\node (nom) at (0,0) {Nom};
+\node (acc) [below left=of nom] {Acc};
+\node (gen) [below right=of nom] {Gen};
+\node (dat) [below right=of acc] {Dat};
+\node (other) [below=of dat] {Others};
+
+\foreach \Source/\Target in {%
+    nom/acc,
+    acc/gen,
+    gen/dat,
+    dat/other,
+    other/acc}
+    \draw[arrow] (\Source) to (\Target);
+\end{tikzpicture}
+\end{document}

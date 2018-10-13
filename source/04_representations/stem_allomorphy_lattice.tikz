@@ -1,0 +1,13 @@
+\documentclass[tikz]{standalone}
+\usetikzlibrary{arrows,arrows.meta,positioning}
+\tikzset{arrow/.style = {-{Latex[length=.5em]}}}
+\begin{document}
+\begin{tikzpicture}
+\node (nom) at (0,0) {Nom};
+\node (acc) [below=of nom] {\{Acc,Gen,Dat,others\}};
+
+\foreach \Source/\Target in {%
+    nom/acc}
+    \draw[arrow] (\Source) to (\Target);
+\end{tikzpicture}
+\end{document}

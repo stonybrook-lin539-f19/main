@@ -1,0 +1,14 @@
+\documentclass[tikz]{standalone}
+\usetikzlibrary{positioning}
+\begin{document}
+\begin{tikzpicture}
+\node (1) at (0,0) {positive};
+\node (2) [below=of 1] {comparative};
+\node (3) [below=of 2] {superlative};
+
+\foreach \Source/\Target in {%
+    1/2,
+    2/3}
+    \draw (\Source) to (\Target);
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,39 @@
+\documentclass[tikz]{standalone}
+\usetikzlibrary{positioning}
+\begin{document}
+\begin{tikzpicture}
+    \node (14) at (0,0) {1,4};
+    \node (13) [below left=of 14] {1,3};
+    \node (12) [below left=of 13] {1,2};
+    \node (24) [below right=of 14] {2,4};
+    \node (23) [below left=of 24] {2,3};
+    \node (21) [below left=of 23] {2,1};
+    \node (34) [below right=of 24] {3,4};
+    \node (32) [below left=of 34] {3,2};
+    \node (31) [below left=of 32] {3,1};
+    \node (43) [below right=of 34] {4,3};
+    \node (42) [below left=of 43] {4,2};
+    \node (41) [below left=of 42] {4,1};
+    %
+    \foreach \Source/\Target in {
+        14/13,
+        14/24,
+        13/12,
+        13/23,
+        24/23,
+        24/34,
+        12/21,
+        23/21,
+        23/32,
+        34/32,
+        34/43,
+        21/31,
+        32/31,
+        32/42,
+        43/42,
+        31/41,
+        42/41%
+        }
+        \draw (\Source) to (\Target);
+\end{tikzpicture}
+\end{document}
