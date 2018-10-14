@@ -1,5 +1,5 @@
 \documentclass[tikz]{standalone}
-\usetikzlibrary{arrows,arrows.meta,background,fit,positioning}
+\usetikzlibrary{arrows,arrows.meta,backgrounds,fit,positioning}
 \tikzset{arrow/.style = {-{Latex[length=.5em]}}}
 \begin{document}
 \begin{tikzpicture}
@@ -30,7 +30,7 @@
     8/5,
     8/6,
     8/7}
-    \draw[arrow] (\Source) to (\Source);
+    \draw[arrow] (\Source) to (\Target);
 
 \begin{pgfonlayer}{background}
     \node[draw=blue!75, dashed, fit=(1)(2)(3)] {};

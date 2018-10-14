@@ -1,3 +1,43 @@
 **Prerequisites**
 
-- relations (equivalence relations)
+- relations (advanced orders)
+
+# Quotient structures for hierarchies
+
+The graph-theoretic insights from the previous notebook can also be expressed in order theoretic terms.
+This part is somewhat technical, so you might have to read it multiple times to make sure you understand what is going on.
+
+First, we define an equivalence relation $\sim$ such that $x \sim y$ iff both $x \leq y$ and $y \leq x$ hold.
+In most of the linguistic hierarchies, there are no cases where $x \sim y$ unless $x = y$.
+But in the noun stem allomorphy hierarchy, we have
+$\text{Acc} \sim \text{Gen} \sim \text{Dat} \sim \text{others}$.
+Let $C$ be the set of all cases in this hierarchy, and $C/\sim$ the corresponding quotient set under the equivalence relation $\sim$.
+The quotient set consists of two equivalence classes, one containing only nominative and one containing all other cases.
+We define a special order $\sqsubseteq$ on this structure such that $[x] \sqsubseteq [y]$ iff $x \leq y$ in the original hierarchy.
+So now we have a quotient structure that looks exactly like the lattice **2**, except that one element represents nominative and the other all other cases.
+
+Just as with the graph-theoretic approach in the previous notebook, we have taken the one instance of a hierarchy that is not a semilattice and have shown that it still forms a semilattice at a higher level of abstraction.
+The only difference to our previous strategy is that this level of abstraction is now defined in terms of quotient structures rather than graph condensations.
+
+We can construct such quotient structures for all other hierarchies, but in these cases the two look exactly the same because there is a one-to-one relation between elements in the hierarchy and equivalence classes in the quotient structure.
+
+\begin{exercise}
+Construct the quotient structure for the standard case hierarchy (in which accusative and genitive are unordered with respect to each other).
+Verify for yourself that the quotient structure has exactly the same shape as this hierarchy.
+\end{exercise}
+
+In sum, then, we can formulate the following restriction on linguistic hierarchies: given $\sim$ as defined above, every linguistic hierarchy must have a quotient structure under $\sim$ that forms a semilattice.
+
+\begin{exercise}
+The first attempt at a person-person hierarchy for the PCC had the shape below.
+
+\input_mid{./pcc_hierarchy_wrong_reduced.tikz}
+
+This hierarchy did not work as desired for the PCC, and we were forced to modify the ordering of person-person combinations.
+
+\input_mid{./pcc_hierarchy_right_reduced.tikz}
+
+Intuitively, the latter is much less appealing than the former.
+But our new understanding of what linguistic hierarchies reveals that the former is not a licit hierarchy to begin with.
+Explain why!
+\end{exercise}

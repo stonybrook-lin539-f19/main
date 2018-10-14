@@ -1,0 +1,19 @@
+\documentclass[tikz]{standalone}
+\usetikzlibrary{arrows,arrows.meta,positioning}
+\tikzset{arrow/.style = {-{Latex[length=.5em]}}}
+\begin{document}
+\begin{tikzpicture}
+    \node (null) at (0,0) {};
+    \node (pre) [below=of null] {preorder};
+    \node (partial) [below left=of pre] {weak partial order};
+    \node (total) [below=of partial] {total order};
+    \node (equiv) [below right=of pre] {equivalence relation};
+
+    \foreach \Source/\Target/\Dir/\Label in {%
+        null/pre/left/+refl +trans,
+        pre/partial/left/+antisym,
+        pre/equiv/right/+sym,
+        partial/total/left/+total}
+        \draw[arrow] (\Source) to node [\Dir] {\Label} (\Target);
+\end{tikzpicture}
+\end{document}

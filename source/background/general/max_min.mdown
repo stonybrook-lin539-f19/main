@@ -1,6 +1,6 @@
 # Picking maxima and minima
 
-Four commonly encountered functions are $\max$, $\min$, $\argmax$, and $\argmin$.
+Four commonly encountered functions are $\max$, $\min$, $\mathrm{argmax}$, and $\mathrm{argmin}$.
 Each one is fairly intuitive.
 
 ## $\max$ and $\min$
@@ -19,9 +19,6 @@ But the function can be generalized to any structure that is a linear order.
 \begin{example}
 Consider **2**, the lattice with $F < T$.
 Then $\max(\setof{F, T}) = T$.
-\end{example}
-
-\begin{example}
 \end{example}
 
 Note that the order must be a linear order.
