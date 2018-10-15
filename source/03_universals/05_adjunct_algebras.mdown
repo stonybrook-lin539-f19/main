@@ -16,7 +16,7 @@ An argument is a phrase that is introduced and required by some other word in th
 For example, in *John devoured twelve pounds of pasta yesterday*, both *John* and *twelve pounds of pasta* are arguments of the verb *devour*.
 Neither one can be easily removed --- *devoured twelve pounds of pasta yesterday* is not well-formed, and neither is *John devoured yesterday*.
 So the arguments of the verb are a necessary part of the sentence.
-We cannot freely throw in additional arguments, either: *John devoured Mary twelve pounds of paste yesterday the whole bowl* is not a good sentence of English.
+We cannot freely throw in additional arguments, either: *John devoured Mary twelve pounds of pasta yesterday the whole bowl* is not a good sentence of English.
 
 Adjuncts, on the other hand, are much less tightly controlled than arguments.
 They can be removed and added without problem.
@@ -47,7 +47,7 @@ If neither $\leq_A$ nor $\geq_A$ hold. leave the gap empty.
 <li>The old man snored \_ The man snored</li>
 <li>John likes Mary \_ Mary really likes John</li>
 <li>John ate pasta \_ John ate pasta</li>
-<li>John ate paste \_ John ate</li>
+<li>John ate pasta \_ John ate</li>
 </ol>
 \end{exercise}
 

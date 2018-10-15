@@ -36,9 +36,9 @@ Compute each one of the following for the corresponding hierarchy above (assume 
 <ol>
 <li>$1 \wedge 2$</li>
 <li>$2 \vee (1 \wedge 3)$</li>
-<li>$\text{positive} \wedge \text{comparative} \wedge \text{superlative}</li>
-<li>$\text{Nom} \wedge (\text{Gen} \vee \text{Acc})</li>
-<li>$(3,2 \vee (1,3 \wedge 2,1)) \wedge 2,3
+<li>$\text{positive} \wedge \text{comparative} \wedge \text{superlative}$</li>
+<li>$\text{Nom} \wedge (\text{Gen} \vee \text{Acc})$</li>
+<li>$(3,2 \vee (1,3 \wedge 2,1)) \wedge 2,3$</li>
 </ol>
 \end{exercise}
 
