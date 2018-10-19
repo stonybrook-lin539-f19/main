@@ -72,3 +72,21 @@ The result is what is called a *parse forest*.
 \input_med{./withArnold.forest}
 
 Even though parse forests look much more complicated than grafts, both are instances of DAGs.
+
+\begin{exercise}
+Represent the character-based prefix tree from the exercise in the previous notebook as a DAG instead.
+Can you think of a word that cannot easily be added to this prefix DAG?
+\end{exercise}
+
+\begin{exercise}
+Represent the morpheme-based prefix tree from the exercise in the previous notebook as a DAG instead.
+Can you think of a word that cannot easily be added to this prefix DAG?
+\end{exercise}
+
+\begin{exercise}
+Below are two syntactic analyses for *John and Bill or Mary left the party in a hurry*.
+Draw the corresponding parse forest.
+\end{exercise}
+
+\input_mid{./JohnBillMary1.forest}
+\input_mid{./JohnBillMary2.forest}

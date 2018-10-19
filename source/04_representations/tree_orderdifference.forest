@@ -1,0 +1,38 @@
+\documentclass[tikz]{standalone}
+\usepackage[linguistics]{forest}
+\begin{document}
+\begin{forest}
+    [,phantom, s sep = 6em
+        [S'
+            [thus]
+            [S
+                [NP
+                    [PN
+                        [Mary]
+                    ]
+                ]
+                [VP
+                    [V
+                        [died]
+                    ]
+                ]
+            ]
+        ]
+        [S'
+            [thus]
+            [S
+                [VP
+                    [V
+                        [died]
+                    ]
+                ]
+                [NP
+                    [PN
+                        [Mary]
+                    ]
+                ]
+            ]
+        ]
+    ]
+\end{forest}
+\end{document}

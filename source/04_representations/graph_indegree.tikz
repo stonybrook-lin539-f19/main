@@ -1,0 +1,33 @@
+\documentclass[tikz]{standalone}
+\usetikzlibrary{calc, positioning}
+\begin{document}
+\begin{tikzpicture}[%
+    every node/.style = {circle, fill=blue!25, minimum size=2em}]
+
+    \node (0) at (0,0) {A};
+    \node (3) [right=4em of 0] {B};
+    \node (6) [below=4em of 3] {C};
+    \node (9) [left=4em of 6] {D};
+
+    \foreach \Source/\Target in {
+        0/3,
+        0/6,
+        0/9}
+        \draw[->, bend left] (\Source) to (\Target);
+
+    \node (1) at (10em,0) {M};
+    \node (4) [right=4em of 1] {N};
+    \node (7) [below=4em of 4] {O};
+    \node (10) [left=4em of 7] {P};
+
+    \foreach \Source/\Target in {
+        1/4,
+        1/7,
+        4/7,
+        7/4,
+        4/10,
+        7/10,
+        10/1}
+        \draw[->, bend left] (\Source) to (\Target);
+\end{tikzpicture}
+\end{document}
