@@ -151,7 +151,7 @@ We can save some computation time by making the tree representation slightly mor
 Just like we added $\emptystring$ earlier on even though it isn't part of the list, we will now require the tree to contain every proper prefix of a word, even if it is not part of the word list that the tree encodes.
 So the tree above expands into the more verbose one below.
 
-\input{./pseudoprefixtree_verbose.forest}
+\input_med{./pseudoprefixtree_verbose.forest}
 
 Now adding a new word is guaranteed to never involve any node splitting.
 However, the addition of the word itself may require multiple nodes to be added.
@@ -161,12 +161,12 @@ The tree above now contains every prefix of a word, but not every prefix may act
 For example, *bat* has the prefixes *ba* and *b*, which are not words of English.
 To remedy this, we assume that nodes come in two colors: blue nodes are parts of the lexicon, red nodes are not.
 
-\input{./prefixtree_nodelabels.forest}
+\input_med{./prefixtree_nodelabels.forest}
 
 This kind of structure is called a *prefix tree*.
 Sometimes, prefix trees are drawn with labeled branches instead of labeled nodes.
 
-\input{./prefixtree_branchlabels.forest}
+\input_med{./prefixtree_branchlabels.forest}
 
 Going back to our initial comparison, we can now say that prefix trees beat lists on two counts:
 
