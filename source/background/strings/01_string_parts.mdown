@@ -1,0 +1,98 @@
+# Parts of strings
+
+## Substrings
+
+A **substring** is a continuous part of a string.
+
+\begin{example}
+The string $\String{abcd}$ has 11 substrings:
+
+<ol>
+<li>$\emptystring$</li>
+<li>$\String{a}$</li>
+<li>$\String{b}$</li>
+<li>$\String{c}$</li>
+<li>$\String{d}$</li>
+<li>$\String{ab}$</li>
+<li>$\String{bc}$</li>
+<li>$\String{cd}$</li>
+<li>$\String{abc}$</li>
+<li>$\String{bcd}$</li>
+<li>$\String{abcd}$</li>
+</ol>
+\end{example}
+
+Note that
+
+1. the empty string is a substring of every string, and
+2. every string is a substring of itself.
+
+A substring $u$ of $v$ is **proper* iff $u \neq v$.
+
+\begin{example}
+All the strings listed above are proper substrings of $\String{abcd}$, except $\String{abcd}$ itself.
+\end{example}
+
+\begin{exercise}
+For each one of the gaps below, enter $\sqsubseteq$, $\sqsubsetneq$, or $\not\sqsubseteq$ depending on whether the first string is a substring of the second string, a proper substring, or neither:
+
+<ol>
+<li>$\String{a} \_ \String{aaaa}$</li>
+<li>$\String{a} \_ \String{b}$</li>
+<li>$\emptystring \_ \String{b}$</li>
+<li>$\emptystring \_ \emptystring$</li>
+<li>$\String{aa} \_ \String{abbbca}$</li>
+<li>$\String{bc} \_ \String{abbbca}$</li>
+<li>$\String{cb} \_ \String{abbbca}$</li>
+</ol>
+\end{exercise}
+
+## Subsequence
+
+A **subsequence** is a discontinuous part of a string that preserves the order between the symbols.
+
+\begin{example}
+The string $\String{abcd}$ has subsequences:
+
+<ol>
+<li>$\emptystring$</li>
+<li>$\String{a}$</li>
+<li>$\String{b}$</li>
+<li>$\String{c}$</li>
+<li>$\String{d}$</li>
+<li>$\String{ab}$</li>
+<li>$\String{ac}$</li>
+<li>$\String{ad}$</li>
+<li>$\String{bc}$</li>
+<li>$\String{bd}$</li>
+<li>$\String{cd}$</li>
+<li>$\String{abc}$</li>
+<li>$\String{abd}$</li>
+<li>$\String{bcd}$</li>
+<li>$\String{abcd}$</li>
+</ol>
+
+Note that $\String{ca}$ is not a subsequence of $\String{abcd}$, but it is a subsequence of $\String{abcda}$.
+\end{example}
+
+Just like substrings, a subsequence $u$ of $v$ is proper iff $u \neq v$.
+
+\begin{exercise}
+For each one of the gaps below, enter $\sqsubseteq$, $\sqsubsetneq$, or $\not\sqsubseteq$ depending on whether the first string is a subsequence of the second string, a proper subsequence, or neither:
+
+<ol>
+<li>$\String{a} \_ \String{aaaa}$</li>
+<li>$\String{a} \_ \String{b}$</li>
+<li>$\emptystring \_ \String{b}$</li>
+<li>$\emptystring \_ \emptystring$</li>
+<li>$\String{aa} \_ \String{abbbca}$</li>
+<li>$\String{bc} \_ \String{abbbca}$</li>
+<li>$\String{cb} \_ \String{abbbca}$</li>
+</ol>
+\end{exercise}
+
+\begin{exercise}
+Say whether the following is True or False:
+Every substring of some string $s$ is also a subsequence of $s$, but not the other way round.
+Justify your answer.
+\end{exercise}
