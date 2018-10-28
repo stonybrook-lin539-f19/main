@@ -1,0 +1,14 @@
+\documentclass[tikz]{standalone}
+\usetikzlibrary{arrows, automata, calc, positioning}
+\begin{document}
+\begin{tikzpicture}
+    \node[state, initial, accepting] (0) at (0,0) {0};
+    \node[state, accepting] (1) [right=of 0] {1};
+
+    \path[->]
+        (0) edge [loop above] node [above,align=center] {c:c} (0)
+        (0) edge [bend left] node [above,align=center] {a:b\\b:b} (1)
+        (1) edge [loop above] node [above,align=center] {c:c} (1)
+        (1) edge [bend left] node [below,align=center] {a:c\\b:c} (0);
+\end{tikzpicture}
+\end{document}
