@@ -1,3 +1,5 @@
+# FSA properties that FSTs lack
+
 ## No determinizability
 
 The powerset construction allows us to determinize non-deterministic FSAs. 
@@ -59,13 +61,43 @@ But this transduction was the intersection of two finite-state transductions, wh
 Use the same procedure to show that the intersection of multiple finite-state transduction can produce the output language $a^n b^n c^n d^n e^n$.
 \end{exercise}
 
-\begin{exercise}
-\end{exercise}
 
 ## Intersection closure for equal length relations
 
+There is one specific subcase of finite-state transductions that are closed under intersection.
+Those are the **equal length** relations.
+A finite-state transduction is an equal length relation iff an output always has the same length as its input.
+In other words, the FST only rewrites symbols in the input string, it does not add or remove any symbols.
+Equal length relations can be regarded as regular languages, and since regular languages are closed under intersection, equal length relations are too.
 
-## Closure under inverse
+To see why equal length relations are regular languages, consider the simplest FST possible, the identity function.
+This transduction maps every string to itself and can be regarded as a set of pairs $\tuple{s,s}$, where $s$ is some string over $\Sigma$.
+But since input and output have the same length, we may regard $\tuple{s,s}$ as a single string of symbol pairs.
 
-1. Connection between FSTs and SPE
-1. Implications for phonology
+\begin{example}
+The pair $\tuple{aaba,aaba}$ relating an input string to an output string can be regarded as the single string $\tuple{a,a} \tuple{a,a} \tuple{b,b} \tuple{a,a}$.
+So instead of a pair of strings over the alphabet $\Sigma$, we have a single string over the alphabet $\Sigma \times \Sigma$.
+\end{example}
+
+As long as an FST cannot delete or insert arbitrarily many symbols, it can be converted into an equal length relation by padding out inputs and outputs with a special symbol, e.g. 0. 
+
+\begin{example}
+Consider an FST that simplifies consonant cluster such that *rdn* becomes *dn* (as is the case in Icelandic).
+Then a string like *bardn* becomes *badn*.
+Here the length of input and output are distinct, so the FST is not an equal length relation.
+However, we can opt to replace *r* by *0* instead of deleting it.
+Then the output for *bardn* is *ba0dn*.
+Now input and output have the same length.
+\end{example}
+
+\begin{example}
+Suppose that another language optionally resolves *rdn* clusers by inserting an *e* between *d* and *n*.
+Then *bardn* becomes *barden*.
+Again input and output have distinct lengths.
+But we can use *bard0n* as a padded out version of the input instead.
+This input can be mapped to *barden* (cluster resolution) or *bard0n* (no resolution).
+Either way the output has the same length as the input.
+\end{example}
+
+Some formalisms such as two-level morphology make extensive use of such padding symbols to ensure that all transductions are equal length relations.
+While this grants intersection closure, it means that inputs and outputs are cluttered with padding symbols, which makes them harder to work with.
