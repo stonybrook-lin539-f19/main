@@ -190,7 +190,7 @@ The composition construction yields the following transducer:
 
 \begin{exercise}
 <ol>
-<li>What output $o$ does the first transducer produce for $ccaaabca$?</li>
+<li>What output $o$ does the first transducer produce for $ccaaabc$?</li>
 <li>Does the second transducer accept $o$ as an input? If so, what output does it produce?</li>
 <li>Verify that the composition transducer computes the same output for $ccaaabca$.</li>
 </ol>
