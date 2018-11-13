@@ -1,0 +1,37 @@
+\documentclass[tikz]{standalone}
+\usetikzlibrary{arrows, automata, calc, positioning}
+\newcommand{\emptystring}{\ensuremath{\varepsilon}}
+\newcommand{\tuple}[1]{\ensuremath{\left \langle #1 \right \rangle}}
+\begin{document}
+\begin{tikzpicture}
+    \node[state, initial] (00) at (0,0) {$\tuple{0,0}$};
+    \node[state] (10) [above right=of 00] {$\tuple{1,0}$};
+    \node[state] (01) [below right=of 00] {$\tuple{0,1}$};
+    \node[state] (02) [right=of 01] {$\tuple{0,2}$};
+    \node[state, accepting] (03) [right=of 02] {$\tuple{0,3}$};
+    \node[state] (11) [right=of 10] {$\tuple{1,1}$};
+    \node[state] (12) [right=of 11] {$\tuple{1,2}$};
+    \node[state, accepting] (13) [right=of 12] {$\tuple{1,3}$};
+
+    \path[->]
+        (00) edge [loop below] node [below,align=center] {c:c} (00)
+        (00) edge [bend left] node [above,align=center] {a:b\\b:b} (10)
+        (00) edge node [right,align=center] {$\emptystring$:$\emptystring$} (01)
+        (10) edge [bend left] node [below,align=center] {a:c\\b:c} (00)
+        (10) edge [loop above] node [above] {c:c} (10)
+        (01) edge node [right,align=center] {a:b\\b:b} (11)
+        (01) edge [bend left] node [above,align=center] {c:c} (02)
+        (02) edge node [above] {c:c} (03)
+        (02) edge [bend left] node [below,align=center] {c:c} (01)
+        (03) edge [loop right] node [right] {$\emptystring$:d} (03)
+        (11) edge node [right, align=center] {a:c\\b:c} (02)
+        (11) edge [bend left] node [above, align=center] {c:c} (12)
+        (12) edge node [right, align=center] {a:c\\b:c} (03)
+        (12) edge [bend left] node [above, align=center] {c:c} (11)
+        (12) edge node [above, align=center] {c:c} (13)
+        (13) edge [loop right] node [right] {$\emptystring$:d} (13);
+
+    % 12 - 01; a:c b:c
+    \draw[->] (12) .. controls +(90:5em) and (60:10em) .. node [above, align=center] {a:c\\b:c} (01);
+\end{tikzpicture}
+\end{document}

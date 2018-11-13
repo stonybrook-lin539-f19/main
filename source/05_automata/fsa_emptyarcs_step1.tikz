@@ -1,0 +1,27 @@
+\documentclass[tikz]{standalone}
+\usetikzlibrary{arrows, automata, calc, positioning}
+\newcommand{\emptystring}{\ensuremath{\varepsilon}}
+
+\begin{document}
+\begin{tikzpicture}
+    \node[state, initial] (0) at (0,0) {0};
+    \node[state] (1) [right=of 0] {1};
+    \node[state, accepting] (2) [below=of 1] {2};
+    \node[state] (3) [right=of 1] {3};
+    \node[state, accepting] (4) [below=of 3] {4};
+    \node[state] (5) [right=of 3] {5};
+    \node[state, accepting] (6) [below=of 5] {6};
+
+    \path[->]
+        (0) edge node [above,align=center] {a} (1)
+        (1) edge node [left,align=center] {b} (2)
+        (1) edge node [above,align=center] {$\emptystring$} (3)
+        (3) edge node [left,align=center] {c} (4)
+        (3) edge node [above,align=center] {$\emptystring$} (5)
+        (5) edge node [left,align=center] {d} (6)
+        (2) edge [loop below] node [below] {b} (2)
+        (4) edge [loop below] node [below] {c} (4)
+        (5) edge [loop right] node [right] {e} (5)
+        (6) edge [loop below] node [below] {d} (6);
+\end{tikzpicture}
+\end{document}

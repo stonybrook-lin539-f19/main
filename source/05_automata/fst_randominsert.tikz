@@ -1,0 +1,11 @@
+\documentclass[tikz]{standalone}
+\usetikzlibrary{arrows, automata, calc, positioning}
+\newcommand{\emptystring}{\ensuremath{\varepsilon}}
+\begin{document}
+\begin{tikzpicture}
+    \node[state, initial, accepting] (0) at (0,0) {0};
+
+    \path[->]
+        (0) edge [loop above] node [above,align=center] {a:a\\$\emptystring$:b} (0);
+\end{tikzpicture}
+\end{document}
