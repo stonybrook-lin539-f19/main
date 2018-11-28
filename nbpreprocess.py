@@ -225,8 +225,9 @@ def mdown2ipynb(f: Path,
         # execute all cells
         sp.Popen(["jupyter", "nbconvert",
                   "--to", "notebook",
-                  "--execute",
                   "--inplace",
+                  "--execute",
+                  "--allow-errors",
                   str(target)],
                  stdout=sp.DEVNULL)
 
@@ -314,3 +315,4 @@ for f in mdown:
     # [ ] documentation
     # [ ] easy way of processing only one file with sane defaults for file structure
     # [ ] absolute paths for robustness
+    # [ ] dependency management
