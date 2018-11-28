@@ -39,6 +39,32 @@ for func in [f, g, h, i]:
     plt.show()
 ```
 
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+import ipywidgets
+from ipywidgets import Button, Layout
+
+from IPython.display import display
+
+f = lambda x: 2*x
+g = lambda x: x**2
+h = lambda x: 2*x - 2**(x - 5) + 2**10
+i = lambda x: x/2 - 2**x
+
+b = ipywidgets.Button(description='Show graphs',
+           layout=Layout(width='50%', height='80px'))
+display(b)
+
+def on_button_clicked(b):
+    for func in [f, g, h, i]:
+        values = np.linspace(-10, 10)
+        plt.plot(values, func(values))
+        plt.show()
+    
+b.on_click(on_button_clicked)
+```
+
 A function is monotonic iff it does not change direction: once it goes up, it cannot go down, and the other way round.
 Among the functions above, only the first and the last are monotonic.
 
