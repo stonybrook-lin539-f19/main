@@ -1,0 +1,115 @@
+# Propositions 
+
+## Intuition
+
+A proposition is a statement that is either true or false.
+This does not mean that one can necessarily tell whether a proposition is true, nor that the proposition makes any sense considering what our world is like.
+It just means that the statement is such that it can have a truth value.
+
+\begin{example}
+All of the following are propositions, even though whether they're true or false can depend greatly on context:
+
+<ul>
+<li>Nobody likes ponies.</li>
+<li>He always snores like a pig.</li>
+<li>$2 + 2 = 4$</li>
+<li>We might see another stock market crash soon.</li>
+<li>A language is regular iff it is recognized by a finite-state automaton.</li>
+</ul>
+\end{example}
+
+\begin{example}
+The following are not propositions.
+
+<ul>
+<li>Are you mad?</li>
+<li>Please open a window.</li>
+<li>Hell, yeah!</li>
+<li>A cute kitten</li>
+<li>John and Mary</li>
+</ul>
+\end{example}
+
+\begin{example}
+Some cases are borderline and require some more detailed analysis.
+Take *Either John leaves or I will*.
+As a literal description of how the world is, this can be either true or false, so it's a proposition.
+But we can also interpret it as a command that the addressee must choose between John and the speaker.
+Commands have no truth value and thus aren't propositions.
+\end{example}
+
+\begin{exercise}
+For each one of the following, say whether it is a proposition.
+If you say no, justify your answer.
+
+<ol>
+<li>John and Peter met yesterday.</li>
+<li>The DeLorean DMC-12 is a sports car originally manufactured by John DeLorean's DeLorean Motor Company.</li>
+<li>Who would say no to that.</li>
+<li>That son of a gun has fooled us all.</li>
+<li>Colorless green ideas sleep furiously.</li>
+<li>John and Mary have only one child, who has three siblings.</li>
+</ol>
+\end{exercise}
+
+## Entailment
+
+Some propositions are atomic in the sense that one cannot break them down into smaller propositions, whereas others are clearly built up from smaller propositions.
+
+\begin{example}
+The sentence *John rode a bike and Mary her dragon* might be true or false, so it's a proposition.
+But it is not an atomic proposition because it's built up from two smaller propositions.
+One is *John rode a bike*, the other one *Mary rode her dragon* (that English allows for the verb to be omitted in the second conjunct is irrelevant for this point).
+\end{example}
+
+As a result, propositions can be related to each other so that the truth value of one follows immediately from the other.
+This is called **entailment**.
+
+\begin{example}
+If *John rode a bike and Mary her dragon* is true, then it must also be true that John rode a bike, and it must be true that Mary rode her dragon.
+In the other direction, if *John rode a bike* is false, then so is *John rode a bike and Mary her dragon*.
+\end{example}
+
+Entailment can also hold between propositions that do not stand in an obvious part-whole relation to each other.
+
+\begin{example}
+Consider the sentences *If pigs can fly, then Sokrates is a chain-smoking dragon* and *No human is a dragon*.
+Assuming that both are true, the sentence *Sokrates is human* entails that pigs cannot fly.
+\end{example}
+
+The entailments in these two examples are slightly different.
+For the first, it suffices to recognize how one proposition was built up from smaller ones.
+The second one presents a more complex reasoning pattern that hinges on the meaning of the quantifier *no*.
+Logic was devised as a means to study these different kinds of entailments, but over the centuries it has evolved to a highly flexible system that can be used for all kinds of purposes.
+
+\begin{exercise}
+For each one of the following pairs of sentences, say whether entailment holds, and if so, in which direction.
+If entailment does not hold, explain why.
+
+<ol>
+<li>
+John likes his son's sisters. |
+John likes his daughters.
+</li>
+<li>
+I am 30 years old. |
+My age is a multiple of 15.
+</li>
+<li>
+1 is not a prime number. |
+No prime numbers is less than 2.
+</li>
+<li>
+John and Bill both left the party early. |
+Bill left the party around 9.
+</li>
+<li>
+The 45th US president isn't universally beloved. |
+Donald Trump isn't universally beloved.
+</li>
+<li>
+If $2 + 2 = 4$, then $2 + 2 = 4$. |
+$2 + 2 = 4$
+</li>
+</ol>
+\end{exercise}
