@@ -47,7 +47,7 @@ Otherwise $\mathcal{A}$ is **partial**.
 Consider $\tuple{\mathbb{N}, +}$, the algebra of natural numbers with addition.
 There are no two natural numbers $a$ and $b$ such that $a + b$ is undefined.
 Hence $\tuple{\mathbb{N}, +}$ is a total algebra.
-\end{exapmle}
+\end{example}
 
 \begin{example}
 Consider $\tuple{\mathbb{N}, /}$, the natural numbers with division.
