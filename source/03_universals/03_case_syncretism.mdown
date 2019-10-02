@@ -28,42 +28,44 @@ $\text{Nom} <
 \text{Acc} <
 \text{Gen} <
 \text{Dat} <
-\text{others}$.
+\text{others}$,
+where *others* is a placeholder for all other cases.
 The $^*$ABA generalization can be extended to this hierarchy.
-In this broader form, it states two cases $x$ and $z$ cannot have the same form in a paradigm unless every case $y$ that occurs between them in the hierarchy also has this form in the paradigm.
+In this broader form, it states that two cases $x$ and $z$ cannot have the same form in a paradigm unless every case $y$ that occurs between them in the hierarchy also has this form in the paradigm.
 
 \begin{example}
-The paradigm for Latin *rex* displays syncretism of nominative and accusative to the exclusion of genitive, dative, and ablative.
+The paradigm for Latin <i>rex</i> displays syncretism of nominative and accusative to the exclusion of genitive, dative, and ablative.
 But since these cases do not occur between nominative and accusative in Blake's case hierarchy, this obeys the $^*$ABA generalization.
 \end{example}
 
 \begin{exercise}
-The paradigm for *rex* also has syncretism of dative and ablative in the plural.
-Is this allowed?
+The paradigm for <i>rex</i> also has syncretism of dative and ablative in the plural.
+Can a monotonic function produce this pattern from Blake's case hierarchy?
 Justify your answer.
 \end{exercise}
 
-There is a problem, though.
+There is a problem with the monotonicity account, though.
 In many Germanic languages, dative and accusative are syncretic to the exclusion of genitive.
 
 \begin{example}
 In German, it is very common for nominative, dative and accusative to take the base form, whereas genitive receives a special affix.
-So *Papa* 'dad' could be nominative, dative, or accusative, whereas the genitive must be *Papas*.
-German is not an ideal example, though, as the genitive is becoming increasingly unproductive and the dative allows for a special suffix *-e* for nouns that end in a consonant.
-The dative of *Mann* can be either *Mann* or *Manne*, although the latter sounds very archaic.
-Nonetheless, it is conceivable that the dative of *Papa* is underlyingly *Papae*, with the final vowel subsequently deleted by some phonological process.
+So <i>Papa</i> 'dad' could be nominative, dative, or accusative, whereas the genitive must be <i>Papas</i>.
+German is not an ideal example, though, as the genitive is becoming increasingly unproductive and the dative allows for a special suffix <i>-e</i> for nouns that end in a consonant.
+The dative of <i>Mann</i> can be either <i>Mann</i> or <i>Manne</i>, although the latter sounds very archaic.
+Nonetheless, it is conceivable that the dative of <i>Papa</i> is underlyingly <i>Papae</i>, with the final vowel subsequently deleted by some phonological process.
 \end{example}
 
 \begin{example}
-A better example comes from Icelandic *faðir* (father).
-Its dative and accusative are *föður*, whereas the genitive is *föðurs*.
+A better example comes from Icelandic <i>faðir</i> (father).
+Its dative and accusative are <i>föður</i>, whereas the genitive is <i>föðurs</i>.
 \end{example}
 
-Blake's hierarchy in its current form cannot handle this, so it needs to be modified.
-But the easy options do not work.
+Blake's hierarchy in its current form does not allow such patterns without violating monotonicity.
+Either monotonicity is too restrictive a notion, or Blake's hierarchy is wrong.
+We could of course try to change the hierarchy, but the easy options do not work.
 
 \begin{exercise}
-Explain why the following hierarchy does not work: 
+Explain why the following hierarchy is empirically inadequate:
 $\text{Nom} <
 \text{Gen} <
 \text{Acc} <
@@ -90,16 +92,23 @@ This allows us to make a small but important modification to Blake's hierarchy.
 \input_mid{./blake_partialorder.tikz}
 
 Notice how genitive and accusative are now unordered with respect to each other.
-This allows accusative and dative to be syncretic to the exclusion of genitive.
+Monotonicity is a restriction on what a function may map some elements $x$ and $y$ that are ordered with respect to each other.
+But monotonicity has nothing to say for cases where no such ordering holds.
+If there is no order between $x$ and $y$, then it does not matter whether $f(x) \leq f(y)$ or the other way round.
+Without an ordering between accusative and genitive, it becomes possible for accusative and dative to be syncretic to the exclusion of genitive.
 
 \begin{example}
 Let $a$, $d$, $g$ be shorthands for accusative, dative, and genitive, respectively.
 Now suppose that $a$ and $d$ are both mapped to the same exponent, which is different to the realization of genitive: $f(a) = f(d) \neq f(g)$.
-This obeys monotonicity.
-First, $a < d$ implies $f(a) \leq f(d)$, which clearly holds since $f(a) = f(d)$.
-We also have $g < d$, so it must be the case that $f(g) \leq f(d)$.
+This is compatible with the assumption of a monotonically increasing (or decreasing) function.
+
+<br>
+First, the revised case hierarchy above establishes that $a < d$.
+If $f$ is monotonically increasing, then $a < d$ entails $f(a) \leq f(d)$.
+By our initial assumption, $f(a) = f(d)$, which confirms $f(a) \leq f(d)$.
+Our revised case hierarchy also postulates that $g < d$, so it must be the case that $f(g) \leq f(d)$.
 Whether this holds depends on how one orders the surface forms, but it is always possible to pick an ordering for which this holds.
-Finally, $a$ and $g$ are unordered with respect to each other, so the relative order of $f(a)$ and $f(g)$ has no bearing on monotonicity.
+Finally, $a$ and $g$ are unordered with respect to each other, so the relative order of $f(a)$ and $f(g)$ is irrelevant for monotonicity.
 \end{example}
 
 \begin{exercise}
@@ -111,7 +120,7 @@ Justify your answer.
 <li>Syncretism of nominative and dative to the exclusion of accusative</li>
 <li>Syncretism of nominative, accusative, and dative to the exclusion of genitive</li>
 <li>Syncretism of nominative, accusative, and genitive to the exclusion of dative</li>
-<li>Syncretism of nominative and genitive to the exclusion of accusative</li>
+<li>Syncretism of accusative and genitive to the exclusion of nominative and dative</li>
 </ol>
 \end{exercise}
 

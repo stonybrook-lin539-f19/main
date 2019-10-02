@@ -16,35 +16,60 @@ So just like one can write a grammar for intervocalic voicing, one can also writ
 But the former is a very natural process, whereas the latter has not been found in even a single language.
 
 \begin{exercise}
-Write a negative grammar for intervocalic devoicing, assuming that the alphabet consists only of *a*, *i*, *u*, *s*, *z*, *f*, and *v*.
+Write a negative grammar for intervocalic devoicing, assuming that the alphabet consists only of
+<i>a</i>,
+<i>i</i>,
+<i>u</i>,
+<i>s</i>,
+<i>z</i>,
+<i>f</i>,
+and
+<i>v</i>.
 \end{exercise}
 
 \begin{exercise}
 Assuming the same alphabet as before,
 write an $n$-gram grammar (it may be positive or negative) that requires every word to consist of exactly 5 symbols.
+Keep in mind that such a grammar is such a set, and there's various ways to compactly define large sets.
 \end{exercise}
 
 \begin{exercise}
 Assuming the same alphabet as before,
-write an $n$-gram grammar (it may be positive or negative) that requires every word to start with *a* and end with *f*.
+write an $n$-gram grammar (it may be positive or negative) that requires every word to start with
+<i>a</i>
+and end with
+<i>f</i>.
 \end{exercise}
 
 \begin{exercise}
 Assuming the same alphabet as before,
-write an $n$-gram grammar (it may be positive or negative) for "penultimate f": if a word has at least two symbols, then the last but one symbol must be f and no other position may be f.
+write an $n$-gram grammar (it may be positive or negative) for "penultimate <i>f</i>":
+if a word has at least two symbols, then the last but one symbol must be <i>f</i> and no other position may be <i>f</i>.
 \end{exercise}
 
 \begin{exercise}
-Suppose that English only contains the words *the*, *old*, *man*, *woman*, *sleep*, *sleeps*, *snore*, and *snores*.
-Assume furthermore that the English subject verb agreement system works as follows: if the subject does not contain an adjective (like *old*), then use the inflected verb form; otherwise, use the base form.
-So we would get *The old man snore* but *The man snores*.
+Suppose that English only contains the words
+<i>the</i>,
+<i>old</i>,
+<i>man</i>,
+<i>woman</i>,
+<i>sleep</i>,
+<i>sleeps</i>,
+<i>snore</i>,
+and
+<i>snores</i>.
+Assume furthermore that the English subject verb agreement system works as follows:
+if the subject does not contain an adjective (like <i>old</i>),
+then use the inflected verb form; otherwise, use the base form.
+So we would get <i>The old man snore</i> but <i>The man snores</i>.
 Write an $n$-gram grammar that captures this unnatural condition.
 \end{exercise}
 
-This shows that our models **overgenerate** from a typological perspective as they can not only express constraints that occur in natural languages, but also phenomena that do not.
+These exercises show that our models **overgenerate** from a typological perspective.
+Not only can they express constraints that occur in natural languages, but also phenomena that exist in no known language at all.
 Overgeneration is a better position to be in than **undergeneration**, when a formalism cannot capture all relevant phenomena.
 It's better to do too much than too little.
-Unfortunately, many formalisms suffer from both: not all phenomena can be handled, and the formalism can also express unnatural patterns (yes, $n$-gram models are in this unfortunate situation as we will learn in a later unit).
+Many formalisms actually suffer from both shortcomings: not all phenomena can be handled, and the formalism can also express unnatural patterns (yes, $n$-gram models are in this unfortunate situation as we will learn in a later unit).
 
 Ideally, a formalism would provide a perfect fit for natural language, which means that it neither overgenerates nor undergenerates.
 No such formalism exists at the point of writing.

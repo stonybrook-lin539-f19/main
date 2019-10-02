@@ -6,7 +6,16 @@
 
 The ideas encountered in the previous notebooks can also be applied to syntax to explain a rather odd universal of syntax: the **Adjunct Island Constraint** (AIC).
 The AIC builds on the long-standing distinction between **arguments** and **adjuncts** and states that the latter are opaque to extraction.
-We will see in a moment what exactly this means, and why it may be regarded as yet another monotonicity requirement.
+For instance, we may move a wh-word out of an argument clause headed by *that*, but not out of an adjunct clause headed by *because*.
+
+1.  **Argument**
+    1. John complained that Mary wants to watch which movie? (good)
+    1. Which movie did John complain that Mary wants to watch? (good)
+1.  **Adjunct**
+    1. John complained because Mary wants to watch which movie? (good)
+    1. Which movie did John complain because Mary wants to watch? (bad)
+
+We will see in a moment what exactly is going on here, and why it may be regarded as yet another monotonicity requirement.
 
 
 ## Arguments versus adjuncts
@@ -40,14 +49,14 @@ We say that $y$ is an **adjunct extension** of $x$ iff $x \leq y$.
 
 \begin{exercise}
 Fill the gaps with $\leq_A$ or $\geq_A$ as appropriate.
-If neither $\leq_A$ nor $\geq_A$ hold. leave the gap empty.
+If neither $\leq_A$ nor $\geq_A$ hold, leave the gap empty.
 
 <ol>
-<li>John slept \_ John definitely slept yesterday</li>
-<li>The old man snored \_ The man snored</li>
-<li>John likes Mary \_ Mary really likes John</li>
-<li>John ate pasta \_ John ate pasta</li>
-<li>John ate pasta \_ John ate</li>
+<li>John slept _ John definitely slept yesterday</li>
+<li>The old man snored _ The man snored</li>
+<li>John likes Mary _ Mary really likes John</li>
+<li>John ate pasta _ John ate pasta</li>
+<li>John ate pasta _ John ate</li>
 </ol>
 \end{exercise}
 
@@ -57,28 +66,35 @@ Understanding this interaction will allow us to explain the AIC.
 ## The adjunct extension relation $\leq_A$
 
 For the sake of simplicity, we will assume that sentences are strings rather than trees.
-This probably caused several fainting bouts among the linguists reading this.
-But rest assured, I'm not going to brush aside a century of syntactic research.
-Everything that follows works just as well with trees.
+There's a good chance that any syntactician reading this sentence just suffered from an aneurysm.
+But rest assured, we're not going to brush aside a century of syntactic research.
+What we are about to discuss works just as well with trees.
 In fact, using trees instead of strings is the superior perspective and fixes some problems that are glossed over here.
 But trees make the math a bit more complicated, which is why the general ideas surface more clearly with strings.
 
 Another disclaimer: rather than developing a linguistically informed theory of adjuncts, we will just assume that we are given some fixed $A \subseteq \Sigma^*$ of adjunct phrases.
 
 \begin{example}
-For English, $A$ would contain *quickly*, *old*, *because John left*, *after reviewing*, and many more.
-In fact, $A$ is infinite for English.
+For English, $A$ would contain
+<i>quickly</i>,
+<i>old</i>,
+<i>because John left</i>,
+<i>after reviewing</i>,
+and many more.
 \end{example}
 
-Given a string $s \is s_1 \cdots s_n$ over alphabet $\Sigma$ and $t$ over alphabet $\Sigma$, it holds that $s \leq_A t$ iff there are $a_1, \ldots, a_{n+1} \in A^*$ such that $t = a_1 \tuplecat s_1 \tuplecat \cdots a_n \tuplecat s_n \tuplecat a_{n+1}$.
+Given a string $s \is s_1 \cdots s_n$ over alphabet $\Sigma$ and some string $t$ over alphabet $\Sigma$, it holds that $s \leq_A t$ iff there are $a_1, \ldots, a_{n+1} \in A^*$ such that $t = a_1 \tuplecat s_1 \tuplecat \cdots a_n \tuplecat s_n \tuplecat a_{n+1}$.
 In other words, $t$ can be obtained by adding finitely many adjunct phrases from $A$ to $s$ (this includes adding none at all).
 Note that each $a_i$ is a member of $A^*$ and may hence consist of multiple adjuncts, e.g. *always swiftly*.
 
 \begin{example}
-Suppose $A$ contains only *always* and *swiftly*.
-Then *John finishes his homework* $\leq_A$ *John finishes his homework always swiftly*.
+Suppose $A$ contains only
+<i>always</i> and
+<i>swiftly</i>.
+Then
+$\text{\emph{John finishes his homework}} \leq_A \text{\emph{John finishes his homework always swiftly}}$.
 We show this in two steps.
-First, we decompose *John finishes his homework* into its components:
+First, we decompose <i>John finishes his homework</i> into its components:
 
 <ol>
 <li>$s_1 = \text{John}$</li>
@@ -87,10 +103,10 @@ First, we decompose *John finishes his homework* into its components:
 <li>$s_4 = \text{homework}$</li>
 </ol>
 
-Next, let $a_1 = a_2 = a_3 = a_4 = \emptystring$.
+Next, let $a_1$, $a_2$, $a_3$, and $a_4$ be the empty string $\emptystring$.
 Keep in mind that $\emptystring \in A^*$.
-Then we set $a_5 = \text{always swiftly}$, which is also a member of $A^*$.
-Clearly, $a_1 \tuplecat s_1 \tuplecat a_2 \tuplecat s_2 \tuplecat a_3 \tuplecat s_3 \tuplecat a_4 \tuplecat s_4 \tuplecat a_5$ is *John finishes his homework always swiftly*.
+We set $a_5 = \text{always swiftly}$, which is also a member of $A^*$.
+Then the concatenation $a_1 \tuplecat s_1 \tuplecat a_2 \tuplecat s_2 \tuplecat a_3 \tuplecat s_3 \tuplecat a_4 \tuplecat s_4 \tuplecat a_5$ is *John finishes his homework always swiftly*.
 \end{example}
 
 The definition of $\leq_A$ makes it clear that the relation is transitive.
@@ -99,7 +115,7 @@ Finally, $\leq_A$ is antisymmetric because the only case where $s \leq_A t$ and 
 So $\leq_A$ is transitive, reflexive, and antisymmetric, which makes it a weak partial order.
 
 \begin{example}
-Illustrate each property with one pair of sentences, using the format in the previous example.
+Illustrate each property with one pair or triple of sentences, using the format in the previous example.
 \end{example}
 
 Since $\leq_A$ is a weak partial order, any string language can be endowed with additional structure.
@@ -118,11 +134,19 @@ Before moving on, let us consider the structure of $\tuple{L, \leq_A}$ in more d
 This is not essential for the general argument, but with such abstract structures it always helps to study their shape more carefully. 
 
 For any string $s \in L$, we can restrict $\tuple{L, \leq_A}$ to just those strings that are adjunct extensions of $s$.
-We denotes this set by $A_L(s)$.
+We denote this set by $A_L(s)$.
 
 \begin{example}
-Let $s$ be the string *John really likes Mary*.
-For English, $A_L(s)$ contains infinitely many strings, including *John really likes Mary* itself, *John really, really likes Mary*, *John really likes Mary because she looks like Sue*, and much more.
+Let $s$ be the string
+<i>John really likes Mary</i>.
+For English, $A_L(s)$ contains infinitely many strings, including
+
+<ul>
+<li>John really likes Mary,</li>
+<li>John really, really likes Mary,</li>
+<li>John really likes Mary because she looks like Sue,</li>
+<li>and much more.</li>
+</ul>
 \end{example}
 
 While $\tuple{L, \leq_A}$ is a poset, $\tuple{A_L(s), \leq_A}$ satisfies the stronger condition of being a **meet semilattice**.
@@ -133,25 +157,54 @@ The meet of $a$ and $b$ is also called its **greatest lower bound** (glb) or **i
 A poset $\tuple{P, \leq}$ is a meet semilattice iff it holds for all $a,b \in P$ that $a \wedge b \in P$.
 
 \begin{example}
-Consider the strings *John snored yesterday* and *John snored loudly*.
-Their meet is *John snored*.
-The meet of *John snored loudly yesterday* and *John snored loudly* is *John snored loudly*.
-The meet of *John snored loudly yesterday* and *John always snored loudly* is also *John snored loudly*.
-The meet of *John snored* and *John slept* is not defined as there is no string from which both sentences can be obtained by adding only adjuncts.
+Consider the strings
+<i>John snored yesterday</i>
+and
+<i>John snored loudly</i>.
+Their meet is 
+<i>John snored</i>.
+The meet of
+<i>John snored loudly yesterday</i>
+and
+<i>John snored loudly</i>
+is
+<i>John snored loudly</i>.
+The meet of
+<i>John snored loudly yesterday</i>
+and
+<i>John always snored loudly</i>
+is also
+<i>John snored loudly</i>.
+The meet of
+<i>John snored</i>
+and
+<i>John slept</i>
+is not defined as there is no string from which both sentences can be obtained by adding only adjuncts.
 \end{example}
 
 The counterpart of a meet semilattice is a **join semilattice**.
 The join, **supremum**, or **least upper bound** (lub) of $a$ and $b$ is $a \vee b$.
-Join is defined analogously to meet: $c = a \vee b$ iff $c \geq a$ and $c \geq b$ and for every $d$ with $d \leq a$ and $d \leq b$, it holds that $d \leq c$.
+Join is defined analogously to meet: $c = a \vee b$ iff $c \geq a$ and $c \geq b$ and for every $d$ with $d \geq a$ and $d \leq b$, it holds that $d \leq c$.
 A poset $\tuple{P, \leq}$ is a join semilattice iff it holds for all $a,b \in P$ that $a \vee b \in P$.
 
 Note that $\tuple{A_L(s), \leq_A}$ is not a join semilattice.
 In general, the lub of two strings in $A(s)$ is not well-defined.
 
 \begin{example}
-For *John slept well* and *John slept really well*, it would be easy to define the lub as *John slept really well*.
+For
+<i>John slept well</i>
+and
+<i>John slept really well</i>,
+it would be easy to define the lub as
+<i>John slept really well</i>.
 But in many cases, there is no unique lub.
-For example, the lub of *John slept yesterday* and *John slept indeed* could be chosen to be *John slept indeed yesterday* or *John slept yesterday indeed*.
+For example, the lub of
+<i>John slept yesterday</i>
+and
+<i>John slept indeed</i>
+could be chosen to be
+<i>John slept indeed yesterday</i> or
+<i>John slept yesterday indeed</i>.
 So now there are two distinct $c$ and $d$ such that $c \geq a$, $c \geq b$, $d \geq a$, and $d \geq b$, yet neither $c \leq d$ nor $d \leq c$ hold.
 Hence $c$ is not the lub of $a$ and $b$, and neither is $d$.
 \end{example}
@@ -178,17 +231,44 @@ Suppose $L$ contains the following strings:
 <li>Mary slept yesterday</li>
 </ul>
 
-Assume furthermore that $A$ only contains *loudly*, *definitely*, and *yesterday*.
-Draw the semilattice $\tuple{A_L(\text{John snored loudly}}$ (feel free to truncate the words to their first letter: *J*, *s*, *l*, *d*, and *y*).
+Assume furthermore that $A$ only contains
+*loudly*,
+*definitely*, and
+*yesterday*.
+Draw the semilattice $\tuple{A_L(\text{John snored loudly})}$
+(feel free to truncate the words to their first letter:
+*J*,
+*s*,
+*l*,
+*d*, and
+*y*).
 Then compute all of the following for this semilattice:
 
 <ol>
-<li>The meet of *John snored yesterday* and *Yesterday John snored*.</li>
-<li>The join of *John snored yesterday* and *Yesterday John snored*.</li>
-<li>The join of *John definitely snored* and *Yesterday John snored*.</li>
-<li>The meet of *John definitely snored loudly yesterday* and *Yesterday John snored*.</li>
-<li>The meet of *Mary slept* and *Mary slept yesterday*.</li>
-<li>The join of *John snored* and *John snored*.</li>
+<li>The meet of
+<i>John snored yesterday</i>
+and
+<i>Yesterday John snored</i>.</li>
+<li>The join of
+<i>John snored yesterday</i>
+and
+<i>Yesterday John snored</i>.</li>
+<li>The join of
+<i>John definitely snored</i>
+and
+<i>Yesterday John snored</i>.</li>
+<li>The meet of
+<i>John definitely snored loudly yesterday</i>
+and
+<i>Yesterday John snored</i>.</li>
+<li>The meet of
+<i>Mary slept</i>
+and
+<i>Mary slept yesterday</i>.</li>
+<li>The join of
+<i>John snored</i>
+and
+<i>John snored</i>.</li>
 </ol>
 
 If the meet or join does not exist, say so.
@@ -207,14 +287,16 @@ The poset $\tuple{L, \leq_A}$ is the archipelago that consists of all these isla
 ## Optionality and well-formedness entailments
 
 All the math so far has served the purpose of identifying relations between sentences.
-We represent sentences $s$ and $t$ as strings of words and say that if $t$ can be obtained from $s$ by adding finitely many adjuncts, then $t$ is an adjunct extension of $t$.
+We represent sentences $s$ and $t$ as strings of words and say that if $t$ can be obtained from $s$ by adding finitely many adjuncts, then $t$ is an adjunct extension of $s$.
 This turns a language from a set into a poset whose structure encodes how strings are related with respect to adjuncts.
 
 Adjuncts have a crucial property: they are optional.
 That is to say, if a sentence containing an adjunct is grammatical, it should still be grammatical after removal of the adjunct.
 
 \begin{example}
-The sentence *Yesterday John definitely snored loudly* is well-formed, and so is every sentence that it is an adjunct extension of:
+The sentence
+<i>Yesterday John definitely snored loudly</i>
+is well-formed, and so is every sentence that it is an adjunct extension of:
 
 <ol>
 <li>Yesterday John definitely snored loudly</li>
@@ -231,7 +313,14 @@ The sentence *Yesterday John definitely snored loudly* is well-formed, and so is
 In the other direction, adding an adjunct cannot make an ill-formed sentence grammatical.
 
 \begin{example}
-The sentence *John meet* is ill-formed, and so are *John meet yesterday*, *John definitely meet*, *John really, really meet*, and all other adjunct extensions of the sentence.
+The sentence
+<i>John meet</i>
+is ill-formed,
+and so are
+<i>John meet yesterday</i>,
+<i>John definitely meet</i>,
+<i>John really, really meet</i>,
+and all other adjunct extensions of the sentence.
 \end{example}
 
 If we take optionality in this sense as an intrinsic property of adjuncts, then we can use the structure of $\tuple{L, \leq_A}$ to infer the well-formedness of one string from another.
@@ -256,15 +345,15 @@ Suppose $f(t) = T$.
 Since grammaticality travels downward, this entails $f(s) = T$.
 On the other hand, if $f(s) = F$, then $f(t) = F$ because ungrammaticality travels upward.
 Hence it holds for all $s$ and $t$ with $s \leq_A t$ that $f(t) \leq_2 f(s)$.
-This is a kind of monotonicity known as antitonicity, or inverse order preservation.
-If we switch the order in **2** so that $T \leq_2 F$, we get our standard notion of order preservation instead.
+So rather than being monotonically increasing, the map $f$ is monotonically decreasing in this case.
+If we switch the order in **2** so that $T \leq_2 F$, then $f$ is monotonically increasing.
 
-The fact that the well-formedness mapping for $\tuple{L, \leq_A}$$ is monotonic guarantees that we can mechanically calculate well-formedness for certain sentences.
+The fact that the well-formedness mapping for $\tuple{L, \leq_A}$ is monotonic guarantees that we can mechanically calculate well-formedness for certain sentences.
 This is the key to solving the AIC.
 
 ## Explaining the Adjunct Island Constraint
 
-Syntactician have known for a long time that adjuncts are more finicky than arguments in certain respects.
+Syntacticians have known for a long time that adjuncts are more finicky than arguments in certain respects.
 Arguments are usually fine with having parts of them moved to a different position in the sentence.
 
 1. John invited the supervisor of this girl.
@@ -296,11 +385,11 @@ This is exactly what we find in English with so-called *parasitic gaps*.
 
 1. This book, John reviewed without reading.
 
-Here it seems like the phrase *this book* was originally both the object of the verb *review* and the gerund *reading* inside the adjunct.
+Here it seems like the phrase *this book* was originally both the object of the verb *review* and the gerund *reading* inside the adjunct *without reading*.
 Such parasitic gap constructions are allowed in English, but not in certain other languages like German.
 This is pretty much what we expect in our system.
 Removing the adjunct phrase *without reading* leaves the sentence *this book, John reviewed*, which is well-formed.
-Since the well-formedness of $u$ does not tell us anything about the well-formedness of any adjunct extension $v$ of $u$, $v$ may be well-formed or not, it depends on the language at hand.
+Since the well-formedness of $s$ does not tell us anything about the well-formedness of any adjunct extension $t$ of $s$, $t$ may be well-formed or not, it depends on the language at hand.
 
 To sum up, we have subsumed yet another phenomenon under the umbrella of a monotonicity requirement over linguistic structures.
 In fact, two phenomena have been captured: monotonicity rigorously enforces the AIC, but it still allows languages to exempt certain constructions such as adjuncts with parasitic gaps.
