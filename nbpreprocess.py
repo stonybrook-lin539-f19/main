@@ -28,7 +28,7 @@ styles = [f for f in templates.glob('**/*') if f.suffix in style_exts]
 
 
 def change_subfolder(path: Path, subfolder: Path,
-                     with_file: bool=False) -> Path:
+                     with_file: bool = False) -> Path:
     """
     Prepend path with a subfolder.
 
@@ -77,8 +77,8 @@ def create_mycommands(f: Path, build_dir: Path) -> None:
             styfile.write("\n".join(clean))
 
 
-def process_tikzfile(f: Path,
-                     mycommands: Path=Path("./templates/mycommands.mdown")) -> None:
+def process_tikzfile(f: Path, mycommands: Path = Path(
+                        "./templates/mycommands.mdown")) -> None:
     """
     Convert tikz file to svg image.
 
@@ -105,7 +105,7 @@ def process_tikzfile(f: Path,
              stdout=sp.DEVNULL)
 
 
-def load_template(file_list: List[str], folder: Path=templates) -> str:
+def load_template(file_list: List[str], folder: Path = templates) -> str:
     """Read in boilerplate text from mdown file."""
     text = "\n"
     for f in file_list:
@@ -231,11 +231,12 @@ def mdown2ipynb(f: Path,
                   str(target)],
                  stdout=sp.DEVNULL)
 
+
 def mdown2pdf(f: Path,
               yaml: Path,
               header: Path,
-              footer: List[str]=[],
-              mycommands: Path=Path("./templates/mycommands.mdown")) -> None:
+              footer: List[str] = [],
+              mycommands: Path = Path("./templates/mycommands.mdown")) -> None:
     """
     Convert markdown file to pdf.
 
