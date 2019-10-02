@@ -50,32 +50,32 @@ for _ in range(10):
     print("The output of random_output({}) is {}".format(5, random_output(5)))
 ```
 
-```python
-import random
-import re
-import ipywidgets
-from ipywidgets import Button, Layout
-
-from IPython.display import display
-
-# a programming function that is not a mathematical function
-def random_output(number):
-    # randomly choose between two outputs
-    if random.choice([True, False]):
-        return 2 * number
-    else:
-        return 3 * number
-
-b = ipywidgets.Button(description='Click to run randomization',
-           layout=Layout(width='50%', height='80px'))
-display(b)
-
-def on_button_clicked(b):
-    for _ in range(10):
-        print("The output of random_output({}) is {}".format(5, random_output(5)))
-    
-b.on_click(on_button_clicked)
-```
+<!-- ```python -->
+<!-- import random -->
+<!-- import re -->
+<!-- import ipywidgets -->
+<!-- from ipywidgets import Button, Layout -->
+<!--  -->
+<!-- from IPython.display import display -->
+<!--  -->
+<!-- # a programming function that is not a mathematical function -->
+<!-- def random_output(number): -->
+<!--     # randomly choose between two outputs -->
+<!--     if random.choice([True, False]): -->
+<!--         return 2 * number -->
+<!--     else: -->
+<!--         return 3 * number -->
+<!--  -->
+<!-- b = ipywidgets.Button(description='Click to run randomization', -->
+<!--            layout=Layout(width='50%', height='80px')) -->
+<!-- display(b) -->
+<!--  -->
+<!-- def on_button_clicked(b): -->
+<!--     for _ in range(10): -->
+<!--         print("The output of random_output({}) is {}".format(5, random_output(5))) -->
+<!--      -->
+<!-- b.on_click(on_button_clicked) -->
+<!-- ``` -->
 
 ## Domains and co-domains
 

@@ -39,31 +39,31 @@ for func in [f, g, h, i]:
     plt.show()
 ```
 
-```python
-import numpy as np
-import matplotlib.pyplot as plt
-import ipywidgets
-from ipywidgets import Button, Layout
-
-from IPython.display import display
-
-f = lambda x: 2*x
-g = lambda x: x**2
-h = lambda x: 2*x - 2**(x - 5) + 2**10
-i = lambda x: x/2 - 2**x
-
-b = ipywidgets.Button(description='Show graphs',
-           layout=Layout(width='50%', height='80px'))
-display(b)
-
-def on_button_clicked(b):
-    for func in [f, g, h, i]:
-        values = np.linspace(-10, 10)
-        plt.plot(values, func(values))
-        plt.show()
-    
-b.on_click(on_button_clicked)
-```
+<!-- ```python -->
+<!-- import numpy as np -->
+<!-- import matplotlib.pyplot as plt -->
+<!-- import ipywidgets -->
+<!-- from ipywidgets import Button, Layout -->
+<!--  -->
+<!-- from IPython.display import display -->
+<!--  -->
+<!-- f = lambda x: 2*x -->
+<!-- g = lambda x: x**2 -->
+<!-- h = lambda x: 2*x - 2**(x - 5) + 2**10 -->
+<!-- i = lambda x: x/2 - 2**x -->
+<!--  -->
+<!-- b = ipywidgets.Button(description='Show graphs', -->
+<!--            layout=Layout(width='50%', height='80px')) -->
+<!-- display(b) -->
+<!--  -->
+<!-- def on_button_clicked(b): -->
+<!--     for func in [f, g, h, i]: -->
+<!--         values = np.linspace(-10, 10) -->
+<!--         plt.plot(values, func(values)) -->
+<!--         plt.show() -->
+<!--      -->
+<!-- b.on_click(on_button_clicked) -->
+<!-- ``` -->
 
 A function is monotonic iff it does not change direction: once it goes up, it cannot go down, and the other way round.
 Among the functions above, only the first and the last are monotonic.
@@ -77,8 +77,8 @@ Monotonicity is actually an umbrella term for two distinct properties: **isotoni
 
 \begin{definition}
 Let $A$ and $B$ be arbitrary sets and $\leq_A$ and $\leq_B$ ordering relations over these respective sets.
-Then a function $f: A \rightarrow B$ is **isotonic** iff $x \leq_A y$ implies $f(x) \leq_B f(y)$.
-We call $f$ **antitonic** iff $x \leq_A y$ implies $f(y) \leq_B f(x)$.
+Then a function $f: A \rightarrow B$ is <b>isotonic</b> iff $x \leq_A y$ implies $f(x) \leq_B f(y)$.
+We call $f$ <b>antitonic</b> iff $x \leq_A y$ implies $f(y) \leq_B f(x)$.
 \end{definition}
 
 A function is monotonic iff it is isotonic or antitonic.
