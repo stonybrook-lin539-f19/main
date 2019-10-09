@@ -7,7 +7,7 @@
         [\emph{past}
             [the
                 [the]
-                [$\langle$man,man$\rangle$
+                [$\langle${man,man}$\rangle$
                     [old]
                     [man]
                 ]
@@ -17,14 +17,14 @@
                 [$\mathit{v}$
                     [the
                         [the]
-                        [$\langle$man\,man$\rangle$
+                        [$\langle${man,man}$\rangle$
                             [old]
                             [man]
                         ]
                     ]
                     [$\mathit{v}$
                         [$\mathit{v}$]
-                        [$\langle$meet\,meet$\rangle$
+                        [$\langle${meet,meet}$\rangle$
                             [meet
                                 [meet]
                                 [this

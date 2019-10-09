@@ -17,8 +17,14 @@ But decades of syntactic research have amassed an enormous body of evidence that
 Some words in a sentence are more tightly connected than others, and a string cannot encode this fact.
 
 \begin{example}
-The sentence *John saw the man with the telescope* can have two meanings: one where John used a telescope to see the man, and one where the man that John saw had a telescope with him.
-In the first case *with the telescope* seems more closely connected to *saw*, in the second to *man*.
+The sentence
+<i>John saw the man with the telescope</i>
+can have two meanings: one where John used a telescope to see the man, and one where the man that John saw had a telescope with him.
+In the first case
+<i>with the telescope</i>
+seems more closely connected to
+<i>saw</i>, in the second to
+<i>man</i>.
 \end{example}
 
 \begin{exercise}
@@ -32,6 +38,7 @@ Describe the ambiguity, in particular which words seem to be more closely relate
 <li>My daughter is dating John and Bill's dad.</li>
 <li>The police man stopped and arrested the criminal.</li>
 <li>Who do you want to leave?</li>
+</ol>
 \end{exercise}
 
 \begin{example}
@@ -77,7 +84,7 @@ Three examples are shown below, some of which are considered obsolete nowadays.
 
 There certainly are many differences between these structures, but the motivation for these differences would be the subject of a syntax class.
 We are only concerned with the mathematical status of these structures.
-And here things are simple: despite all their differences, all these structures are trees.
+And in that respect things are simple: despite all their differences, all these structures are trees.
 
 A tree consists of a number of nodes that are ordered vertically.
 The tree must have a single node at the very top, which is called its *root*.
@@ -127,6 +134,7 @@ This graph has an in-degree of 2 and an out-degree of 2.
 
 \begin{exercise}
 Draw the smallest graph possible where every vertex has in-degree 2 and out-degree 2.
+Try to minimize both the number of vertices and the number of edges.
 \end{exercise}
 
 \begin{exercise}
@@ -143,9 +151,13 @@ Justify your answer.
 A graph is **rooted** iff both of the following hold:
 
 1. there is exactly one vertex $s$ that is a source, and
-1. all vertices distinct from $s$ can be reached.from $s$.
+1. all vertices distinct from $s$ can be reached from $s$.
 
 We can express this in formal terms using $E^*$ for the reflexive, transitive closure of the edge relation $E$: there must be exactly one $v$ such that $E^* v = \emptyset$, and it also holds for $v$ that $v E^* = V$.
+
+\begin{exercise}
+Explain step-by-step why it is the case that if there is exactly one $v$ such that $E^* v = \emptyset$ and $v E^* = V$, then the graph $G \is \tuple{V, E}$ is rooted.
+\end{exercise}
 
 \begin{example}
 Consider once more the graphs from the previous example, repeated here for your convenience:
@@ -157,6 +169,7 @@ The left one is rooted, whereas the right one is not.
 
 \begin{exercise}
 Draw the smallest graph that is rooted but not a tree.
+Try to minimize both the number of vertices and the number of edges.
 \end{exercise}
 
 \begin{exercise}
@@ -164,13 +177,21 @@ Every rooted graph is weakly connected.
 Explain why.
 \end{exercise}
 
-Finally, a graph is acyclic iff there is no vertex $v$ such that $\tuple{v,v} \in E^*$.
+Finally, a graph is **acyclic** iff there is no vertex $v$ such that $\tuple{v,v} \in E^*$.
 Keep in mind that $E^*$ is the reflexive transitive closure of the edge relation, so even if the edge relation itself does not contain $\tuple{v,v}$ the graph may still contain a cycle.
 Perhaps $v$ is connected to $u$, $u$ to $w$, and $w$ to $v$.
 That would still be a cycle.
+Basically, whenever we can start at some vertex $v$ and follow a sequence of 1 or more edges all the way back to $v$, the graph contains a cycle and hence cannot be acyclic.
 
 \begin{exercise}
 For each one of the two graphs from the previous example, say whether it is acyclic.
+\end{exercise}
+
+\begin{exercise}
+Now that you know what all these terms means, go back to the definition of trees and study it carefully.
+Does it match your intuitive understanding of trees?
+Or is there something that must be added in *order* to make it a traditional linguistic tree?
+Only read on once you've made up your mind.
 \end{exercise}
 
 Taking a step back, a tree in the graph-theoretic sense is just a graph with a unique source from which all vertices can be reached, and where no vertex can have more than one incoming edge.
@@ -190,7 +211,10 @@ The two trees below are equivalent from a graph-theoretic perspective as they de
 \input_mid{./tree_orderdifference.forest}
 
 But the two are not the same.
-One represents the structure of *Thus Mary died*, whereas the other is the structure of the (fairly stilted) *Thus died Mary*.
+One represents the structure of
+<i>Thus Mary died</i>,
+whereas the other is the structure of the (fairly stilted)
+<i>Thus died Mary</i>.
 \end{example}
 
 We could enrich graphs with a second relation for linear order, but then the definition for trees gets much more convoluted.

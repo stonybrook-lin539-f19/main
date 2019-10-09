@@ -79,7 +79,7 @@ Engineers, on the other hand, have already come up with a superior alternative f
 
 We already noted that the storage size problems of lists is due to the fact that they do not share any structure between words even if they look very similar.
 In particular, there is no structure sharing for words that share a prefix.
-So in the list *a, *an*, *any*, *all*, *be*, *bee*, *been*, *bet*, *better*, there is massive overlap between the words, yet they are all treated as completely independent of each other.
+So in the list *a*, *an*, *any*, *all*, *be*, *bee*, *been*, *bet*, *better*, there is massive overlap between the words, yet they are all treated as completely independent of each other.
 Suppose instead that we order this list by the proper prefix relation (recall that a prefix of string $s$ is proper iff it is distinct from $s$).
 The proper prefix relation induces a strict partial order on the set as depicted below.
 
@@ -205,7 +205,7 @@ Represent the following list of words as a prefix tree (assuming characters as t
 
 \begin{exercise}
 Represent the same list of words as a prefix tree but taking morphemes as the basic unit.
-For example, *natural* would only consist of the symbols *nature* and *-al*.
+For example, <i>natural</i> would only consist of the symbols <i>nature</i> and <i>-al</i>.
 \end{exercise}
 
 ## Prefix trees as graphs/gorn domains
@@ -229,18 +229,18 @@ That node colors are just node labels becomes even clearer when we view prefix t
 In that case, we have two distinct labeling functions, one for nodes and one for labels.
 
 \begin{definition}
-An *edge-labeling* for a graph $\tuple{V,E}$ is a total function $\ell: E \rightarrow \Sigma$.
-For every path $p \is \tuple{v_0, v_1, \ldots, v_{n-1}, v_n}$ ($n \geq 1$), we call $s \is \ell(\tuple{v_0, v_1}) \cdots \ell(\tuple{v_{n-1}, v_n})$ the *string associated with $p$*.
+An <b>edge-labeling</b> for a graph $\tuple{V,E}$ is a total function $\ell: E \rightarrow \Sigma$.
+For every path $p \is \tuple{v_0, v_1, \ldots, v_{n-1}, v_n}$ ($n \geq 1$), we call $s \is \ell(\tuple{v_0, v_1}) \cdots \ell(\tuple{v_{n-1}, v_n})$ the <b>string associated with $p$</b>.
 \end{definition}
 
 \begin{definition}
-A *prefix tree* is a 4-tuple $\tuple{V,E,c,\ell}$ such that
+A <b>prefix tree</b> is a 4-tuple $\tuple{V,E,c,\ell}$ such that
 
 <ol>
 <li>$\tuple{V,E}$ is a tree, and</li>
 <li>$c: V \rightarrow \setof{0,1}$ is a node labeling function, and </li>
 <li>$\ell: E \rightarrow \Sigma$ is an edge labeling function.</li>
-<ol>
+</ol>
 \end{definition}
 
 The string language (i.e. lexicon) encoded by a prefix tree is the set of all strings associated with a path from the root to a node with label $1$.

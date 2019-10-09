@@ -16,14 +16,32 @@ Once you're done, you can hang each one of them on the wall with a single nail.
 That's because all the pieces of each hierarchy are hanging together. 
 The identity relation, on the other hand, would need four nails to be hung on the wall.
 Its parts are disjoint.
-So now we have something we can work with.
+So now we have something we can work with to distinguish the linguistic hierarchies from arbitrary orders.
 In graph-theoretic terms, we are dealing with **connectedness**.
 
 ## All hierarchies are weakly connected
 
 We can view each one of the hierarchies as a **graph**.
-A graph consists of a set $V$ of vertices ordered by an edge relation $E$.
-Essentially, we are still dealing with a set that is ordered by a relation, but we now look at this structure through a slightly different lens.
+A graph consists of a set $V$ of vertices ordered by an edge relation $E$, which must be binary.
+With graphs, we are still essentially dealing with a set that is ordered by a relation, but we now look at this structure through a slightly different lens.
+
+\begin{example}
+The person hierarchy $1 < 2 < 3$ corresponds to a graph with
+$V \is \setof{1, 2, 3}$.
+The choice of edges is less fixed.
+
+<ol>
+<li>At the very least, $E$ must include $\tuple{1,2}$ and $\tuple{2,3}$ to express that $1 < 2$ and $2 < 3$.</li>
+<li>To explicitly encode transitivity, we may also add $1 < 3$ to $E$.</li>
+<li>For reflexivity, we add the loops $\tuple{1, 1}$, $\tuple{2, 2}$ and $\tuple{3, 3}$.</li>
+<li>Adding both $1 < 3$ and all the loops gives us a graph whose edge relation is both reflexive and transitive.</li>
+</ol>
+
+Note that each one of the four choices for $E$ results in a different graph, but they can be constructed automatically from the first one.
+The second graph uses the transitive closure of the original edge relation, the third one the reflexive closure, and the fourth one the reflexive transitive closure.
+Because of these principled connections between their edge relations, all four graphs can be regarded as distinct representations of the same person hierarchy. 
+\end{example}
+
 A graph is **weakly connected** if it does not consist of disjoint components that have no edges between them.
 If a graph looks like a collection of islands, it is not weakly connected.
 All the hierarchies we have seen so far are weakly connected in this sense of forming a single piece.
@@ -39,7 +57,7 @@ Remember that we originally had the class of semilattices as a feasible candidat
 \input_mid{./stem_allomorphy.tikz}
 
 Graph-theory provides a way around this by revealing hidden lattice structure in this figure.
-The strongly connected components of a graph are those parts where the vertices so tightly connected by the edge relation that they are mutually reachable.
+The strongly connected components of a graph are those parts where the vertices are so tightly connected by the edge relation that they are mutually reachable.
 Within a strongly connected component, one can move from any vertex to any other vertex in the same component.
 
 For example, the graph below consists of three strongly connected components, which are indicated by dashed rectangles.
@@ -64,10 +82,16 @@ In other words, elements of a hierarchy cannot be completely unrelated, at the v
 This is a very natural idea.
 A hierarchy that has absolutely nothing to say about the ranking of some elements would be rather odd.
 
-1. By putting the semilattice requirement on condensations of hierarchies, we allow the hierarchies to contain cycles.
+1. By putting the semilattice requirement on condensations of hierarchies rather than the hierarchies themselves, we allow the hierarchies to contain cycles.
 A cycle describes cases where distinct elements all have the same status in the hierarchy.
 Again this is a fairly natural scenario.
 
 So now we finally have some very natural restrictions on what a linguistic hierarchy may look like.
 The mathematical formalization of those ideas may seem abstract, but it is just a matter of interpretation.
 Once one understands what these technical concepts accomplish, it is a fairly pleasing state of affairs.
+
+\begin{exercise}
+Does the condensation trick help us with the PCC?
+That is to say, is the hierarchy for the PCC such that its condensation is a semilattice?
+Justify your answer.
+\end{exercise}

@@ -3,16 +3,16 @@
 We have encountered a variety of hierarchies in the previous unit.
 They're shown below to jog your memory.
 
-\input_mid{./123.tikz}
-\input_mid{./adjectival_gradation.tikz}
-\input_mid{./blake_partialorder.tikz}
-\input_mid{./pcc_hierarchy_right_reduced.tikz}
+\input_mid{123.tikz}
+\input_mid{adjectival_gradation.tikz}
+\input_mid{blake_partialorder.tikz}
+\input_mid{pcc_hierarchy_right_reduced.tikz}
 
 They are all weak partial orders, and some of them are linear orders.
 But weak partial orders can take a lot more general shapes than what we see above.
 
 \begin{example}
-Consider the **identity function** $\mathrm{id}$, which connects every node to itself and nothing else. 
+Consider the <b>identity function</b> $\mathrm{id}$, which connects every node to itself and nothing else. 
 We can view this function as a relation that connects each node to itself and nothing else.
 This is a weak partial order.
 It clearly satisfies reflexivity.
@@ -26,8 +26,8 @@ Our task, then, is to identify a proper subclass of weak partial orders that mor
 
 ## A first attempt: Lattices
 
-All the four structures above are lattices.
-Remember, a partially ordered set $S$ is a lattice iff it is both meet semilattice and a join semilattice.
+The top three structures above are lattices, but the fourth structure for the PCC is not.
+Remember, a partially ordered set $S$ is a lattice iff it is both a meet semilattice and a join semilattice.
 In other words, for all $x, y \in S$ it holds that there is a greatest lower bound $x \wedge y$ and a least upper bound $x \vee y$.
 
 \begin{exercise}
@@ -38,11 +38,22 @@ Compute each one of the following for the corresponding hierarchy above (assume 
 <li>$2 \vee (1 \wedge 3)$</li>
 <li>$\text{positive} \wedge \text{comparative} \wedge \text{superlative}$</li>
 <li>$\text{Nom} \wedge (\text{Gen} \vee \text{Acc})$</li>
-<li>$(3,2 \vee (1,3 \wedge 2,1)) \wedge 2,3$</li>
 </ol>
 \end{exercise}
 
-The class of lattices seems to be a good fit.
+\begin{exercise}
+The PCC structure is neither a join semilattice nor a meet semilattice.
+Explain why.
+
+<i>Hint</i>: Find two elements that have no unique supremum or no unique infimum.
+\end{exercise}
+
+\begin{exercise}
+Remember that we removed all elements from the PCC lattice where the first and second component are the same person.
+If we put these nodes back into the structure, would the result be a lattice?
+\end{exercise}
+
+With the exception of the PCC, the class of lattices seems to be a good fit.
 It even provides a good characterization for phenomena we haven't considered at all yet.
 
 For example, there is a phenomenon that is very similar to the PCC that is known as the **Gender Case Constraint** (GCC).
@@ -68,14 +79,15 @@ So it isn't too surprising that the GCC is a monotonic map given a gender hierar
 Show that the Zapotec GCC is monotonic over this hierarchy.
 \end{exercise}
 
-So it looks like we might be able narrow down the class of potential hierarchies from any weak partial order to lattices.
-That's a significant reduction.
-Unfortunately, the class of lattices is too restrictive.
+So it looks like we might be able narrow down the class of potential hierarchies from any weak partial order to lattices --- if we can deal with the PCC hierarchy somehow.
+That would be a significant reduction.
+Unfortunately, the PCC isn't the only exception.
+The class of lattices simply is too restrictive.
 
 ## Lattices are too specific: Evidence from tense
 
 Some hierarchies do not form lattices.
-One case where one case see this is with verbal tense.
+One case where one can see this is with verbal tense.
 Consider the English tenes paradigm \emph{go}-\emph{went}-\emph{gone}.
 This looks like an ABA pattern.
 But suppose that we use the order $\text{past} < \text{participle} < \text{present}$.
@@ -84,7 +96,7 @@ With this ordering, \emph{go}-\emph{went}-\emph{gone} is actually \emph{went}-\e
 The $^*$ABA-violation has disappeared.
 And given this ordering of verbal forms, no ABA violations are attested at all.
 
-If this were the end of it, we could still stick with our story that all linguistic hierarchies must be lattices.
+If this were the end of it, we could still stick with lattices as a reasonable model of linguistic hierarchies.
 But as you all know, verbs can have more temporal forms than just those three, and one of them is the future tense.
 Once one considers future, things become more complicated.
 
@@ -118,7 +130,7 @@ Instead, it is a (join) semilattice.
 Remember that semilattices also played a major role for the Adjunct Island Constraint.
 So perhaps all linguistic hierarchies that aren't lattices are at least semilattices.
 That would be nifty.
-Unfortunately, that's wrong again.
+But the PCC hierarchy isn't a semilattice, either, and once again this isn't the only problematic case.
 
 \begin{exercise}
 Why can't we generalize the tense semilattice to a lattice by also setting $\text{past} < \text{future}$?
@@ -127,9 +139,9 @@ Why can't we generalize the tense semilattice to a lattice by also setting $\tex
 
 ## Semilattices (and weak partial orders) are too specific
 
-The counterexample to semilattices again comes from case.
+The counterexample to semilattices comes from case.
 However, this time it isn't about case syncretism but noun stem allomorphy.
-Noun stem allomorphy refers to the facts that case may not only be reflected in the choice of suffix, but also in the form of the stem.
+Noun stem allomorphy refers to the fact that case may not only be reflected in the choice of suffix, but also in the form of the stem.
 This is shown below for Latin *rex*, which means *king*.
 
 | Case | Singular | Plural   | 
@@ -141,7 +153,7 @@ This is shown below for Latin *rex*, which means *king*.
 | Abl  | reg-e    | reg-ibus | 
 
 As you can see, nominative singular uses the special form *rex* without a dedicated case suffix, whereas all other cases are built with the stem *reg* instead.
-Curiously, there seem to be only two options for noun stem allomorphy.
+Curiously, there seems to be only two options for noun stem allomorphy.
 Either all cases use the same stem, or only nominative gets to use a different stem.
 So in a system with nominative, accusative, genitive, and dative, the only possible stem patterns are AAAA and ABBB.
 This is monotonic over the case hierarchy, repeated here for your convenience.
@@ -181,7 +193,7 @@ Instead, it is a **preorder** (also called a **quasi-order**).
 
 Our quest to find a more restrictive characterization for linguistic hierarchies has turned pretty dire all of a sudden.
 If some hierarchies aren't even weak partial orders, then they cannot be semilattices or lattices either.
-Remember, a semilattices and lattices are special cases of partially ordered sets, i.e. sets with a weak partial order defined over them.
+Remember, semilattices and lattices are special cases of partially ordered sets, i.e. sets with a weak partial order defined over them.
 The class of preorders is even bigger than the class of weak partial orders.
 Despite our best intentions, things have become less restrictive.
 Do not despair, though.

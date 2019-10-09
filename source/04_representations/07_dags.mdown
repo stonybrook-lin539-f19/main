@@ -3,14 +3,14 @@
 During the discussion of prefix trees, you might have wondered why we do not merge identical subtrees to reduce storage cost even more.
 For example, the first prefix tree could be represented more parsimoniously as the second one. 
 
-\input_med{./prefixtree_dag_before.tikz}
-\input_med{./prefixtree_dag_after.tikz}
+\input_med{./prefixtree_dag_before.forest}
+\input_med{./prefixtree_dag_after.forest}
 
 Relaxing prefix trees in this way is tantamount to removing the condition that every node has an indegree of at most one.
 Doing so generalizes prefix trees to prefix DAGs, where DAG is short for *directed acyclic graph*.
 
 \begin{definition}
-A graph $G \is \tuple{V,E}$ is a *directed acyclic graph* (DAG) iff
+A graph $G \is \tuple{V,E}$ is a <b>directed acyclic graph</b> (DAG) iff
 
 <ol>
 <li>$G$ is weakly connected, and</li>
@@ -22,7 +22,7 @@ For prefix trees, DAGs are actually not the best match.
 Suppose we want to add the word *alternate* to the prefix DAG above.
 Then we would have to add *nate* below *alter*.
 
-\input_med{./prefixtree_dag_gonewrong.tikz}
+\input_med{./prefixtree_dag_gonewrong.forest}
 
 But as you can see, this would also make *betternate* a word, which it clearly is not and likely will never be.
 In order to avoid this, we would have to add a separate branch for *ternate* below *al*.
