@@ -1,0 +1,61 @@
+\usepackage[subpreambles=true]{standalone}
+\usepackage{mathtools}	% revised version of amsmath
+\usepackage[amsmath,hyperref,thmmarks]{ntheorem}
+\usepackage{tikz}
+
+\newcounter{exercise}
+\def\theexercise{\arabic{exercise}}
+
+\newenvironment{exercise}[1][\unskip]{%
+    \refstepcounter{exercise}%
+    \noindent\ignorespaces%
+    \textbf{\color[HTML]{2D68A2}[#1Exercise \theexercise]} \quad%
+}%
+{\medskip\par\noindent\ignorespacesafterend}
+
+
+\theoremstyle{plain}
+\theoremheaderfont{\normalfont\bfseries}
+\theorembodyfont{\normalfont\upshape}
+\theoremseparator{.}
+\newcommand{\TheoremSymbol}{\tikzset{external/export next=false}\tikz{\draw (0,0) -| (.5em,.5em);}}
+\theoremsymbol{\ensuremath{\TheoremSymbol}}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\theorembodyfont{\normalfont\itshape}
+\theoremsymbol{}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{problem}[theorem]{Problem}
+
+\theorembodyfont{\normalfont\upshape}
+\theoremprework{\bigskip\hrule}
+\theorempostwork{\hrule\bigskip}
+\newtheorem{definition}[theorem]{Definition}
+
+\theoremstyle{nonumberplain}
+\theoremheaderfont{\normalfont\itshape}
+\theoremprework{}
+\theorempostwork{}
+\newcommand{\QED}{\ensuremath{\blacksquare}}
+\qedsymbol{\QED}
+\theoremsymbol{\ensuremath{\Box}}
+\newtheorem{proof}{Proof}
+
+% \theoremsymbol{\ensuremath{\bigcirc}}
+\theoremsymbol{}
+\newtheorem{remark}{Remark}
+\newtheorem{example}{Example}
+
+\theoremsymbol{}
+\theoremheaderfont{\normalfont\scshape}
+\theoremindent1.5em
+\newtheorem{ucase}{Case}
+
+\theoremstyle{plain}
+\newtheorem{case}{Case}
+\theoremindent1.5em
+\newtheorem{subcase}{Case}
+\numberwithin{subcase}{case}

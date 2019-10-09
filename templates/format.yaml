@@ -1,0 +1,8 @@
+---
+geometry: margin=1in, letterpaper
+fontsize: 12pt
+indent: true
+numbersections: false
+header-includes:
+    - \usepackage[charter]{mathdesign}
+---
