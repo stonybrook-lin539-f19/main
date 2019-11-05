@@ -1,0 +1,18 @@
+\documentclass[tikz]{standalone}
+\usetikzlibrary{arrows, automata, calc, positioning}
+\begin{document}
+\begin{tikzpicture}
+    \node[state, initial] (0) at (0,0) {0};
+    \node[state] (1) [right=of 0] {1};
+    \node[state, accepting] (2) [right=of 1] {2};
+    \node[state] (S) [below=of 1] {S};
+
+    \path[->]
+        (0) edge node [above] {a} (1)
+        (1) edge node [above] {b} (2)
+        (2) edge [bend right=45] node [above] {a} (1)
+        (0) edge node [below] {b} (S)
+        (1) edge node [right] {a} (S)
+        (2) edge node [below] {b} (S);
+\end{tikzpicture}
+\end{document}
