@@ -1,0 +1,13 @@
+\documentclass[tikz]{standalone}
+\usetikzlibrary{arrows, automata, calc, positioning}
+\begin{document}
+\begin{tikzpicture}
+    \node[state, initial] (0) at (0,0) {A};
+    \node[state, accepting] (1) [right=of 0] {B};
+
+    \path[->]
+        (0) edge [loop above] node [above] {a} (0)
+        (0) edge node [above] {a} (1)
+        (1) edge [loop above] node [above] {b} (1);
+\end{tikzpicture}
+\end{document}
