@@ -9,6 +9,8 @@ Using this notational convention, we can represent the illicit sequence as *z\$*
 This is a bigram, whereas *\$rb* is a trigram.
 What are the consequences of mixing bigrams and trigrams in a single $n$-gram grammar?
 Does this introduce inconsistencies such that a word is both forbidden and allowed? 
+Let's try to answer this question.
+Fair warning: this will be a bit of a pain, and that's actually the point of this unit.
 
 ## A plea for proofs
 
@@ -23,10 +25,12 @@ But this has several downsides:
 
 - **No guarantees**  
   Just because your simulations produce a certain result does not mean that things always work this way.
-  If you ask 1000 people if they've ever read Werner Schwab's *Fäkaliendramen* (feces dramas), the answers will probably all be No unless your sample happened to include some literature buffs.
+  If you ask 1000 people if they've ever read Werner Schwab's *Fäkaliendramen* (feces dramas), the answers will probably all be No.
+  But if your sample happened to include mostly literature buffs, you'll hear Yes a lot more often.
   Similarly, the grammars you construct for your simulation might exhibit a special property that allows them to pass the test.
   There might still be grammars that do not display this property and fail.
-  If you construct the grammars with a program, your code might be written in a way that it only produces grammar of a specific type.
+  If you construct the grammars with a program, your code might be written in a way that only produces grammars of a specific type.
+  Bottom line: if you are testing based on examples, you can never be sure that your examples cover all possible cases that need testing.
 
 - **No scalability**  
   Alright, suppose you actually wrote a program that is free of any bias and ran a huge number of simulations for grammar with mixed bigrams and trigrams.
@@ -36,11 +40,11 @@ But this has several downsides:
   127-grams?
   How do you know that your results will carry over from bigrams and trigrams to arbitrary $n$-grams?
 
-Simulations are *en vogue* nowadays, but they're really a last resort.
-They are hard to design, often require significant computational resources, and do not provide perfect insight into how the specific aspects of a system determine its behavior.
-That's not to say that simulations are a bad thing - if you are dealing with a very complex system, they're often the best tool at your disposal.
+Computer-aided simulations are *en vogue* nowadays, but they're really a last resort.
+They are hard to design, often require significant resources, and do not provide perfect insight into how the specific aspects of a system determine its behavior.
+That's not to say that simulations are a bad thing --- if you are dealing with a very complex system, they're often the best tool at your disposal.
 But there are other tools around, and in many cases they are a superior choice.
-Mathematics furnishes the best tool of them all: proofs.
+Mathematics furnishes the best tool of them all: proofs!
 
 A mathematical proof starts out from a fixed set of assumptions and shows how these assumptions entail a specific property.
 We will see a concrete example in a moment, but let's first focus on the specific advantages of proofs:
@@ -58,10 +62,11 @@ We will see a concrete example in a moment, but let's first focus on the specifi
   Fixing a proof is also much simpler than verifying that a simulation has no hidden biases.
   Once you have a correct proof, you have a guarantee: as long as the assumptions of the proof hold, the property established by proof holds, too.
 
-- **Scalability**
+- **Scalability**  
   Since a proof holds as long as its initial assumptions are satisfied, it can be extended to any object that satisfies these assumptions.
 
-This may all sound awfully abstract to you, so let's finally turn to our first proof.
+This may all sound awfully abstract to you.
+So let's finally turn to our first proof, because the proof of the pudding is in the eating (no, I couldn't resist this terrible pun).
 We will show that a negative $n$-gram grammar that also contains, say, bigrams and trigrams can be converted to an equivalent $n$-gram grammar that only contains $n$-grams.
 While reading through the proof, keep in mind the three properties above (laziness, guarantees, scalability), and think about how they're instantiated in the proof.
 
@@ -103,7 +108,7 @@ We start with a few key observations.
   We use $\card{\Sigma}$ as the special symbol for this number.
 
 \begin{example}
-  If a language only has the sounds *a*, *u*, *i*, *b*, *m*, *d*, *g*, and *h*, then $\card{\Sigma}$ for that specific language is $8$.
+  If a language only has the sounds <i>a</i>, <i>u</i>, <i>i</i>, <i>b</i>, <i>m</i>, <i>d</i>, <i>g</i>, and <i>h</i>, then $\card{\Sigma}$ for that specific language is $8$.
 \end{example}
 
 - As stated in the theorem, the longest $n$-gram is assumed to have length $k$.
@@ -112,7 +117,7 @@ We start with a few key observations.
   This implies that $G$ contains at most $(\card{\Sigma}+1)^k$ $n$-grams and thus contains only finitely many.
 
 \begin{example}
-Suppose that the language only has *a*, *d*, barely enough for *dada*.
+Suppose that the language only has the sounds <i>a</i> and <i>d</i>, barely enough for *dada*.
 It's $\card{\Sigma}^k$ is $2$.
 There are $(2+1)^3 = 3^3 = 27$ different trigrams:
 
@@ -147,25 +152,25 @@ There are $(2+1)^3 = 3^3 = 27$ different trigrams:
 </ol>
 
 Not all of them are ever useful.
-For example, no word ever contains an edge marker in the middle, so *a\$a* serves no purpose.
-But this does not change the fact that there are only finitely many trigrams over *a*, *d*, and *\$*.
+For example, no word ever contains an edge marker in the middle, so <i>a\$a</i> serves no purpose.
+But this does not change the fact that there are only finitely many trigrams over <i>a</i>, <i>d</i>, and <i>\$</i>.
 \end{example}
 
 Now suppose that we pick one of the finitely many $n$-grams of $G$.
 Call it $g$.
 If the length of $g$ is already $k$, it is one of the longest $n$-grams and we don't need to do anything.
-But if its length $i$ strictly less than $k$, we need to replace $g$ by something equivalent.
+But if its length $i$ is strictly less than $k$, we need to replace $g$ by something equivalent.
 We remove the $n$-gram $g$ from the grammar $G$, and instead add in a number of "padded" variants of $g$: 
 
 - Construct every possible $n$-gram of length $k - i$.
   For each such $n$-gram, put it in front of $g$ and add the result back to $G$.
 
 \begin{example}
-Suppose *G* contains the bigram *z\$*, the trigram *\$kn*, and the 4-gram *akzn*.
-Assume furthermore that the only possible sounds are *a*, *k*, *z*, and *n*.
+Suppose <i>G</i> contains the bigram <i>z\$</i>, the trigram <i>\$kn</i>, and the 4-gram <i>akzn</i>.
+Assume furthermore that the only possible sounds are <i>a</i>, <i>k</i>, <i>z</i>, and <i>n</i>.
 
-We have to pad out *z\$* from a bigram to a 4-gram.
-The length difference between a bigram and a 4-gram is 2, so we have to put bigrams in front of *z\$*.
+We have to pad out <i>z\$</i> from a bigram to a 4-gram.
+The length difference between a bigram and a 4-gram is 2, so we have to put bigrams in front of <i>z\$</i>.
 The list of possible bigrams is as follows:
 
 <ol>
@@ -196,7 +201,7 @@ The list of possible bigrams is as follows:
 <li>nn</li>
 </ol>
 
-So we remove *z\$* from $G$ and instead add all of the following:
+So we remove <i>z\$</i> from $G$ and instead add all of the following:
 
 <ol>
 <li>\$\$z\$</li>
@@ -312,9 +317,9 @@ Then some $n$-gram $g$ of $G$ must occur in the string, otherwise it would not b
   If $g$ has length $k$, then it is also an $n$-gram of $G'$, so $G'$ would consider the string illicit, too.
 
 \begin{example}
-Remember that our example grammar $G$ disallows *z\$*, *\$kn*, and *akzn*.
-The construction above constructs $G'$ by padding out *z\$* and *\$kn* to 4-grams, but it keeps *akzn* the same.
-So if some word is forbidden by $G$ because it contains *akzn*, it will also be forbidden $G'$.
+Remember that our example grammar $G$ disallows <i>z\$</i>, <i>\$kn</i>, and <i>akzn</i>.
+The construction above constructs $G'$ by padding out <i>z\$</i> and <i>\$kn</i> to 4-grams, but it keeps <i>akzn</i> the same.
+So if some word is forbidden by $G$ because it contains <i>akzn</i>, it will also be forbidden $G'$.
 \end{example}
 
 - **Case 2**  
@@ -333,9 +338,9 @@ So if some word is forbidden by $G$ because it contains *akzn*, it will also be 
     So if a string contains $g$, it also contains some illicit padding of $g$.
 
 \begin{example}
-Consider the word *kaz*, which is illicit because it contains *z\$* (remember, we always add a sufficient number of edge markers).
+Consider the word <i>kaz</i>, which is illicit because it contains <i>z\$</i> (remember, we always add a sufficient number of edge markers).
 This string is still considered illicit by $G'$.
-The padded out word is *\$\$\$kaz\$\$\$*, and several of the illicit 4-grams we constructed from *z\$* are contained in this string:
+The padded out word is <i>\$\$\$kaz\$\$\$</i>, and several of the illicit 4-grams we constructed from <i>z\$</i> are contained in this string:
 
 <ol>
 <li>kaz\$</li>
@@ -366,7 +371,7 @@ So by carrying out the procedure above for every $n$-gram of $G$, one obtains a 
 
 You might cry foul at this point.
 I promised you that proofs are easy and only take a few lines, and the one above is neither.
-It's very long, and it's cumbersome to read and make sense of the sentences.
+It's very long, and it's cumbersome to read, and the sentences are hard to make sense of.
 But that's because everything was explained in plain English rather than mathematical notation.
 This made the proof harder to read and much longer, and it also means that we had to rely on examples to explain what exactly is intended at each step of the proof.
 The next unit will present the same proof in mathematical notation, and while it may be initially harder for you, this format will be a lot easier for you once you have some experience.

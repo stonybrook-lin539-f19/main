@@ -1,24 +1,124 @@
 \usepackage[subpreambles=true]{standalone}
+\usepackage[charter]{mathdesign}
 \usepackage{mathtools}	% revised version of amsmath
 \usepackage[amsmath,hyperref,thmmarks]{ntheorem}
+\usepackage[skins,breakable]{tcolorbox} 
 \usepackage{tikz}
+\usepackage{fancyhdr}
+\fancyhead[L]{Thomas Graf, Spring 2020}
+\fancyhead[R]{\leftmark}
+\pagestyle{fancy}
+
+
+\raggedbottom
 
 \newcounter{exercise}
 \def\theexercise{\arabic{exercise}}
 
 \newenvironment{exercise}[1][\unskip]{%
     \refstepcounter{exercise}%
+    \bigskip%
     \noindent\ignorespaces%
-    \textbf{\color[HTML]{2D68A2}[#1Exercise \theexercise]} \quad%
+    \begin{tcolorbox}[
+      blanker,
+      width=0.85\textwidth,enlarge left by=0.15\textwidth,
+      before skip=6pt,
+      breakable,
+      overlay unbroken and first={%
+        \node[inner sep=0pt,outer sep=0pt,text width=0.15\textwidth,
+          align=left,
+          below right]
+          at ([xshift=-0.15\textwidth]frame.north west)
+      {%
+        \noindent%
+        \bfseries\color[HTML]{2D68A2}
+        #1%
+        Exercise\\
+        \smallskip
+        \LARGE\theexercise%
+      };}]%
 }%
-{\medskip\par\noindent\ignorespacesafterend}
+{%
+    \end{tcolorbox}%
+    % \smallskip\noindent%
+}
+
+\newcounter{example}
+\def\theexample{\arabic{example}}
+
+\newenvironment{example}[1][\unskip]{%
+    \refstepcounter{example}%
+    \bigskip%
+    \noindent\ignorespaces%
+    \begin{tcolorbox}[
+      blanker,
+      width=0.85\textwidth,enlarge left by=0.15\textwidth,
+      before skip=6pt,
+      breakable,
+      overlay unbroken and first={%
+        \node[inner sep=0pt,outer sep=0pt,text width=0.15\textwidth,
+          align=left,
+          below right]
+          at ([xshift=-0.15\textwidth]frame.north west)
+      {%
+        \noindent%
+        \bfseries\color[HTML]{1A933D}%
+        #1%
+        Example\\
+        \smallskip
+        \LARGE\theexample%
+      };}]%
+}
+{%
+    \end{tcolorbox}%
+    % \smallskip\par\noindent%
+}
+
+\newenvironment{advice}[1][\unskip]{%
+    \bigskip%
+    \noindent\ignorespaces%
+    \begin{tcolorbox}[
+      blanker,
+      width=0.85\textwidth,enlarge left by=0.15\textwidth,
+      before skip=6pt,
+      breakable,
+      overlay unbroken and first={%
+        \node[inner sep=0pt,outer sep=0pt,text width=0.15\textwidth,
+          align=left,
+          below right]
+          at ([xshift=-0.15\textwidth]frame.north west)
+      {%
+        \noindent%
+        \bfseries\color[HTML]{D425A7}%
+        #1%
+        Advice
+      };}]%
+}
+{%
+    \end{tcolorbox}%
+    % \smallskip\par\noindent%
+}
+
+%     \begin{minipage}[t]{.15\textwidth}
+%         \noindent%
+%         \bfseries\color[HTML]{1A933D}%
+%         #1%
+%         Example\\
+%         \LARGE\theexample%
+%     \end{minipage}
+%     \begin{minipage}[t]{.85\textwidth}%
+% }%
+% {%
+%     \end{minipage}%
+%     \medskip\par\noindent\ignorespacesafterend%
+% }
 
 
 \theoremstyle{plain}
 \theoremheaderfont{\normalfont\bfseries}
 \theorembodyfont{\normalfont\upshape}
 \theoremseparator{.}
-\newcommand{\TheoremSymbol}{\tikzset{external/export next=false}\tikz{\draw (0,0) -| (.5em,.5em);}}
+\newcommand{\TheoremSymbol}{\tikz{\draw (0,0) -| (.5em,.5em);}}
 \theoremsymbol{\ensuremath{\TheoremSymbol}}
 \newtheorem{theorem}{Theorem}
 \newtheorem{lemma}[theorem]{Lemma}
@@ -47,7 +147,7 @@
 % \theoremsymbol{\ensuremath{\bigcirc}}
 \theoremsymbol{}
 \newtheorem{remark}{Remark}
-\newtheorem{example}{Example}
+% \newtheorem{example}{Example}
 
 \theoremsymbol{}
 \theoremheaderfont{\normalfont\scshape}

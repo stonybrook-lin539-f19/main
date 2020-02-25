@@ -13,7 +13,7 @@ This starts with formulas like $f(x) = kx + d$ and quickly develops into complex
 
 1.  Let $\mathcal{L}$ be a totally ordered collection of languages $L_1, \ldots, L_n$ ($n \geq 1$) such that for all $1 \leq i,j \leq n$ we have $L_j \not\subseteq L_i$ iff $i < j$.
 
-1.  For any given string $s$ and PCFG $G$, the probability of $s$ is $\sum_{d \in D_G(s)} \prod_{r \in d} p_G(r)$ where $D_G(s)$ is the set of derivation trees of $G$ that yield $s$, $r$ is a tree bigram of a derivation tree, and $p(r)$ is the probability of $r$ according to $G$.
+1.  For any given string $s$ and PCFG $G$, the probability of $s$ is $\sum_{d \in D_G(s)} \prod_{r \in d} p_G(r)$ where $D_G(s)$ is the set of derivation trees of $G$ that yield $s$, $r$ is a tree bigram of a derivation tree, and $p_G(r)$ is the probability of $r$ according to $G$.
 
 1.  A *$k$-interval*, or simply *$k$-val*, is a $5$-tuple $\tuple{k,G_l, G_r, G_o, G_f}$ such that $k \geq 1$ and each $G$ is an SL-$1$ grammar that specifies, respectively, the left edge, right edge, open slots, and the fillers.
     The corresponding *$k$-val formula* (with free variables $x_1$, $\ldots$, $x_k$) is 
@@ -64,9 +64,9 @@ In order to deal with symbol shock, you have to develop the central survival ski
 
 You cannot read math like a novel or even your average textbook.
 An 8 page paper can easily keep you busy for days before you fully understand it.
-Revolutionary proofs may only span a few pages yet take even trained mathematicians months to understand.
+Revolutionary proofs may only span a few pages yet take trained mathematicians months to understand.
 Math takes time, so do not rush.
-As soon as you realize that, symbol shock will be much less of a problem.
+As soon as you internalize this simple rule, symbol shock will be much less of a problem.
 When a new symbol is introduced, pause and commit it to memory.
 When you see a complex formula, work through it symbol by symbol until you understand what's going on here.
 Just. Take. Your. Time.
@@ -74,7 +74,9 @@ Just. Take. Your. Time.
 This is actually why I think that math is easier to learn by reading than by listening.
 With a text, you can reread every sentence until you get it.
 You can go back 3 pages to revisit a point you thought was clear to you but now seems to be at odds with what you're reading.
-But the important thing is that you do all those things, and you need to be very disciplined about it.
+You can't do that in a lecture.
+But you actually have to do all those things, you have to slow down, go back, reread.
+Math isn't all that hard, but you have to be very disciplined about it.
 
 With time, you will get much better at reading math and it will take you much less effort, but for the beginning I suggest that you do the following to better deal with symbol shock:
 
@@ -91,7 +93,8 @@ With time, you will get much better at reading math and it will take you much le
   For instance, indices are usually chosen to be $i, j, k$, variables are $x, y, z$, and functions are $f, g, h$.
   But that's just a rule of thumb.
   A labeling function may be $\ell$, which looks like an $l$ but is slightly different so that $l$ can be used to refer to labels instead.
-  Never just memorize notation, try to understand the design principles behind it.
+  Never try to memorize notation in a brute-force manner, try to understand the design principles behind it.
+  If you know why the notation looks the way it does, you'll have a much easier time remembering even minor details and nuances.
 
 - Set yourself realistic goals.
   Don't attempt to read 20 pages in one sitting.
@@ -108,14 +111,23 @@ With time, you will get much better at reading math and it will take you much le
 
 ### No implicatures
 
-Mathematical writing is also peculiar because implicatures are often cancelled implicitly.
-That's a fancy linguistic way of saying that only the literal meaning is the intended one.
-So the phrase "Let $S$ be a set containing two odd numbers" does not entail that $S$ only contains two odd numbers, it may contain all kinds of things, including some other odd numbers.
-Otherwise we would have written "Let $S$ be a set containing exactly two odd numbers, and nothing else".
-It is easy for the reader to miss something by assuming that the statement is more specific than it actually is.
-Another common pitfall is statements like "There is a node labeled $a$ such that all its children are labeled $b$", which would be satisfied even if $a$ has no children.
-The statement could instead be paraphrased as "There s a node labeled $a$, and if this node has any children, they are all labeled $b$".
-When you see a statement or definition, always think about the simplest object that satisfies it, and ask yourself how much this object can change before it no longer fits the description.
+Mathematical writing is also peculiar because, as we linguists like to say, implicatures are often cancelled implicitly.
+That's a smarty pants way of saying that only the literal meaning is the intended one.
+So the phrase "Let $S$ be a set containing two odd numbers" does not entail that $S$ only contains two odd numbers.
+It could contain all kinds of additional things, including other odd numbers, but at the very least it contains two odd numbers.
+If we wanted the set to contain two odd numbers and nothing else, we would have written "Let $S$ be a set containing exactly two odd numbers, and nothing else".
+Tricky, hmm?
+For the uninitiated reader, it is easy to miss something important by assuming that the statement is more specific than it actually is.
+
+Another common pitfall arises with statements like "Every blue dragon is a chain smoker".
+Is this claim true or false?
+A linguist will tell you that it is neither, and instead contains a presupposition violation (yes, linguists like their fancy terms) because the sentence assumes that blue dragons exist, which they obviously do not.
+A mathematician doesn't care for such linguistic subtleties and instead considers the statement true because there exists no blue dragon that isn't a chain smoker.
+That is perfectly fine for mathematics, but it's very different from how a layperson would interpret the sentence.
+Again, when dealing with math you shouldn't assume anything that isn't stated explicitly.
+
+Quite generally, you should try to identify minimal examples:
+when you see a statement or definition, always think about the simplest object that satisfies it, and ask yourself how much this object can change before it no longer fits the description.
 
 ### Questioning definitions
 
@@ -139,7 +151,7 @@ That is a very general definition, and one can immediately think of tons of alge
 - the natural numbers with addition
 - the integers with subtraction
 - the real numbers with base 2 logarithm
-- the set of all possible strings with string concatenation
+- the set of all possible strings with concatenation
 
 But what is an example of something that is not an algebra?
 Well, the natural numbers with division, for instance.
@@ -155,20 +167,20 @@ So don't worry about this and focus on the important insight here: whenever you 
 
 ### Implication and equivalence are not the same
 
-English, as all natural languages, is pretty sloppy in how it expressions conditions.
+English, as all natural languages, is pretty sloppy in how it expresses conditions.
 Consider the following lovely sentence: "If you don't give me your money, I will shoot you".
 Now the common understanding is that if you do hand over your money, you will not be shot.
 But if your robber happens to be a mathematician you are very unlucky because they might still shoot you --- while you draw your final breath they will gleefully point out that they didn't say "If you don't give me your money, I will shoot you, and if you give me your money I will not shoot you."
-Your murderer took advantage of the fact that we often express biimplication ($a$ implies $b$, and the other way round) with the same language we use for implications ($a$ implies $b$, but $b$ does not necessarily imply $a$).
+Your murderer took advantage of the fact that we often express a biconditional ($a$ implies $b$, and the other way round) with the same language we use for implications ($a$ implies $b$, but $b$ does not necessarily imply $a$).
 In mathematics, this distinction is very important.
 So pay close attention to whether the text uses an *if* or an *iff* (which is short for *if and only if*).
-The former is an implication, the latter a biimplication.
+The former is an implication, the latter a biconditional.
 
 \begin{example}
-    The following is an implication but not an equivalence/biimplication: "If you are an actress, then you are female".
+    The following is an implication but not an equivalence/biconditional: "If you are an actress, then you are female".
     After all, not every female is an actress.
-    On the other hand, "You are a bachelor iff you are an unmarried man" is a biimplication.
-    Every unmarried man is a bachelor, and every bachelor is an unmarried man.
+    On the other hand, "You are a bachelor iff you are an unmarried man" is a biconditional.
+    Every unmarried man is a bachelor, and every bachelor (in the non-academic sense) is an unmarried man.
 \end{example}
 
 ## Recap
@@ -185,4 +197,4 @@ The former is an implication, the latter a biimplication.
 - Writing style
     - Don't assume implicatures.
       Read in a very literal fashion.
-    - Don't confuse implications (*if*) and biimplications (*iff*).
+    - Don't confuse implications (*if*) and biconditionals (*iff*).

@@ -17,7 +17,7 @@ If you don't have the required background, you should go to the background mater
 These units may themselves have prerequisites, so if you don't meet those either you have to start with those prerequisites first.
 
 \begin{example}
-[Georg Ferdinand Luwdig Philipp Cantor](https://en.wikipedia.org/wiki/Georg_Cantor)
+Georg Ferdinand Luwdig Philipp Cantor
 wants to read up on n-grams models.
 He picks the first unit and is happy to set that it has no prerequesites.
 But as the second unit is much more formal, it requires some knowledge of set theory and functions:

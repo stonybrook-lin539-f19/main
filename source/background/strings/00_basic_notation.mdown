@@ -5,8 +5,7 @@
 # Strings: Basic notation
 
 Strings play a very prominent role in computational linguistics.
-Mathematically, they can be regarded as tuples or a particular kind of function --- see the interdefinability section in the background material for details (once it has been unlocked).
-Intuitively, a string is a sequence of symbols, like $\mathit{nfm}$, *wendigo*, or *105§/*.
+A string is a sequence of symbols, like $\mathit{nfm}$, *wendigo*, or *105§/*.
 In contrast to sets, strings are ordered and can contain duplicates.
 
 \begin{example}
@@ -21,7 +20,7 @@ Fill in $=$ or $\neq$ as appropriate for each pair of strings below.
 <li>$\setof{m,a,d} \_ \setof{d,a,m}$</li>
 </ol>
 
-Caution: all of these are strings over a suitable alphabet!
+Caution: $\{$ and $\}$ can be symbols just like $m$, $a$, or $d$.
 \end{exercise}
 
 ## Alphabet
@@ -36,27 +35,36 @@ The set of Latin characters (A-Z, a-z) is an alphabet that's familiar to all of 
 Strings over it include:
 
 <ul>
-<li>
-string
-</li>
-<li>
-alphabet
-</li>
-<li>
-aaaaaaa
-</li>
-<li>
-c
-</li>
+<li>string</li>
+<li>alphabet</li>
+<li>aaaaaaa</li>
+<li>c</li>
 </ul>
 \end{example}
 
 \begin{example}
 The set of Arabic digits is an alphabet with symbols 0, 1, 2, 3, 4, 5, 6, 7, 8, and 9.
-Every natural number, when represented in decimal as usual, is a string over this alphabet.
+Every natural number (0, 1, 2, ...), when represented in decimal as usual, is a string over this alphabet.
 But not every string over this alphabet is a number of the decimal system.
 For instance, 000134095 is not a valid number, although 134095 is.
 \end{example}
+
+\begin{example}
+The set $\mathbb{N}$ of all natural numbers is not a valid alphabet because it isn't finite.
+\end{example}
+
+\begin{exercise}
+For each one of the following, say whether it is a valid alphabet.
+Justify your answer.
+
+<ol>
+<li>$\setof{a}$</li>
+<li>$\setof{0,1}$</li>
+<li>the set of all English words that are spelled with at most 5 characters</li>
+<li>all natural numbers less than 1000</li>
+<li>the nucleobases of DNA: adenine, cytosine, guanine, thymine</li> 
+</ol>
+\end{exercise}
 
 ## String length
 
@@ -65,7 +73,6 @@ For instance,
 $\length{\text{ant}} = 3$,
 $\length{0770001} = 7$,
 and $\length{\text{a}} = 1$.
-
 The set of all strings over $\Sigma$ whose length is exactly $n$ is denoted by $\Sigma^n$.
 
 \begin{example}
@@ -73,14 +80,14 @@ Let $\Sigma \is \setof{a,b}$.
 Then $\Sigma^3$ contains all of the following strings, and only those:
 
 <ol>
-<li>$aaa$,</li>
-<li>$aab$,</li>
-<li>$aba$,</li>
-<li>$abb$,</li>
-<li>$baa$,</li>
-<li>$bab$,</li>
-<li>$bba$,</li>
-<li>$bbb$,</li>
+<li>$\mathit{aaa}$</li>
+<li>$\mathit{aab}$</li>
+<li>$\mathit{aba}$</li>
+<li>$\mathit{abb}$</li>
+<li>$\mathit{baa}$</li>
+<li>$\mathit{bab}$</li>
+<li>$\mathit{bba}$</li>
+<li>$\mathit{bbb}$</li>
 </ol>
 \end{example}
 
@@ -93,7 +100,7 @@ That's exactly what we found.
 \end{example}
 
 \begin{exercise}
-Which one of the following are members of $\setof{a,b}^4$?
+Which one of the following are members of $\setof{a,b}^4$, i.e. $\Sigma^4$ where $\Sigma$ contains $a$, $b$, and nothing else?
 <ol>
 <li>$\mathit{aaab}$</li>
 <li>$\mathit{aba}$</li>
@@ -136,7 +143,7 @@ This enumeration continues indefinitely, so there must be infinitely many distin
 Two infinite string sets are commonly defined over $\Sigma$.
 They are $\Sigma^*$ and $\Sigma^+$, respectively.
 The former contains all strings over $\Sigma$, whereas the latter contains all strings whose length is at least $1$.
-The only difference between the two is that $\Sigma^*$ also contain the **empty string** $\emptystring$.
+The only difference between the two is that $\Sigma^*$ also contains the **empty string** $\emptystring$.
 The empty string is the string counterpart of the number 0: it represents nothing.
 In fact, $\emptystring$ is the only string whose length is 0.
 
@@ -177,7 +184,6 @@ Enumerate the five shortest members of $\setof{a}^*$.
 ## Concatenation
 
 Given two $\Sigma$-strings $u$ and $v$, their **concatenation** $u \stringcat v$ is the result of "glueing" the left end of $v$ to the right end of $u$.
-Concatenation is associative, so $u \stringcat (v \stringcat w) = (u \stringcat v) \stringcat w$.
 
 \begin{example}
 Here are a few examples:
@@ -189,17 +195,29 @@ Here are a few examples:
 </ol>
 \end{example}
 
-Even though concatenation is associative, it is not commutative.
+Just like addition, concatenation is **associative**.
+This means that if we carry out multiple concatenations, it does not matter which concatenation step we resolve first: $u \stringcat (v \stringcat w) = (u \stringcat v) \stringcat w = u \stringcat v \stringcat w$.
+
+\begin{example}
+It does not matter in which order we combine <i>is</i> with <i>concatenation</i> and <i>associative</i> below:
+
+<ol>
+<li>$(\emph{concatenation} \stringcat \emph{is}) \stringcat \emph{associative} = \emph{concatenation is associvative}$</li>
+<li>$\emph{concatenation} \stringcat (\emph{is} \stringcat \emph{associative}) = \emph{concatenation is associvative}$</li>
+</ol>
+\end{example}
+
+Even though concatenation is associative, it is not **commutative**.
 That is to say, $u \stringcat v$ and $v \stringcat u$ are not necessarily the same.
 
 \begin{example}
 Let $u \is \text{house}$ and $v \is \text{boat}$.
-Then $u \stringcat v$ is *houseboat*, whereas $v \stringcat u$ is *boathouse*.
+Then $u \stringcat v$ is <i>houseboat</i>, whereas $v \stringcat u$ is <i>boathouse</i>.
 Those are not the same strings (and they also happen to mean completely different things).
 \end{example}
 
 Note the special behavior of the empty string: $u \stringcat \emptystring = \emptystring \stringcat u = u$. 
-This makes sense: adding nothing to $u$ does not change $u$, just like adding 0 to a number does not change that number.
+This makes sense because adding nothing to $u$ does not change $u$, just like adding 0 to a number does not change that number.
 
 Sometimes concatenation is not explicitly indicated, so that instead of $u \stringcat v$ one may simply write $\mathit{uv}$.
 

@@ -20,27 +20,29 @@ We will continue at a leisurely pace, with optional formal sections sprinkled in
 
 ## Formal definition of negative grammars
 
+An **alphabet** is a finite set of symbols.
+
 \begin{definition}
-Let $\Sigma$ be some alphabet, and $\Sigma_\$$ its extension with a distinguished edge marker symbol $\$$.
+Let $\Sigma$ be some alphabet, and $\Sigma_\$$ its extension with a distinguished edge marker symbol $\$ \notin \Sigma$.
 An $n$-gram over $\Sigma_\$$ is an element of $\Sigma_\$^n$ ($n \geq 1$).
-A **negative $n$-gram grammar** $G$ over alphabet $\Sigma$ is a finite set of $n$-grams over $\Sigma_\$$.
+A <b>negative $n$-gram grammar</b> $G$ over alphabet $\Sigma$ is a finite set of $n$-grams over $\Sigma_\$$.
 A string $s$ over $\Sigma$ is well-formed with respect to $G$ iff there are no $u, v$ over $\Sigma_\$$ and no $g \in G$ such that
 $ \$^{n-1} \stringcat s \stringcat \$^{n-1} = u \stringcat g \stringcat v$.
-The **language of $G$**, denoted $L(G)$, contains all strings that are well-formed with respect to $G$, and only those.
+The <b>language of $G$</b>, denoted $L(G)$, contains all strings that are well-formed with respect to $G$, and only those.
 \end{definition}
 
 \begin{example}
-Suppose $\Sigma \is \setof{C, V}$.
+Suppose $\Sigma \is \setof{C, V}$, where C represents consonants and V vowels.
 One string over $\Sigma$ is $\mathit{CVCVCV}$, an instance of a very simple CV-syllable template.
-Assume $G$ contains $\mathit{CC}$ and $\mathit{VC}$.
-The first bigram is not a problem since there are no strings $u$ and $v$ such that $\$\mathit{CVCV}\$ = u \stringcat \mathit{CC} \stringcat v$.
+Assume $G$ contains $\mathit{CC}$ and $\mathit{VC}$ and let's see if the string $\mathit{CVCVCV}$ is well-formed with respect to $G$.
+The bigram $\mathit{CC}$ is not a problem since there are no strings $u$ and $v$ such that $\$\mathit{CVCV}\$ = u \stringcat \mathit{CC} \stringcat v$, which means that $\mathit{CVCVCV}$ does not contain the forbidden bigram $\mathit{CC}$.
 But clearly $\$\mathit{CVCV}\$ = \$\mathit{C} \stringcat \mathit{VC} \stringcat \mathit{V}\$$.
-So $\mathit{CV}$ is a component of $\mathit{CVCV}$, and the string is ruled out by $G$.
+So $\mathit{CV}$ is a component of $\mathit{CVCV}$, and as a result the string is ruled out by $G$.
 \end{example}
 
 \begin{definition}
-A **mixed negative $n$-gram grammar** $G$ is a finite set of strings over $\Sigma$ such that $n$ is the length of the longest string in $G$.
-A negative $n$-gram grammar that is not mixed is called **strict**.
+A <b>mixed negative $n$-gram grammar</b> $G$ is a finite set of strings over $\Sigma$ such that $n$ is the length of the longest string in $G$.
+A negative $n$-gram grammar that is not mixed is called <b>strict</b>.
 \end{definition}
 
 ## Normal form theorem
@@ -62,3 +64,7 @@ Then there is some $g \in G'$ such that $ \$^{n-1} \stringcat s \stringcat \$^{n
 But then there must $u'$, $g'$ and $v'$ over $\Sigma$ such that $g = u' \stringcat g' \stringcat v'$ and $g' \in G$.
 It follows that $s \notin L(G)$.
 \end{proof}
+
+And there you have it.
+All the ground we've covered in dozens of pages so far, condensed into less than one page.
+That's the power of math.

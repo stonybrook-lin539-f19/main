@@ -10,7 +10,7 @@ Intuitively, a set is a collection of objects, but with two important twists:
 Suppose you want to keep a record of which words occur in a text.
 You aren't interested in how often a given word occured, just whether it occurs at all.
 Nor do you care in which order the words occurred in the text.
-So you are actually interested in the *set* of words that occur in the text.
+So you are actually interested in the <i>set</i> of words that occur in the text.
 \end{example}
 
 ```python
@@ -35,11 +35,11 @@ Each property is explained in detail below, but let's first put some helpful not
 Sets are often written as lists with curly braces around them.
 So $\setof{a, b, c, d}$ denotes the set containing $a$, $b$, $c$, $d$.
 Here $a$, $b$, $c$, $d$ are some arbitrary objects.
-This is known as *list notation*.
-More complex sets are defined with [set-builder notation](./fixme).
+This is known as **list notation**.
+More complex sets are defined with [**set-builder notation**, which will be covered in a later unit](./fixme).
 
 \begin{example}
-Consider the string *If John slept, then Mary left.*
+Consider the string <i>If John slept, then Mary left</i>.
 Its set of words (ignoring sentence-initial capitalization) is
 $\setof{
 \text{if},
@@ -63,40 +63,32 @@ Write the following as a set:
 
 ## Elements and set membership
 
-The objects contained in a set are called its *elements* or *members*.
+The objects contained in a set are called its **elements** or **members**.
 One writes $e \in S$ to indicate that $e$ is an element of $S$.
 The opposite is denoted $e \notin S$: $e$ is not an element of $S$.
-The symbol $\in$ thus indicates *set membership*.
+The symbol $\in$ thus indicates **set membership**.
 
 \begin{example}
-Let $W$ be the set of words in the string *If John slept, then Mary left.*
-Then it holds that $\text{left} \in W$ and $\text{right} \notin W$.
-But it is not the case that $\text{then} \notin W$ or $\text{awake} \in W$.
+Let $W$ be the set of words in the string <i>If John slept, then Mary left</i>.
+Then it holds that $\emph{left} \in W$ and $\emph{right} \notin W$.
+But it is not the case that $\emph{then} \notin W$ or $\emph{awake} \in W$.
 \end{example}
 
 Sometimes $\ni$ is used as the mirror image of $\in$.
 For example, $a \in S$ could also be written as $S \ni a$.
 
 \begin{example}
-Continuing the previous example, it is true that $\text{left} \in W \ni \text{then}$.
-That is to say, both $\text{left} \in W$ and $\text{then} \in W$ are true.
+Continuing the previous example, it is true that $\emph{left} \in W \ni \emph{then}$.
+That is to say, both $\emph{left} \in W$ and $\emph{then} \in W$ are true.
 \end{example}
 
 \begin{exercise}
 Put $\in$, $\ni$, $\notin$, $\not\ni$ in the gaps below as appropriate:
 <ol>
-<li>
-$5 \_ \setof{1,2,4,5,8}$
-</li>
-<li>
-$6 \_ \setof{1,2,4,5,8}$
-</li>
-<li>
-$\setof{5} \_ \setof{1,2,4,5,8}$
-</li>
-<li>
-$5 \_ \setof{1,2,4,5,8} \_ 6$
-</li>
+<li>$5 \_ \setof{1,2,4,5,8}$</li>
+<li>$6 \_ \setof{1,2,4,5,8}$</li>
+<li>$\setof{5} \_ \setof{1,2,4,5,8}$</li>
+<li>$5 \_ \setof{1,2,4,5,8} \_ 6$</li>
 </ol>
 \end{exercise}
 
@@ -110,11 +102,12 @@ $\setof{a,b,c} =
  \setof{b,a,c} =
  \setof{b,c,a} =
  \setof{c,a,b} =
- \setof{c,b,a}
-$.
+ \setof{c,b,a}$.
 
 \begin{example}
-Consider the strings *If John slept, then Mary left* and *If Mary left, then John slept*.
+Consider the strings
+<i>If John slept, then Mary left</i> and
+<i>If Mary left, then John slept</i>.
 While they are clearly distinct sentences, their sets of words are identical.
 \end{example}
 
@@ -135,21 +128,15 @@ print("Yes") if set1 == set2 else print("No")
 \begin{exercise}
 For each one of the following, fill the gap with $=$ or $\neq$ as appropriate:
 <ol>
-<li>
-$\setof{a,b} \_ \setof{a,b}$
-</li>
-<li>
-$\setof{b,a} \_ \setof{a,b}$
-</li>
-<li>
-$\setof{b,a,c,d} \_ \setof{e,a,b,d}$
-</li>
+<li>$\setof{a,b} \_ \setof{a,b}$</li>
+<li>$\setof{b,a} \_ \setof{a,b}$</li>
+<li>$\setof{b,a,c,d} \_ \setof{e,a,b,d}$</li>
 </ol>
 \end{exercise}
 
 ## Lack of duplicates/Idempotency
 
-Sets are *idempotent*, which means that duplicates are ignored.
+Sets are **idempotent**, which means that duplicates are ignored.
 So $\setof{a,b} = \setof{a,a,b} = \setof{a,b,b,a,b,a,b,a,a}$.
 It also holds that $\setof{a} = \setof{a,a} = \setof{a,a,a}$, and so on.
 
@@ -168,14 +155,14 @@ print(set1 == set2)
 ```
 
 \begin{example}
-Linguists distinguish between *word types* and *word tokens*.
-The sentence *dogs love dogs* contain two tokens of the type *dogs*, and one token of the type *love*.
-The sentences *dogs love* and *dogs love dogs* are different with respect to word tokens, but identical with respect to word types.
+Linguists distinguish between <b>word types</b> and <b>word tokens</b>.
+The sentence <i>dogs love dogs</i> contain two tokens of the type <i>dogs</i>, and one token of the type <i>love</i>.
+The sentences <i>dogs love</i> and <i>dogs love dogs</i> are different with respect to word tokens, but identical with respect to word types.
 So if you care about word types rather than word tokens, you're dealing with a set because the only thing that matters is which words the text contains, not how many tokens of each word.
 \end{example}
 
 \begin{example}
-Consider the sentence *If police police police, then police police police*.
+Consider the sentence <i>If police police police, then police police police</i>.
 Its set of words (ignoring capitalization) is 
 $\setof{
 \text{if},
@@ -187,25 +174,19 @@ $\setof{
 \begin{exercise}
 For each one of the following, fill the gap with $=$ or $\neq$ as appropriate:
 <ol>
-<li>
-$\setof{a,b} \_ \setof{a,a,b,b}$
-</li>
-<li>
-$\setof{b,a} \_ \setof{a,b,a}$
-</li>
-<li>
-$\setof{c,b,a,a,d,c} \_ \setof{a,a,b,d,c,c,c}$
-</li>
-$\setof{a} \_ \setof{a,a,a,a,a,a,c,a,a,a,a,a,a}$
+<li>$\setof{a,b} \_ \setof{a,a,b,b}$</li>
+<li>$\setof{b,a} \_ \setof{a,b,a}$</li>
+<li>$\setof{c,b,a,a,d,c} \_ \setof{a,a,b,d,c,c,c}$</li>
+<li>$\setof{a} \_ \setof{a,a,a,a,a,a,c,a,a,a,a,a,a}$</li>
 </ol>
 \end{exercise}
 
 \begin{exercise}
-The sentence *If police police police, then police police police* actually uses two different word types.
-It just just so happens that both are pronounced and spelled *police*.
-But one is the noun *police*, the other one the verb *police*.
+The sentence <i>If police police police, then police police police</i> actually uses two different word types.
+It just just so happens that both are pronounced and spelled <i>police</i>.
+But one is the noun <i>police</i>, the other one the verb <i>police</i>.
 So we might want to annote the string as follows:
-*If police[N] police[V] police[N], then police[N] police[V] police[N]*.
+<i>If police[N] police[V] police[N], then police[N] police[V] police[N]</i>.
 Assume that words are annotated with their part of speech in this fashion.
 Then what would be the corresponding set of words?
 \end{exercise}
