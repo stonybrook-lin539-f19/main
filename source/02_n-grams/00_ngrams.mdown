@@ -192,7 +192,7 @@ A trigram is a sequence of three elements, a 4-gram contains four elements, and 
 Let us first look at the bigrams, trigrams, and 4-grams of <i>kobinal</i>.
 The bigrams of <i>kobinal</i> are
 <i>ko</i>, <i>ob</i>, <i>bi</i>, <i>in</i>, <i>na</i>, and <i>al</i>.
-The trigrams are <i>kob</i>, <i>obi</i>, <i>bin</i>, and <i>nal</i>.
+The trigrams are <i>kob</i>, <i>obi</i>, <i>bin</i>, <i>ina</i>, and <i>nal</i>.
 The 4-grams are <i>kobi</i>, <i>obin</i>, <i>bina</i>, and <i>inal</i>.
 
 <br>

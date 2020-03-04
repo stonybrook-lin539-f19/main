@@ -37,7 +37,7 @@ One string over $\Sigma$ is $\mathit{CVCVCV}$, an instance of a very simple CV-s
 Assume $G$ contains $\mathit{CC}$ and $\mathit{VC}$ and let's see if the string $\mathit{CVCVCV}$ is well-formed with respect to $G$.
 The bigram $\mathit{CC}$ is not a problem since there are no strings $u$ and $v$ such that $\$\mathit{CVCV}\$ = u \stringcat \mathit{CC} \stringcat v$, which means that $\mathit{CVCVCV}$ does not contain the forbidden bigram $\mathit{CC}$.
 But clearly $\$\mathit{CVCV}\$ = \$\mathit{C} \stringcat \mathit{VC} \stringcat \mathit{V}\$$.
-So $\mathit{CV}$ is a component of $\mathit{CVCV}$, and as a result the string is ruled out by $G$.
+So $\mathit{VC}$ is a component of $\mathit{CVCV}$, and as a result the string is ruled out by $G$.
 \end{example}
 
 \begin{definition}
