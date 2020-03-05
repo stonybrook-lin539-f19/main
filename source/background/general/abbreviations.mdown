@@ -18,4 +18,4 @@ Either way the left hand is holding at least two marvels.
 
 The use of *w.l.o.g.* here modifies the restriction to the *right* hand.
 This restriction is made so that one does not have to speak of *one hand* and *the other hand*, which makes the proof slightly more readable.
-But obviously the proof would work just as well if we had assumed that the left hand holds less than two marvels.
+But obviously the proof would work just as well if we had assumed that it is the left hand that holds less than two marvels, not the right one.
