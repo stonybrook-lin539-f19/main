@@ -1,6 +1,5 @@
 **Prerequisites**
 
-- general (big operators)
 - sets (operations)
 - multisets (basics)
 
