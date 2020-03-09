@@ -3,7 +3,7 @@
 Very often, a formula requires you to combine a fixed collection of elements in a specific manner.
 For example, we may have a set of natural numbers $S \is \setof{10, 35, 100, 275, 1000, 8883}$ and want to combine them with some specific operation, say, $\oplus$.
 It does not matter what this operation does; $\oplus$ has no standardized meaning, it could be literally anything.
-Of course we could write out a formula like $10 \oplus 35 \oplus 275 \oplus 1000 \oplus 8883$.
+Of course we could write out a formula like $10 \oplus 35 \oplus 100 \oplus 275 \oplus 1000 \oplus 8883$.
 But this has two downsides:
 
 1. It is tedious for small sets and infeasible for large ones.
@@ -88,6 +88,45 @@ $$
 
 The operator $\prod$ works exactly like $\sum$, except that it denotes multiplication (so the letter **p**i is used for the **p**roduct operation).
 
+\begin{example}
+$$
+\prod_{n \in \setof{2,5,8,10}} n
+= 2 \mult 5 \mult 8 \mult 10 = 800
+$$
+\end{example}
+
+\begin{example}
+$$
+\prod_{1 \leq n \leq 10} n
+=
+1 \mult 2 \mult 3 \mult 4 \mult 5 \mult 6 \mult 7 \mult 8 \mult 9 \mult 10
+=
+3,628,800
+$$
+\end{example}
+
+\begin{example}
+$$
+\prod_{n=-5}^7
+=
+-5 \mult -4 \mult -3 \mult -2 \mult -1 \mult 0 \mult 1 \mult 2 \mult 3 \mult 4 \mult 5 \mult 6 \mult 7
+=
+0
+$$
+\end{example}
+
+\begin{example}
+$$
+\prod_{n = 1}^{3} 2 - (n \mult 3)
+=
+(2 - (1 \mult 3)) \mult (2 - (2 \mult 3)) \mult (2 - (3 \mult 3))
+=
+-1 \mult -4 \mult -7
+=
+-28
+$$
+\end{example}
+
 ## Other examples
 
 Many binary operators have big counterparts.
@@ -95,24 +134,12 @@ This includes $\cap$ and $\cup$ in set theory, $\wedge$ and $\vee$ in logic, and
 Sometimes these operators can be nested or appear in sequence.
 
 \begin{example}
-Let $S$ be a finite set of sets of natural numbers.
-More precisely, $S = \setof{ \setof{0,3,6}, \setof{2,3,9}, \setof{2,9}}$.
+Let $\mathcal{S}$ be a finite set of sets of natural numbers.
+More precisely, $\mathcal{S} \is \setof{ \setof{0,3,6}, \setof{2,3,9}, \setof{2,9}}$.
 Then
 
 $$
-\sum_{n \in \bigcup_{s \in S} s} n
-=
-\sum_{n \in \setof{0,3,6} \cup \setof{2,3,9} \cup \setof{2,9}} n
-=
-\sum_{n \in \setof{0,2,3,6,9}} n
-=
-0 + 2 + 3 + 6 + 9
-=
-20
-$$
-
-$$
-\prod_{s \in S} \sum_{n \in s} n
+\prod_{S \in \mathcal{S}} \sum_{n \in S} n
 =
 \sum_{n \in \setof{0, 3, 6}} n
 \mult

@@ -38,7 +38,7 @@ Some sets can even be infinite, like the set of natural numbers or just the even
 If one cannot write down a list of all the elements, just how does on specify such a list?
 
 One could approximate these sets, e.g. by writing $\setof{2, 4, \ldots}$ for the set of natural numbers that are even and greater than $0$.
-But this is imprecise because there are many other sets that that contain these numbers, for example the set of powers of 2: $\setof{1, 2, 4, 8, 16, \ldots}$.
+But this is imprecise because there are many other sets that contain these numbers, for example the set of powers of 2: $\setof{1, 2, 4, 8, 16, \ldots}$.
 You might object that $1$ is implicitly excluded because we the set started with $2$, but that's just your intuition, not a firm rule.
 Remember, sets have no order, so a set does not start with anything.
 And even if we take such human intuitions into account, it's still too imprecise for more complex cases.
@@ -76,7 +76,7 @@ print(built_set)
 
 There is no limit on the complexity of set-builder notation.
 For example, one could nest multiple set definitions, as in $\setof{ \setof{ i \mid 0 \leq i \leq n } \mid n \text{ a natural number} }$.
-This is a set that contains all initial intervals of the natural number: $\setof{ \setof{0}, \setof{0,1}, \setof{0,1,2}, \setof{0,1,2,3}, \ldots }$ (yes, sets can contain other sets, more on that in a later unit).
+This is a set that contains all initial intervals of the natural numbers: $\setof{ \setof{0}, \setof{0,1}, \setof{0,1,2}, \setof{0,1,2,3}, \ldots }$ (yes, sets can contain other sets, more on that in a later unit).
 However, such nested definitions are often cumbersome to read, so try to avoid this.
 Quite generally, definitions should not intimidate or dazzle the reader.
 
@@ -85,10 +85,10 @@ A good definition is as complex as necessary and as simple as possible.
 \end{advice}
 
 \begin{example}
-The following definition is more complex because it uses multiple variables and add uses the expression to define two values at the same time.
+The following definition is more complex because it uses multiple variables and uses the expression to define two values at the same time.
 But it is still fairly simple and could be used in a definition:
 $$
-\setof{ x^y, y^{10} | 1 \leq x \leq 3, y \in \setof{2,7}, \text{ and } $x + y \geq 5$}
+\setof{ x^y, y^{10} | 1 \leq x \leq 3, y \in \setof{2,7}, \text{ and } x + y \geq 5}
 $$
 
 The table below shows all the values for the variables and the resulting elements of the set.
@@ -106,27 +106,17 @@ The table below shows all the values for the variables and the resulting element
 \begin{exercise}
 For each one of the following, put $=$ or $\neq$ in the gap as appropriate:
 <ol>
-<li>
-$\setof{0,1,2,3,4,5} \_ \setof{ 10 - x \mid x \in \setof{5,6,7,8,9,10} }$
-</li>
-<li>
-$\emptyset \_ \setof{ x \mid x \text{ is both a square and circle}}$
-</li>
-<li>
-$\setof{2,3,5,7} \_ \setof{n + 1 \mid n \text{ is a prime number between 0 and 10}}$
-</li>
+<li>$\setof{0,1,2,3,4,5} \_ \setof{ 10 - x \mid x \in \setof{5,6,7,8,9,10} }$</li>
+<li>$\emptyset \_ \setof{ x \mid x \text{ is both a square and circle}}$</li>
+<li>$\setof{2,3,5,7} \_ \setof{n + 1 \mid n \text{ is a prime number between 0 and 10}}$</li>
 </ol>
 \end{exercise}
 
 \begin{exercise}
 Express the following in terms of set-builder notation:
 <ol>
-<li>
-$\setof{\text{George Washington}, \text{John Adams}, \text{Thomas Jefferson}}$
-</li>
-<li>
-$\setof{\text{a}, \text{e}, \text{i}, \text{o}, \text{u}}$
-</li>
+<li>$\setof{\text{George Washington}, \text{John Adams}, \text{Thomas Jefferson}}$</li>
+<li>$\setof{\text{a}, \text{e}, \text{i}, \text{o}, \text{u}}$</li>
 </ol>
 \end{exercise}
 

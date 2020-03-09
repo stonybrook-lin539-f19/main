@@ -1,7 +1,7 @@
 **Prerequisites**
 
 - general (big operators)
-- <s>sets (cardinality)</s> (no longer needed)
+- sets (operations)
 - multisets (basics)
 
 # Operations on multisets
@@ -57,83 +57,10 @@ print("Relative complement of\n{} and\n{} is\n{}\n".format(B, A, B-A))
 Fill each gap with a matching multiset or operator.
 
 <ol>
-<li>
-$\setof{a:3, b:2, c:1} \cup \setof{a:5, b:1, d:8} = \_$
-</li>
-<li>
-$\setof{c:17} \_ \setof{a:5, b:1, d:8} = \setof{c:17}$
-</li>
-<li>
-$\setof{a:3, b:3} \cup \_ = \setof{a:5, b:3, c:5, d:6}$
-</li>
-<li>
-$\_ \_ \setof{a:5, b:1, d:8} = \setof{a:3, b:1}$
-</li>
-</ol>
-\end{exercise}
-
-Given a multiset $S_M$, we also write $S_M(a)$ for the count of $a$ in $S_M$.
-
-\begin{example}
-Let $A_M \is \setof{a:3, b:2, c:1}$ and $B_M \is \setof{a:1, b:1, c:1, d:1}$.
-Then $A_M(a) = 3$ and $B_M(a) = 1$, whereas $A_M(c) = B_M(c) = 1$.
-\end{example}
-
-The **cardinality** of a multiset with finitely many elements is the sum of all its counts.
-As a formula, this looks as follows:
-
-$$
-    \card{S_M} \is \sum_{s \in S_M} S_M(s)
-$$
-
-This formula uses the symbol $\sum$ as an abbreviation for addition.
-The subscript on $\sum$ tell us that $s$ should be substituted in all possible ways by elements of $S_M$.
-For multiset $S_M \is \setof{s_1: c_1, s_2: c_2, \ldots , s_n: c_n}$ the formula expands to $S_M(s_1) + S_M(s_2) + \cdots + S_M(s_n)$, which in turn reduces to $c_1 + c_2 + \cdots + c_n$.
-
-\begin{example}
-    Consider once more the multisets $A_M \is \setof{a:3, b:2, c:1}$ and $B_M \is \setof{a:1, b:1, c:2, d:1}$, for which the following hold:
-    $$
-    \begin{align*}
-        \card{A_M} &= \sum_{s \in A_M} A_M(s)\\
-                   &= A_M(a) + A_M(b) + A_M(c)\\
-                   &= 3 + 2 + 1\\
-                   &= 6\\
-        \card{B_M} &= \sum_{s \in B_M} B_M(s)\\
-                   &= B_M(a) + B_M(b) + B_M(c) + B_M(d)\\
-                   &= 1 + 1 + 2 + 1\\
-                   &= 5\\
-        \card{A_M \cup B_M} &= 8\\
-        \card{A_M \cap B_M} &= 3\\
-        \card{A_M - B_M} &= 3\\
-        \card{B_M - A_M} &= 2\\
-    \end{align*}
-    $$
-\end{example}
-
-```python
-def card(multiset):
-    return sum(multiset.values())
-
-print("|{}| = {}".format(A, card(A)))
-print("|{}| = {}".format(B, card(B)))
-print("Union of {} and {} is {}".format(A, B, multiset_union(A, B)))
-print("Intersection of {} and {} is {}".format(A, B, multiset_intersection(A, B)))
-print("Relative complement of {} and {} is {}".format(A, B, A-B))
-```
-
-\begin{exercise}
-Calculate the cardinality of the following multisets:
-
-<ol>
-<li>
-$\setof{a:17}$
-</li>
-<li>
-$\setof{\text{John}: 5, \text{Mary}: 5, \text{Bill}: 10}$
-</li>
-<li>
-$\setof{a: 0, b: 0, c:0}$
-</li>
+<li>$\setof{a:3, b:2, c:1} \cup \setof{a:5, b:1, d:8} = \_$</li>
+<li>$\setof{c:17} \_ \setof{a:5, b:1, d:8} = \setof{c:17}$</li>
+<li>$\setof{a:3, b:3} \cup \_ = \setof{a:5, b:3, c:5, d:6}$</li>
+<li>$\_\ \_ \setof{a:5, b:1, d:8} = \setof{a:3, b:1}$</li>
 </ol>
 \end{exercise}
 
@@ -171,14 +98,8 @@ Calculate the final result of the equations below.
 If the result cannot be uniquely determined without additional assumptions, explain why.
 
 <ol>
-<li>
-$3 \multimult (\setof{a:5, b:3}_M \multisum \setof{a:1, c:5, d:6}_M) - (\setof{a:5, b:3}_M \cap \setof{a:1, c:5, d:6}_M)$
-</li>
-<li>
-$\setof{\text{John}, \text{John}} \multisum 3 \multimult \setof{\text{Mary}, \text{Mary}, \text{Mary}, \text{John}}_M$
-</li>
-<li>
-$\setof{a:5, c:1}_M \cup \setof{a:3, b:3, c:3, d:3}_M \multisum \setof{a:1}_M$
-</li>
+<li>$3 \multimult \big( (\setof{a:5, b:3}_M \multisum \setof{a:1, c:5, d:6}_M) - (\setof{a:5, b:3}_M \cap \setof{a:1, c:5, d:6}_M) \big )$</li>
+<li>$\setof{\text{John}, \text{John}} \multisum 3 \multimult \setof{\text{Mary}, \text{Mary}, \text{Mary}, \text{John}}_M$</li>
+<li>$\setof{a:5, c:1}_M \cup \setof{a:3, b:3, c:3, d:3}_M \multisum \setof{a:1}_M$</li>
 </ol>
 \end{exercise}
