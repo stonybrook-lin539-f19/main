@@ -10,7 +10,7 @@ This unit introduced $n$-grams as a fundamental concepts of computational and th
 - Multiple grammars can be combined into a single grammar.
     - Negative grammars: union of sets
     - Positive grammars: intersection of sets
-- Whereas an $n$-gram grammar is a set, a bag of words model is a multiset.
+- Whereas an $n$-gram grammar is a set, a bag-of-words model is a multiset.
     - The multiset counts for each word type its number of word tokens.
     - Multiset sum and scalar multiplication can be used to combine and modify counts.
 - Due to Zipf's law, a small number of words make up the majority of each text.

@@ -18,11 +18,14 @@ $$
     w_4 & \is \setof{\text{Aristotle}: 0, \text{ethics}: 7, \text{metaphysics}: 3, \text{Plato}: 9, \text{Sokrates}: 0}\\
 \end{array}
 $$
-With these counts, the best match for the query *Aristotle metaphysics* is $w_1$ (assuming that the first word of the query is 50\% more important than the second one).
-Now suppose that the query is *Aristotle's metaphysics*, which we analyze as consisting of three words: *Aristotle*, the possessive marker *'s*, and *metaphysics*.
+With these counts, the best match for the query <i>Aristotle metaphysics</i> is $w_1$ (assuming that the first word of the query is 50\% more important than the second one).
+Now suppose that the query is <i>Aristotle's metaphysics</i>, which we analyze as consisting of three words:
+<i>Aristotle</i>,
+the possessive marker <i>'s</i>, and
+<i>metaphysics</i>.
 Since we have no counts for the possessive marker, the results don't change and $w_1$ is still the best match.
 
-But let's assume that we actually included counts for *'s*, yielding the following multisets:
+But let's assume that we actually included counts for <i>'s</i>, yielding the following multisets:
 $$
 \begin{array}{rl}
     w_1 & \is \setof{\text{Aristotle}: 9, \text{ethics}: 3, \text{metaphysics}: 0, \text{Plato}: 6, \text{Sokrates}: 0,
@@ -35,7 +38,10 @@ $$
     \text{'s}: 86}\\
 \end{array}
 $$
-The corresponding multisets for the words in the query are $_MA$ for *Aristotle*, $_MP$ for *metaphysics*, and $_MS$ for the possessive marker.
+The corresponding multisets for the words in the query are
+$_MA$ for <i>Aristotle</i>,
+$_MP$ for <i>metaphysics</i>, and
+$_MS$ for the possessive marker.
 $$
 \begin{array}{rl}
     _MA & \is \setof{w_1: 9, w_2: 1, w_3: 4, w_4: 0}\\
@@ -44,23 +50,25 @@ $$
 \end{array}
 $$
 Let's assume a weighting where the counts for the $n$-th query are multiplied by $\frac{1}{n}$ (rounded down).
-$$
+
 \begin{align*}
     1 \multimult _MA \multisum
     \frac{1}{2} \multimult _MS \multisum
     \frac{1}{3} \multimult _MP
-    &=
+    =&
     \setof{w_1: 9, w_2: 1, w_3: 4, w_4: 0}
-    \multisum
+    \multisum\\
+    &
     \setof{w_1:10, w_2: 13, w_3: 1, w_4: 43}
-    \multisum
+    \multisum\\
+    &
     \setof{w_1: 0, w_2: 3, w_3: 1, w_4: 1}
     \\
-    &=
+    =&
     \setof{w_1: 19, w_2: 17, w_3: 6, w_4: 44}
 \end{align*}
-$$
-As you can see, $w_4$ is now the best match, even though it does not contain a single mention of *Aristotle*, the most important word in the search query.
+
+As you can see, $w_4$ is now the best match, even though it does not contain a single mention of <i>Aristotle</i>, the most important word in the search query.
 \end{example}
 
 This example shows that not all words are on equal footing as far as the bag of words model is concerned.
@@ -115,7 +123,7 @@ plt.show()
 \begin{exercise}
 Suppose you have a text with 20,000 words where the most frequent word occurs 1068 times.
 Assuming a distribution that is exactly Zipfian, calculate the frequencies for rank 2, 3, 5, 15, 50, 100, 200, 500, and 1000.
-Give a rough estimate how many of the top ranks jointly make up at least 50% of the text.
+Give a rough estimate how many of the top ranks jointly make up at least 50\% of the text.
 \end{exercise}
 
 Zipf's law is more than an interesting curiosity, it has noticeable repercussions in practice.
@@ -167,28 +175,28 @@ Here is a list of English stop words (using a very lenient definition of word th
 Given such a list of stop words, it is a simple task to remove all stop words from a text.
 
 \begin{example}
-Here is a very short mini-text, the first sentence of Samuel Beckett's novel *Murphy*: *The sun shone, having no alternative, on the nothing new*.
+Here is a very short mini-text, the first sentence of Samuel Beckett's novel <i>Murphy</i>:
+<i>The sun shone, having no alternative, on the nothing new</i>.
 We can then go through the text word by word and delete each word token that is on our list of stop words.
 We ignore capitalization, but treat punctuation as separate words.
 
 <ol>
-<li>*the*: delete</li>
-<li>*sun*: keep</li>
-<li>*shone*: keep</li>
-<li>*,*: keep</li>
-<li>*having*: delete</li>
-<li>*no*: delete</li>
-<li>*alternative*: keep</li>
-<li>*,*: keep</li>
-<li>*on*: delete</li>
-<li>*the*: delete</li>
-<li>*nothing*: keep</li>
-<li>*new*: keep</li>
-<li>*.*: keep</li>
-<li>
+<li><i>the</i>: delete</li>
+<li><i>sun</i>: keep</li>
+<li><i>shone</i>: keep</li>
+<li><i>,</i>: keep</li>
+<li><i>having</i>: delete</li>
+<li><i>no</i>: delete</li>
+<li><i>alternative</i>: keep</li>
+<li><i>,</i>: keep</li>
+<li><i>on</i>: delete</li>
+<li><i>the</i>: delete</li>
+<li><i>nothing</i>: keep</li>
+<li><i>new</i>: keep</li>
+<li><i>.</i>: keep</li>
 </ol>
 
-After stop word removal, the sentence has been truncated to *sun shone, alternative, nothing new*.
+After stop word removal, the sentence has been truncated to <i>sun shone, alternative, nothing new</i>.
 Clearly the removal of stop words has completely destroyed the meaning of the sentence for humans.
 But a bag of words model can't capture meaning at this abstract level anyways, it can at best give a rough estimate as to what topics a text is about.
 For this limited understanding of text, removing stop words improves results.
@@ -245,7 +253,7 @@ The mathematical perspective can abstract away from these details to define func
 
 Mathematics has specialized notation to talk about functions, but let's put that aside for now.
 The most important fact about functions is that they can be so much more than what you've seen in your high school class.
-Yes $f(x) = 2 \mult x $ is a function that takes a number as its only argument and doubles it.
+Yes $f(x) = 2 \mult x$ is a function that takes a number as its only argument and doubles it.
 But so many more things are functions.
 A function is any kind of system that takes a fixed number of inputs and always returns the same output for the same input.
 
@@ -269,7 +277,7 @@ The functional perspective of $n$-gram grammars will be very useful later on whe
 \end{example}
 
 \begin{example}
-A [dispersive prism](https://en.wikipedia.org/wiki/Dispersive_prism) breaks light down into its spectral colors.
+A dispersive prism breaks light down into its spectral colors.
 It thus is a function that takes light as input and produces a unique spectral decomposition as its output.
 \end{example}
 
@@ -290,9 +298,24 @@ A soda machine corresponds to different functions depending on
 Explain why.
 \end{exercise}
 
+\begin{example}
+Consider a program that takes as input a collection of words and return a randomly generated sentence using those words.
+For instance, if you give it the works <i>Mary</i>, <i>ate</i>, and <i>sushi</i>, it may return
+
+<ol>
+<li><i>Mary ate sushi</i>, or</li>
+<li><i>sushi at Mary</i>, or</li>
+<li><i>sushi, Mary ate</i>, or</li>
+<li><i>Mary, sushi ate</i>.</li>
+</ol>
+
+This is not a function because one and the same input can result in different outputs.
+\end{example}
+
 \begin{exercise}
 For each one of the following, say whether or not it is a function (i.e. it takes a fixed number of arguments and no input can yield more than one output).
 If things can go either way depending on additional assumptions, explain why.
+Whether your answer is correct is less important than whether you can justify it based on your assumptions about how the world works.
 
 <ol>
 <li>$f(x) = x^2 - x$</li>
@@ -304,21 +327,21 @@ If things can go either way depending on additional assumptions, explain why.
 </ol>
 \end{exercise}
 
-Given this very general understanding of functions, we can define stop word removal as a function $\mathrm{del}$ that takes as its input a string $s$ and a set $S$ of stop words.
-Then the output $\mathrm{del}(s,S)$ is the unique string that is obtained from $s$ by deleting every symbol that is a member of $S$.
+Given this very general understanding of functions, we can define stop word removal as a function $\mathit{del}$ that takes as its input a string $s$ and a set $S$ of stop words.
+Then the output $\mathit{del}(s,S)$ is the unique string that is obtained from $s$ by deleting every symbol that is a member of $S$.
 And that's pretty much all that needs to be said.
 
 How exactly this deletion is carried out is immaterial here.
 We could process $s$ from left-to-right, right-to-left, inside out, or do something more complex like in the Python code above.
-None of these distinctions affect what output is produced by $\mathrm{del}(s,S)$.
+None of these distinctions affect what output is produced by $\mathit{del}(s,S)$.
 This is the strength of a mathematical definition of a function.
 It cuts out the procedural details to clearly state the connection between inputs and outputs.
 
-You might be flummoxed, though, that we defined $\mathrm{del}(s,S)$ is plain English. 
+You might be flummoxed, though, that we defined $\mathit{del}(s,S)$ is plain English. 
 All the functions you know from school were probably stated in terms of equations, e.g. $f(x,y,z) = x^y - 5 \mult z$.
 This isn't a necessity.
 Sometimes a function can be stated clearly enough without special notation.
-But for the curious among you, the next notebook gives a more formal definition of $\mathrm{del}(s,S)$.
+But for the curious among you, the next notebook gives a more formal definition of $\mathit{del}(s,S)$.
 
 You might also be wondering what we gain from defining stop word removal in mathematical terms.
 The notebook after the next one illustrates how a more abstract understanding in terms of mathematical functions can reveal surprising parallels between problems that seem entirely unrelated.

@@ -1,0 +1,26 @@
+\documentclass[tikz]{standalone}
+\usepackage[linguistics]{forest}
+
+\begin{document}
+\begin{forest}
+[$\mathit{del}_S(\mathit{abba})$
+    [$\emptystring$]
+    [$\stringcat$]
+    [$\mathit{del}_S(\mathit{bba})$
+        [$b$]
+        [$\stringcat$]
+        [$\mathit{del}_S(\mathit{ba})$
+            [$b$]
+            [$\stringcat$]
+            [$\mathit{del}_S(\mathit{a})$
+                [$\emptystring$]
+                [$\stringcat$]
+                [$\mathit{del}_S(\mathit{\emptystring})$
+                    [$\emptystring$]
+                ]
+            ]
+        ]
+    ]
+]
+\end{forest}
+\end{document}
