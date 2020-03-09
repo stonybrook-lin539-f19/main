@@ -32,6 +32,8 @@ sed -i 's/<\/li>/\x00/g' "$tmpsource"  # replace by NUL for single character mat
 sed -i 's/<li>\([^\x00]*\)\x00/\\item \1/g' "$tmpsource"
 # delete all <br> and <br />
 sed -i 's/<br\s*\/\?>//g' "$tmpsource"
+# IPA replacements
+sed -i 's/ʃ/\\textipa{S}/g' "$tmpsource"
 
 # convert with pandoc
 # cp "$tmpsource" tmpfile
