@@ -65,3 +65,13 @@ But the general principle is very close to mathematical practice and will be wit
 <li>Reduce complex systems to simple systems.</li>
 </ol>
 \end{advice}
+
+\begin{example}
+Suppose we are studying the set $\mathbb{Z}$ of <b>integers</b>, which contains $0$, $1$, $-1$, $2$, $-2$, and so on.
+We want to know what kind of mathematical system we get if we allow addition and subtraction of integers.
+What are the properties of this system?
+Well, the first thing we can say is that subtraction is a redundant operation because $m - n = m + (-n)$.
+For instance, $5 - 3 = 2 = 5 + (-3)$.
+So instead of $\mathbb{Z}$ with $+$ and $-$, we can focus on the simpler system $\mathbb{Z}$ with $+$ only.
+That will make our life quite a bit easier because there's only one operation to worry about instead of two.
+\end{example}
