@@ -1,43 +1,41 @@
-**Prerequisite**
-
-- Relations (notation)
-
 # Monotonicity
 
 When the domain and co-domain of a function each have an order defined over them, one can ask whether the function is order-preserving.
 
 \begin{example}
 Consider the function $f: \mathbb{N} \rightarrow \mathbb{N}$ with $x \mapsto 2x$.
-The (co-)domain $\mathbb{N}$ is the set of natural numbers, which can be ordered by $\leq$ in the usual fashion.
+The domain of $f$ is $\mathbb{N}$, the set of natural numbers, which is also the co-domain of $f$.
+The set of natural numbers can be ordered by $\leq$ in the usual fashion, e.g. $2 \leq 4$ or $0 \leq 0$.
 The function $f$ respects the order induced by $\leq$.
-For any two $x$ and $y$ such that$x \leq y$, it also holds that $f(x) \leq f(y)$.
+For any two $x$ and $y$ such that $x \leq y$, it also holds that $f(x) \leq f(y)$.
 For instance, $4 \leq 10$ and $f(4) = 8 \leq 20 = f(10)$.
 \end{example}
 
 \begin{example}
-The function $f: \mathbb{R} \rightarrow \mathbb{R}$ with $f(x) = x^2 - 5x$ does not preserve order in all cases.
-We have $3 < 5$ and $f(3) = 9 - 5 \mult 3 = -6 < 0 = 25 - 5 \mult 5 = f(5)$.
-But we also have $0 < 1$ yet $f(0) = 0 - 5 \mult 0 = 0 > -4 = 1 - 5 \mult 1 = f(1)$.
+Let $f: \mathbb{R} \rightarrow \mathbb{R}$ be a function from real numbers to real numbers such that $f(x) = x^2 - 5x$.
+Then $f$ does not preserve order in all cases.
+We have $3 \leq 5$ and $f(3) = 9 - 5 \mult 3 = -6 \leq 0 = 25 - 5 \mult 5 = f(5)$.
+But we also have $0 \leq 1$ yet $f(0) = 0 - 5 \mult 0 = 0 \geq -4 = 1 - 5 \mult 1 = f(1)$.
 \end{example}
 
 This property of order preservation is known as **monotonicity**.
-You might know monotonicity in the special case of a function from reals to reals.
-In this case, one can draw the function as a line in a coordinate system.
+You might have already encountered monotonicity in the special case of a function from reals to reals.
+In this case, one can draw the function as a line or curve in a coordinate system.
 
-```python
-import numpy as np
-import matplotlib.pyplot as plt
-
-f = lambda x: 2*x
-g = lambda x: x**2
-h = lambda x: 2*x - 2**(x - 5) + 2**10
-i = lambda x: x/2 - 2**x
-
-for func in [f, g, h, i]:
-    values = np.linspace(-10, 10)
-    plt.plot(values, func(values))
-    plt.show()
-```
+<!-- ```python -->
+<!-- import numpy as np -->
+<!-- import matplotlib.pyplot as plt -->
+<!--  -->
+<!-- f = lambda x: 2*x -->
+<!-- g = lambda x: x**2 -->
+<!-- h = lambda x: 2*x - 2**(x - 5) + 2**10 -->
+<!-- i = lambda x: x/2 - 2**x -->
+<!--  -->
+<!-- for func in [f, g, h, i]: -->
+<!--     values = np.linspace(-10, 10) -->
+<!--     plt.plot(values, func(values)) -->
+<!--     plt.show() -->
+<!-- ``` -->
 
 <!-- ```python -->
 <!-- import numpy as np -->
@@ -65,10 +63,30 @@ for func in [f, g, h, i]:
 <!-- b.on_click(on_button_clicked) -->
 <!-- ``` -->
 
-A function is monotonic iff it does not change direction: once it goes up, it cannot go down, and the other way round.
-Among the functions above, only the first and the last are monotonic.
+\input_med{monotonicity_f.tikz}
+\input_med{monotonicity_g.tikz}
+\input_med{monotonicity_h.tikz}
 
-While such numerical functions are a good starting point for grasping the intuition behind monotonicity, the concept is much broader.
+A function is monotonic iff it does not change direction: once it goes up, it cannot go down, and the other way round.
+However, it may stall, or never move at all.
+The functions $f$ and $g$ above are monotonic, but $h$ is not as it changes direction, from going down to going up.
+Note that $g$ is monotonic even though it rises more steeply at some points than at others --- this is immaterial for monotonicity, it only matters that $g$ never reaches a point where it suddenly changes direction starts going down after having gone up before (or going up after having gone down before).
+
+\begin{exercise}
+For each one of the following functions, say whether it is monotonic.
+
+\input_med{monotonicity_i.tikz}
+\input_med{monotonicity_j.tikz}
+\input_med{monotonicity_k.tikz}
+\input_med{monotonicity_l.tikz}
+\end{exercise}
+
+\begin{exercise}
+Give another example of a function that is not monotonic.
+\end{exercise}
+
+While such numerical functions are a good starting point for grasping the intuition behind monotonicity, they provide an incomplete picture.
+The concept of monotonicity is much broader than that, and it extends far beyond functions from numbers to numbers.
 See the unit on universals for various linguistic applications of monotonicity, none of which have anything to do with numbers.
 
 ## Isotonicity and antitonicity
@@ -77,16 +95,16 @@ Monotonicity is actually an umbrella term for two distinct properties: **isotoni
 
 \begin{definition}
 Let $A$ and $B$ be arbitrary sets and $\leq_A$ and $\leq_B$ ordering relations over these respective sets.
-Then a function $f: A \rightarrow B$ is <b>isotonic</b> iff $x \leq_A y$ implies $f(x) \leq_B f(y)$.
-We call $f$ <b>antitonic</b> iff $x \leq_A y$ implies $f(y) \leq_B f(x)$.
+Then a function $f: A \rightarrow B$ is <b>isotonic</b> (or <b>monotonic increasing</b>) iff $x \leq_A y$ implies $f(x) \leq_B f(y)$.
+We call $f$ <b>antitonic</b> (or <b>monotonic decreasing</b>) iff $x \leq_A y$ implies $f(y) \leq_B f(x)$.
+A function is <b>monotonic</b> iff it is isotonic or antitonic.
 \end{definition}
-
-A function is monotonic iff it is isotonic or antitonic.
 
 \begin{exercise}
 For each one of the following functions say whether it is isotonic, antitonic, or neither.
 
 <ol>
+<li>$f: \mathbb{N} \rightarrow \mathbb{N}$, $x \mapsto -x$</li>
 <li>$f: \mathbb{R} \rightarrow \mathbb{R}$, $x \mapsto x - 10$</li>
 <li>$f: \mathbb{R} \rightarrow \mathbb{R}$, $x \mapsto x^2$</li>
 <li>$f: \mathbb{R} \rightarrow \mathbb{R}$, $x \mapsto \frac{x}{2}$</li>

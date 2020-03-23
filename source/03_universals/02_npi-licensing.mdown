@@ -43,7 +43,7 @@ Then we can tell right away that both of the sentences below are also true.
 1. No male students slept.
 1. No sophomores slept.
 
-After all, male students are students, and so are sophomores.
+After all, male students are students, and sophomores are students in their second year.
 If a sophomore had indeed slept, then there would be at least one student that slept, but we already know that no student slept.
 Hence it is impossible for *no student slept* to be true but *no sophomore slept* to be false.
 The sentences stand in an **entailment relation** such that the truth of the first implies the truth of the other.
@@ -165,7 +165,7 @@ The function maps <i>male student</i> to 1 iff every male student snored loudly.
 <br>
 Alternatively, we can view the sentence as an instance of the function
 <i>every male student $\Box$</i>
-appled to the argument
+applied to the argument
 <i>snored loudly</i>.
 This function, too, returns 1 iff it is true that every male student snored loudly.
 \end{example}
@@ -191,7 +191,7 @@ So we have $5k \subseteq R$.
 
 <br>
 Now suppose that $\text{\emph{every student}}(5k) = 1$.
-Then $\text{\emph{every student}}(R) \geq 1$ because $R \supseteq 5k$ and the function is monotonic.
+Then $\text{\emph{every student}}(R) \geq 1$ because $R \supseteq 5k$ and the function is monotonically increasing.
 So the fact that the sentence is true for $5k$ entails that it is true for every superset of $5k$.
 This is exactly what it means to be upward entailing.
 \end{example}

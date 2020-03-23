@@ -13,7 +13,10 @@ There is a major problem with $n$-gram models, in fact every computational model
 All these models take for granted that there is a fixed alphabet, and the elements of these alphabet are treated as unanalyzable atoms without any additional properties.
 As far as an $n$-gram grammar is concerned, *s* and *f* do not differ in any relevant sense from *z* and *v*.
 So just like one can write a grammar for intervocalic voicing, one can also write one for intervocalic devoicing.
-But the former is a very natural process, whereas the latter has not been found in even a single language.
+Remember, intervocalic voicing means that voiceless sounds like *s* and *f* may not appear between vowels.
+Intervocalic devoicing would be the opposite: voiced sounds like *z* and *v* may not appear between vowels.
+Intervocalic voicing is a very natural and common process, whereas intervocalic devoicing has not been found in even a single language.
+Apparently, language simply does not work like that.
 
 \begin{exercise}
 Write a negative grammar for intervocalic devoicing, assuming that the alphabet consists only of
@@ -30,7 +33,8 @@ and
 \begin{exercise}
 Assuming the same alphabet as before,
 write an $n$-gram grammar (it may be positive or negative) that requires every word to consist of exactly 5 symbols.
-Keep in mind that such a grammar is such a set, and there's various ways to compactly define large sets.
+This will be a large grammar.
+But keep in mind that $n$-gram grammars are just sets, and there's various way to compactly define large sets.
 \end{exercise}
 
 \begin{exercise}
@@ -83,13 +87,52 @@ Data isn't cheap, so overgeneration should be avoided if possible.
 
 ## Universals
 
-Linguists use the term **universals** to refer to the fact that natural languages do not vary in all logically conceivable ways.
-A process that can be described by an $n$-gram grammar may still never arise because it violates certain universals.
-The idea of universals is very powerful: if we can identify a reliable list of universals, then we have a very good idea of what our models have to be capable of and what is superfluous.
-This would allow us to design more restrictive and efficient models that can be learned from less data.
-Unfortunately we do not have such a list yet, and this is one of the reasons why computer models still do much worse than humans in several respects.
-In particular, children learn their native language effortlessly with relatively little input, whereas current machine learning models need huge amounts of data.
-And children will never try to do anything like intervocalic devoicing.
+Linguists use the term **universals** to refer to certain invariable properties of language.
+Natural languages simply do not vary in all logically conceivable ways.
+
+\begin{example}
+No known language enforces any of the following conditions:
+
+<ol>
+<li>The further to the right a syllable occurs in a word, the more consonants it must have.</li>
+<li>Any sequence of sounds is a possible word as long as it contains at least as many vowels as consonants.</li>
+<li>When we sort the words of a language by their length, we get the <b>Fibonacci series</b>: 1, 1, 2, 3, 5, 8, 13, ...</li>
+<li>The first word in a sentence must rhyme with the last word in a sentence.</li>
+<li>Every sentence must have an odd number of words.</li>
+<li>To negate a sentence, utter it backwards.</li>
+<li>Adjectives that start with a vowel go before the noun, adjectives that start with a consonant go after the noun.</li>
+<li>Relative clauses follow the noun they modify if it is the subject, but otherwise precede the noun.</li>
+</ol>
+
+Apparently languages can only enforce constraints of a specific kind, and the examples above do not fit the bill.
+\end{example}
+
+\begin{exercise}
+For each constraint above, give a concrete example from English that violates it.
+\end{exercise}
+
+\begin{exercise}
+Can you think of a constraint that you are fairly certain does not arise in any natural language?
+
+<br>
+<i>Hint:</i> Mathematical concepts like prime numbers are very fruitful for this.
+\end{exercise}
+
+The existence of universals means that there might be phenomena or constraints that can be described by an $n$-gram grammar yet never show up in the real world because they violate certain universals.
+
+\begin{exercise}
+Can any of the constraints listed above be enforced by an $n$-gram grammar?
+If so, explain how.
+\end{exercise}
+
+The idea of universals is very powerful: if we can identify a reliable list of universals, then we know what constraints in natural language may look like.
+That would give us a very good idea of what our models have to be capable of and what is superfluous, and thus we could design more restrictive and efficient models that can be learned from less data.
+Unfortunately we do not have conclusive list of universals yet --- linguists keep discovering new phenomena, and new data might invalidate our current assumptions about what is universal.
+This is one of the reasons why computer models still do much worse than humans in several respects.
+Presumably, the human mind somehow comes with the full list of universals, and that makes language a lot easier.
+Thanks to universals, children learn their native language effortlessly with relatively little input.
+Current machine learning models, on the other hand, have no knowledge of universals and thus need huge amounts of data to weed out lots of crud that is logically conceivable but nonetheless never occurs in any natural language.
+Quite simply, children will never try to do anything like intervocalic devoicing, whereas a computer needs to learn from the data that the language does not have such a process.
 
 Linguists distinguish two types of universals:
 
@@ -99,6 +142,7 @@ Linguists distinguish two types of universals:
 
 1.  **Substantive universals**  
     These identify properties of the "building material" used by the grammar machine.
-    A substantive universal might explain, for example, why intervocalic voicing is common and intervocalic devoicing unattested even though both could be produced by the grammar machine.
+    For instance, that consonants and vowels aren't just arbitrary symbols but very different kinds of sounds with very different roles in language.
+    A substantive universal might help explain, for example, why intervocalic voicing is common and intervocalic devoicing unattested even though both look the same from a formal perspective and both could be produced by the grammar machine.
 
-The next notebook discusses some mathematical properties that might be substantive universals.
+The next unit discusses some mathematical properties that might be substantive universals.
