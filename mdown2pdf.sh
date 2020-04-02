@@ -1,6 +1,7 @@
 #!/usr/bin/env sh
 
-projectroot="${HOME}/Latex/School/lin539"
+projectroot="$(dirname $(realpath $0))"
+echo $projectroot
 mycommands="${projectroot}/templates/mycommands.mdown"
 mypackages="${projectroot}/templates/environments.sty"
 yaml="${projectroot}/templates/format.yaml"
@@ -12,7 +13,7 @@ tmpcommands="$(mktemp tmpcommandsXXXXXXXX.tmp.sty)"
 sed 's/\(^\$\|\$$\)//g' "$mycommands" > "$tmpcommands"
 
 # regex substitutions in source file
-tmpsource="$(mktemp "${source}XXXXXX.tmp")"
+tmpsource="$(mktemp "${source}XXXXXX.tmp.md")"
 cp "$source" "$tmpsource"
 # remove underscore from \input_{small,mid,large};
 # this is needed to avoid Latex complaints
