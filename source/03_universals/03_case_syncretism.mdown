@@ -1,6 +1,6 @@
 **Prerequisites**
 
-- Relations (basic orders)
+- relations (basic orders)
 
 # Monotonicity in case syncretism
 
@@ -58,6 +58,7 @@ Nonetheless, it is conceivable that the dative of <i>Papa</i> is underlyingly <i
 \begin{example}
 A better example comes from Icelandic <i>faðir</i> (father).
 Its dative and accusative are <i>föður</i>, whereas the genitive is <i>föðurs</i>.
+And in contrast to German, there's no wiggle room here: these are the endings, and there aren't any colloquial variations.
 \end{example}
 
 Blake's hierarchy in its current form does not allow such patterns without violating monotonicity.
@@ -99,7 +100,7 @@ Without an ordering between accusative and genitive, it becomes possible for acc
 
 \begin{example}
 Let $a$, $d$, $g$ be shorthands for accusative, dative, and genitive, respectively.
-Now suppose that $a$ and $d$ are both mapped to the same exponent, which is different to the realization of genitive: $f(a) = f(d) \neq f(g)$.
+Now suppose that $a$ and $d$ are both mapped to the same exponent, which is different from the realization of genitive: $f(a) = f(d) \neq f(g)$.
 This is compatible with the assumption of a monotonically increasing (or decreasing) function.
 
 <br>
