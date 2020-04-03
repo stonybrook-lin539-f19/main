@@ -6,16 +6,14 @@
 \node (acc) [below left=of nom] {Acc};
 \node (gen) [below right=of nom] {Gen};
 \node (dat) [below right=of acc] {Dat};
-\node (inst) [below=of dat] {Inst};
-\node (other) [below=of inst] {Others};
+\node (other) [below=of dat] {Others};
 
 \foreach \Source/\Target in {%
     nom/acc,
     nom/gen,
     acc/dat,
     gen/dat,
-    dat/inst,
-    inst/other}
+    dat/other}
     \draw (\Source) to (\Target);
 \end{tikzpicture}
 \end{document}
