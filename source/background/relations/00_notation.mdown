@@ -1,59 +1,109 @@
+**Prerequisite**
+
+- functions (basics)
+
 # Relations
 
 Relations are similar to functions in that they establish connections between objects.
 But whereas a function associates only one output with every input, a relation is more flexible and allows connections to arbitrarily many elements.
 
 \begin{example}
-The question *Is $x$ a biological child of $y$* is a function because it maps any two $x$ and $y$ to either true or false, but never both.
-But if we slightly change the question to just *Name a biological child of $y$*, we are no longer dealing with a function because multiple answers are possible if $y$ has more than one child.
+The question <i>Is $x$ a biological child of $y$</i> is a function because it maps any two $x$ and $y$ to either true or false, but never both.
+But if we slightly change the question to just <i>Name a biological child of $y$</i>, we are no longer dealing with a function because multiple answers are possible if $y$ has more than one child.
+Instead, we can talk about the <i>biological child</i> relation $R$ such that $x$ is related to $y$ via $R$ iff $x$ is a biological child of $y$.
 \end{example}
 
-## Intuition
+
+## Basic notation
+
+Given some relation $R$, we write $x \mathrel{R} y$ to indicate that $R$ relates $x$ to $y$.
+Note that $x \mathrel{R} y$ does not imply that $y \mathrel{R} x$ also holds.
 
 \begin{example}
-Suppose *John* has exactly two siblings, *Mary* and *Sue*.
-Then the sibling relation establishes two connections for John: *John*-*Mary*, and *John*-*Sue*.
-This is commonly encoded as tuples: $\tuple{\text{John}, \text{Mary}}$ and $\tuple{\text{John}, \text{Sue}}$.
-For this particular family, the whole sibling relation can be represented as a set of pairs $\tuple{x,y}$ such that $x$ is the sibling of $y$:
-$$
-\setof{ \tuple{x,y} \mid x,y \in \setof{\text{John}, \text{Mary}, \text{Sue}}, \text{ and } x \neq y}
-$$
+One relation you know very well is the ``less than'' relation $<$ over numbers.
+When we write $5 < 7$, we are saying that the relation $<$ relates $5$ to $7$.
+However, it is not the case that $7$ is related to $5$ via $<$, since $7 < 5$ does not hold.
 \end{example}
 
 \begin{example}
-The **substring relation** $\sqsubseteq$ holds between two strings $u$ and $v$ iff $u$ is a substring of $v$.
-That is to say, there are $w, w' \in \Sigma^*$ such that $w \stringcat u \stringcat w' = v$.
+Suppose <i>John</i> has exactly two siblings, <i>Mary</i> and <i>Sue</i>.
+Then the sibling relation establishes two connections for John: <i>John</i>-<i>Mary</i>, and <i>John</i>-<i>Sue</i>.
+Using $S$ for the sibling relation, we have
+$\text{John} \mathrel{S} \text{Mary}$
+and
+$\text{John} \mathrel{S} \text{Sue}$.
+
+<br>
+In contrast to $<$, the sibling relation is symmetric.
+That is to say, if Mary is a sibling of John, then John is also a sibling of Mary.
+Therefore we also have
+$\text{Mary} \mathrel{S} \text{John}$
+and
+$\text{Sue} \mathrel{S} \text{John}$.
+
+<br>
+The relation is also transitive.
+If John is a sibling of Mary, and Sue is a sibling of John, then Sue is a sibling of Mary.
+So is also holds that $\text{Mary} \mathrel{S} \text{Sue}$, and via symmetry we also get $\text{Sue} \mathrel{S} \text{Mary}$.
+
+Overall, we have $x \mathrel{S} y$ where $x, y \in \setof{\text{John}, \text{Mary}, \text{Sue}}$ and $x \neq y$.
+\end{example}
+
+\begin{example}
+The <b>substring relation</b> $\sqsubseteq$ holds between two strings $u$ and $v$ iff $u$ is a substring of $v$.
+That is to say, $u \subseteq v$ iff there are $w, w' \in \Sigma^*$ such that $w \stringcat u \stringcat w' = v$.
 Note that for any given string $u$, there are infinitely many $v$ that $u$ is a substring of.
 Even if the alphabet contains only $a$, the string $aa$ is a substring of $aaa$, $aaaa$, $aaaaa$, and so on, ad infinitum.
 It is also a substring of itself (in this case, $w = w' = \emptystring$).
 \end{example}
 
 \begin{example}
-Just like a function can take multiple arguments to return a single output, a relation can connect multiple elements.
-In the real world, the "jointly conceived" relation would connect two individuals to their offspring.
-So $\tuple{\text{John}, \text{Mary}, \text{Sue}}$ encodes that John and Mary are the biological parents of Sue (let's just hope that those are not the same people as in the first example).
+Relations can be defined over more complex objects like sets.
+An example of this is the subset relation $\subseteq$.
 \end{example}
 
-## Definition and notation
+\begin{example}
+Just like a function can take multiple arguments to return a single output, a relation can connect multiple elements.
+In the real world, the "jointly conceived" relation $J$ would connect two individuals to their offspring.
+So the expression
+$$\text{John}, \text{Mary} \mathrel{R} \text{Sue}$$
+encodes that John and Mary are the biological parents of Sue (let's just hope that those are not the same people as in the first example).
+\end{example}
 
-\begin{definition}
-A **relation** is a (possibly empty, possibly infinite) set of $n$-tuples.
-\end{definition}
+\begin{example}
+Here is an example of a very abstract relation.
+Consider the space of all possible functions from real numbers to real numbers --- that's a lot of functions.
+Now let's define a boundedness relation $B$ which relates function $f$ to function $g$ iff $f(x) \leq g(x)$ for every natural number $x$.
+Suppose, for instance, that $f(x) = x$ and $g(x) = x^2$.
+Then $f \mathrel{B} g$, but not $g \mathrel{B} f$.
 
-We will mostly be dealing with the special case of **binary relations**, where $n = 2$.
-Given a binary relation $R$, $a \mathrel{R}$ and $\mathrel{R} b$ are sets of objects related to $a$ and $b$, respectively:
+<br>
+Many functions aren't related via $B$ at all.
+One example of this is $f(x) = -x + 1$ and $g(x) = x^2$.
+It is the case that $f(x) \leq g(x)$ for all $x \geq 1$, but $f(0) = 1 > 0 = g(0)$.
+\end{example}
+
+We will mostly be dealing with the special case of <b>binary relations</b> where exactly one element is related to some other element.
+
+\begin{example}
+Almost all relations above are binary relations.
+The only exception is the "jointly conceived" relation $J$, which is a ternary relation as it relates three elements.
+\end{example}
+
+Given a binary relation $R$, $a \mathrel{R}$ is the set of objects that $a$ is related to.
+Similarly, $\mathrel{R} b$ is the set of objects that are related to $b$.
 $$
-a \mathrel{R} \is \setof{ b \mid \tuple{a,b} \in R}
+a \mathrel{R} \is \setof{ b \mid a \mathrel{R} b}
 $$
 $$
-\mathrel{R} b \is \setof{ a \mid \tuple{a,b} \in R}
+\mathrel{R} b \is \setof{ a \mid a \mathrel{R} b}
 $$
 
 \begin{example}
-Suppose that the parent-of relation $P$ contains only the pairs
-$\tuple{\text{John}, \text{Sue}}$
+Suppose that the parent-of relation $P$ establishes the following relations between elements:
+$\text{John} \mathrel{P} \text{Sue}$
 and
-$\tuple{\text{Mary}, \text{Sue}}$.
+$\text{Mary} \mathrel{P} \text{Sue}$.
 Then $\text{John} \mathrel{P} = \setof{\text{Sue}}$ and $\mathrel{P} \text{Sue} = \setof{ \text{John}, \text{Mary}}$.
 \end{example}
 
@@ -74,17 +124,23 @@ Every function can be regarded as a relation.
 
 \begin{example}
 Consider the function $f: \mathbb{N} \rightarrow \mathbb{N}$ with $x \mapsto 2x$.
-It is identical to the relation $\setof{ \tuple{x, 2x} \mid x \in \mathbb{N}}$.
+It is identical to the relation $R$ with $x \mathrel{R} y$ iff $y = 2x$.
 \end{example}
 
 The crucial difference is that functions are **right-unique relations**.
-That is to say, it holds for every $a$ that $a \mathrel{R}$ is either empty or contains exactly one element.
+That's a fancy way of saying that a function cannot provide more than one output, whereas a relation can unless it is right-unique.
+When we view a function $f$ as a relation $R$, then it must hold for every $a$ that $a \mathrel{R}$ is either empty or contains exactly one element.
+Hence the term right-unique: if we look at the expression $a \mathrel{R} b$, $a$ is the left side and $b$ the right side.
+If there cannot be more than one choice for $b$, then the right side of $a \mathrel{R} b$ is uniquely determined.
+
+The bottom line: every function is a relation, but not every relation is a function.
+If $a$ is related to two elements or more (i.e. $\card{a \mathrel{R}} \geq 2$), then $R$ cannot be a function.
 
 \begin{exercise}
 For each one of the following, say whether it is a function or just a relation.
 
 <ol>
-<li>the parent-of relation</li>
+<li>the parent-of relation (e.g. $j \mathrel{P} m$ for "John is a parent of Mary")</li>
 <li>the parent-of relation in a world where the one-child policy is enforced globally</li>
 <li>the relation between a car's license plate and its owners</li>
 <li>the prefix relation, where $u$ is a prefix of $v$ iff there is some $w \in \Sigma^*$ such that $v = u \stringcat w$</li>
@@ -98,4 +154,3 @@ Justify your answer.
 <br>
 Every relation $R$ can be regarded as a function that maps $x$ to $x \mathrel{R}$.
 \end{exercise}
-

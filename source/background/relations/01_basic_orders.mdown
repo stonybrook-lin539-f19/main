@@ -1,169 +1,106 @@
-# Order relations
+# Order relations: the intuition
 
-A binary relation $R$ that only connects elements of some fixed set $S$ is also called an **order** over $S$.
-In this case, $\tuple{S, R}$ is called an **ordered set**.
+A binary relation $R$ can be combined with a set $S$ to define an **ordered set**.
+Think of it as follows: whereas the elements of a normal set are just floating around in limbo with no ties between them, an ordered set uses some ordering relation $R$ to lock its elements into place.
+This unit only covers the intuition behind orders, and the formal definitions are left to the next one.
+
+## Examples of ordered sets
 
 \begin{example}
-The prototypical example of an order is $\leq$ over the natural numbers, where $\leq \is \setof{ \tuple{a,b} \mid a = b \text{ or } a \text{ is strictly less than } b}$.
+The prototypical example of an order is the "equal or less than" relation $\leq$ over the set $\mathbb{N}$ of natural numbers.
+While the set of natural numbers is unordered, we can use $\leq$ to define the usual order over it with $0$ at the beginning, followed by $1$, which is followed by $2$, and so on.
 \end{example}
+
+\input_mid{./natnum_lessthan.tikz}
 
 \begin{example}
-The alphabet as used in English can be regarded as an order on the set $\setof{a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z}$.
-\end{example}
-
-## Two important types of orders
-
-There are numerous types of orders.
-The two most important ones are **total orders** and **(weak) partial orders**.
-Total orders are also called **linear orders**, which conveys the essential intuition behind them: a relation is a total order if it can be represented by writing all elements in a single line.
-A weak partial order is more flexible and allows some elements to be unordered with respect to each other.
-
-Each type of relation is characterized by several properties.
-
-\begin{definition}
-A weak partial order is an ordering relation that is
+We could have defined a very different kind of order over $\mathbb{N}$.
+Let $f$ be a function that maps each natural number $x$ to the recursive sum of its digits.
+That is to say, $f$ first sums up all the digits, then sums up the digits of the sum, and so on, until only a single digit remains.
+The computation for $537$, for instance, would proceed as follows:
 
 <ol>
-<li>transitive, and</li>
-<li>reflexive, and</li>
-<li>antisymmetric.</li>
+<li>$537: 5 + 3 + 7 = 15$</li>
+<li>$15: 1 + 5 = 6$</li>
 </ol>
-\end{definition}
 
-\begin{definition}
-A linear order is a weak partial order that is total.
-\end{definition}
-
-These properties are explained below.
-
-## Transitivity
-
-Suppose you have some set of objects with a relation defined over them.
-For example, we may have the set of natural numbers with the *strictly less than* relation $<$.
-We can think of these as structures where the set specifies the collection of building blocks and the relation connects these building blocks, putting them into a particular structural configuration.
-Suppose we have some structure along those lines, consisting of a set $D$ and a relation $R$.
-We can move through this structure with $R$: if we are at $a \in D$, we can move to any $b$ such that $a \mathrel{R} b$.
-And from $b$, we can move on to any $c$ such that $b R c$, and so on.
-
-\begin{example}
-From the natural number $5$, we can move to $17$ via $\leq$, and from there to $329$.
+Consequently, $f(537) = 6$.
+Note that $f(537) = f(357) = f(753) = f(861) = f(96)$, so many different numbers have the same sum of digits.
+Now we define an order $R$ such that $x \mathrel{R} y$ iff $f(x) < f(y)$.
+That's a very different way of ordering the natural numbers, but it's still an order.
 \end{example}
 
-Some relations are such that whatever can be reached in two steps can also be reached in one step.
-So $a R b$ and $b R c$ entail that we also have $a R c$ --- the ability to move from $a$ to $c$ via $b$ implies that we can move directly from $a$ to $c$ without a stop at $b$.
-Such relations are called *transitive*.
-
-\begin{definition}
-A relation $R$ is *transitive* iff for all $a,b,c \in D$ it holds that $a \mathrel{R} b$ and $b \mathrel{R} c$ jointly imply $a \mathrel{R} c$.
-\end{definition}
+\input_mid{./natnum_digitsum.tikz}
 
 \begin{example}
-The ancestor relation $A$ is transitive.
-Your mother is one of your ancestors, and every ancestor of your mother is an ancestor of yourself.
-So $a \mathrel{A} b$ and $b \mathrel{A} c$ imply $a \mathrel{A} c$.
-
-<br>
-However, the sibling relation $S$ is not transitive.
-That's because when $a$ and $b$ are siblings, we have $a \mathrel{S} b$ and $b \mathrel{S} a$, but we do not have $a \mathrel{S} a$ because nobody can be their own sibling.
-
-<br>
-Many other relations are not transitive, either.
-The parent-of relation is not transitive, because there can be $a$, $b$, and $c$ such that $a$ is the parent of $b$, $b$ is the parent of $c$, but $a$ is not the parent of $c$.
-In fact, that is how things are supposed to go in the real world and every deviation from this case is very problematic.
-
-Sometimes a relation may partially meet the requirements of transitivity, but not for all elements of the domain.
-For example, you may love your parents, your parents love their parents, and you love your grandparents.
-So this is a case where we have $a \mathrel{R} b$, $b \mathrel{R} c$, and $a \mathrel{R} c$.
-But obviously love is not a transitive relation --- it is perfectly possible for a person you love to love somebody that you do not love at all.
-This shows that a relation is transitive only if there isn't even a single counterexample to transitivity.
+The standard way of reciting the alphabet in English can be regarded as an order on the set $\setof{a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z}$.
 \end{example}
 
-Note that transitivity also implies the stronger property that if a node can be reached in finitely many steps, it can also be reached in one step.
-This follows by iterated invocation of transitivity.
-Suppose that $a \mathrel{R} b$, $b \mathrel{R} c$, and $c \mathrel{R} d$.
-This is shown pictorially below.
 
-\input_mid{./transitivity1.tikz}
+## Not every binary relation is an order
 
-Then by transitivity, we also have $a \mathrel{R} c$.
+The essential aspect of orders is that they allow us to say that some element is in some sense less relevant or prominent than some other element.
+The $\leq$ relation, for instance, orders numbers from small to big.
+We are effectively ranking the elements of the set.
 
-\input_mid{./transitivity2.tikz}
-
-But then, again by transitivity, we must also have $a \mathrel{R} d$ because of $a \mathrel{R} c$ and $c \mathrel{R} d$.
-
-\input_mid{./transitivity3.tikz}
-
-Since we can apply the same argument over and over again, anything that can be reached with a finite number of steps can also be reached in a single step.
-
-It is also important to keep in mind that some relations can be trivially transitive, such as the relation below.
-Here there are no $a$, $b$, and $c$ such that we have both $a R b$ and $b R c$, so transitivity holds trivially because we cannot produce any counterexample to the claim that the relation is transitive.
-
-\input_large{./transitivity_trivial.tikz}
-
-Nor does transitivity imply that we can reach every node from every other node with a single step.
-Nodes may still be unreachable from certain positions.
-In the natural numbers, for example, $\leq$ is transitive, yet it does not allow us to reach $5$ from $8$.
-
-
-## Reflexivity
-
-Another important property is reflexivity, which states that each node is related to itself.
-In pictorial terms, this means that there is a loop from a node back to itself.
-If every node has such a loop, the relation is *reflexive*.
-
-\begin{definition}
-Let $R$ be an order over $D$.
-Then $R$ is **reflexive** iff $a \mathrel{R} a$ for all $a \in D$.
-\end{definition}
+Not every binary relation gives rise to such a ranking.
 
 \begin{example}
-The parent-of relation is not reflexive because nobody can be their own parent.
-But $\leq$ is reflexive because $x \leq x$ for every number $x$.
+Suppose that we define the following binary relation $R$ over the set $\setof{1,2,3}$ of person features: $1 \mathrel{R} 2$, $1 \mathrel{R} 3$, $2 \mathrel{R} 3$, and $3 \mathrel{R} 2$.
+That's not really a ranking.
+Yes, we can see that $1$ is ranked higher than $2$ and $3$ (or lower, depending on how you look at it).
+But $2$ and $3$ are not clearly ranked with respect to each other.
+On the one hand $2$ is higher than $3$, and on the other hand $3$ is higher than $2$.
+We have a kind of cycle, and that's not okay for orders.
 \end{example}
-
-## Antisymmetry
-
-Antisymmetry means that the relation allows for no cycles except those created by reflexivity.
-Or in other words, a relation is antisymmetric if it avoids as much symmetry as possible without losing reflexivity.
-
-\begin{definition}
-Let $R$ be a relation over $D$.
-Then $R$ is *antisymmetric* iff $a R b$ and $b R a$ joinlty imply $a = b$ for all $a, b \in D$.
-\end{definition}
 
 \begin{example}
-The sibling relation is not antisymmetric.
-That John is a sibling of Mary and Mary is a sibling of John does not entail that John and Mary are the same person.
+Now consider the successor relation $S$ over natural numbers. 
+Here $x \mathrel{S} y$ iff $y = x + 1$.
+So we have $0 \mathrel{S} 1$, $1 \mathrel{S} 2$, $2 \mathrel{S} 3$, and so on.
+Even though this might look like it generates the same order as $<$, it's not an order at all.
+The problem is that the relation does not relate elements that should be related if this were an actual ranking.
 
-<br>
-But $\leq$ is antisymmetric since $x \leq y$ and $y \leq x$ cannot both be true unless $x = y$.
-
-<br>
-Curiously, $<$ is also antisymmetric because there are no $x$ and $y$ such that $x < y$ and $y < x$ both hold.
+Just look at $0 \mathrel{S} 1$ and $1 \mathrel{S} 2$.
+This tells us that $0$ is ranked higher than $1$, and $1$ is ranked higher than $2$ (again, it doesn't matter if we say "ranked higher" or "ranked lower").
+But in a normal ranking, this would mean that $0$ is also ranked higher than $2$.
+Yet we do not have $0 \mathrel{S} 2$.
+According to $S$, $0$ and $2$ are completely unrelated, contradicting our intuitions about how a ranking ought to work.
+In a ranking, it is always the case that if $x$ outranks something that outranks $y$, then $x$ outranks $y$.
 \end{example}
 
-## Totality
+For this reason, an ordered set has to use a binary relation that is in some sense ranking-like.
+Among other things, this means that the relation can't contain loops or cycles, and it must not have gaps that would be filled in if it were actually a ranking.
+If this seems awfully fuzzy to you, just focus on the intuition for now and check out the formal definitions in the next unit.
 
-A relation is **total** iff all nodes are related to each other.
-Pictorially, there has to be some line between any two given nodes. 
-This also requires every node to have a loop from itself to itself.
-So totality implies reflexivity.
+## Linear and partial orders
 
-\begin{definition}
-A relation $R$ over set $D$ is **total** iff $a \mathrel{R} b$ or $b \mathrel{R} a$ holds for all $a, b \in D$.
-\end{definition}
+There are numerous types of orders, and the next unit covers them in detail.
+For now, it suffices to be aware of the major split between **total orders** and **partial orders**.
+Total orders are also called **linear orders**, which conveys the essential intuition behind them: a relation is a total order if it can be represented by writing all elements in a single line.
+A partial order is more flexible and allows some elements to be unordered with respect to each other, as long as this does not violate our requirement that the relation must be ranking-like.
 
-\begin{exercise}
-Indicate in the table below which properties hold of the relations.
-\end{exercise}
+Let's consider once more the examples above.
+The relation $\leq$ defines a total order over the set of natural numbers as there are no two elements that are unordered with respect to each other.
+No matter which two numbers $x$ and $y$ we look at, we either have $x \leq y$ or $y \leq x$.
+And if we have both $x \leq y$ and $y \leq x$, then $x$ and $y$ must be the same number.
+So we can't have any odd situations like a loop from 10 back to 5.
+Hence we do indeed end up with a single line.
+And if we have a single line, we have a linear order, i.e a total order.
 
-| Relation                      | Transitive | Reflexive | Antisymmetric | Total | 
-| :--                           | :--        | :--       | :--           | :--   | 
-| substring                     |            |           |               |       |
-| $\subsetneq$                  |            |           |               |       | 
-| alphabetical order            |            |           |               |       | 
-| ordering all humans by height |            |           |               |       | 
+The relation $R$, on the other hand, only defines a partial order.
+While we do still have a rough order between numbers based on their recursive digit sum, numbers with the same digit sum are unordered with respect to each other.
+This can be seen clearly in the corresponding figure.
+We are still dealing with some kind of ranking, though, as all elements in the $n$-th column of the figure are ranked higher than all the elements in the columns to their right.
+We still have a ranking of sorts, there's just a lot elements that occupy the same rank.
 
-\begin{exercise}
-Give a real-world example of a weak partial order that is not a total order.
-\end{exercise}
+
+## Recap
+
+- Binary relations can be used to induce an order over a set, yielding an **ordered set** (e.g. the natural numbers with $\leq$).
+- Orders must be ranking-like.
+  They cannot contain any loops or cycles, and it must the case that if $x$ outranks something that outranks $y$, then $x$ outranks $y$.
+- The order is **total** (or **linear**) iff all elements of the set are related to each other.
+  Intuitively, total orders build lines.
+- Partial orders allow some elements to be unordered with respect to each other.
+  Intuitively, they cannot be represented by a single line and instead require more complex arrangements.
