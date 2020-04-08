@@ -4,16 +4,18 @@
 
 # Explaining a syntactic universal: the Adjunct Island Constraint
 
-The ideas encountered in the previous notebooks can also be applied to syntax to explain a rather odd universal of syntax: the **Adjunct Island Constraint** (AIC).
+The ideas encountered in the previous units can also be applied to syntax to explain a rather odd universal of syntax: the **Adjunct Island Constraint** (AIC).
 The AIC builds on the long-standing distinction between **arguments** and **adjuncts** and states that the latter are opaque to extraction.
-For instance, we may move a wh-word out of an argument clause headed by *that*, but not out of an adjunct clause headed by *because*.
+Well that's quite a mouthful, so let's look at a concrete example first before we try to make sense of the terminology.
+Declarative clauses that start with *that* are arguments, whereas *because*-clauses are adjuncts.
+A **wh-phrase** like *which movie* usually appears at the beginning of the sentence, but this is not possible if the wh-phrase is part of a *because*-clause.
 
 1.  **Argument**
-    1. John complained that Mary wants to watch which movie? (good)
-    1. Which movie did John complain that Mary wants to watch? (good)
+    1. John complained [that Mary wants to watch which movie]? (good)
+    1. Which movie did John complain [that Mary wants to watch]? (good)
 1.  **Adjunct**
-    1. John complained because Mary wants to watch which movie? (good)
-    1. Which movie did John complain because Mary wants to watch? (bad)
+    1. John complained [because Mary wants to watch which movie]? (good)
+    1. Which movie did John complain [because Mary wants to watch]? (bad)
 
 We will see in a moment what exactly is going on here, and why it may be regarded as yet another monotonicity requirement.
 
@@ -50,13 +52,12 @@ We say that $y$ is an **adjunct extension** of $x$ iff $x \leq y$.
 \begin{exercise}
 Fill the gaps with $\leq_A$ or $\geq_A$ as appropriate.
 If neither $\leq_A$ nor $\geq_A$ hold, leave the gap empty.
-
 <ol>
-<li>John slept _ John definitely slept yesterday</li>
-<li>The old man snored _ The man snored</li>
-<li>John likes Mary _ Mary really likes John</li>
-<li>John ate pasta _ John ate pasta</li>
-<li>John ate pasta _ John ate</li>
+<li>John slept \_ John definitely slept yesterday</li>
+<li>The old man snored \_ The man snored</li>
+<li>John likes Mary \_ Mary really likes John</li>
+<li>John ate pasta \_ John ate pasta</li>
+<li>John ate pasta \_ John ate</li>
 </ol>
 \end{exercise}
 
@@ -66,13 +67,14 @@ Understanding this interaction will allow us to explain the AIC.
 ## The adjunct extension relation $\leq_A$
 
 For the sake of simplicity, we will assume that sentences are strings rather than trees.
-There's a good chance that any syntactician reading this sentence just suffered from an aneurysm.
+There's a good chance that any syntactician reading this sentence just had an aneurysm.
 But rest assured, we're not going to brush aside a century of syntactic research.
 What we are about to discuss works just as well with trees.
 In fact, using trees instead of strings is the superior perspective and fixes some problems that are glossed over here.
 But trees make the math a bit more complicated, which is why the general ideas surface more clearly with strings.
 
 Another disclaimer: rather than developing a linguistically informed theory of adjuncts, we will just assume that we are given some fixed $A \subseteq \Sigma^*$ of adjunct phrases.
+fixme: explain use of $A \subseteq \Sigma^*$
 
 \begin{example}
 For English, $A$ would contain
@@ -104,9 +106,10 @@ First, we decompose <i>John finishes his homework</i> into its components:
 </ol>
 
 Next, let $a_1$, $a_2$, $a_3$, and $a_4$ be the empty string $\emptystring$.
-Keep in mind that $\emptystring \in A^*$.
-We set $a_5 = \text{always swiftly}$, which is also a member of $A^*$.
-Then the concatenation $a_1 \tuplecat s_1 \tuplecat a_2 \tuplecat s_2 \tuplecat a_3 \tuplecat s_3 \tuplecat a_4 \tuplecat s_4 \tuplecat a_5$ is *John finishes his homework always swiftly*.
+Keep in mind that $\emptystring \in A^*$, so that's a valid choice for $a_1$, $a_2$, $a_3$, and $a_4$.
+We set $a_5 = \emph{always swiftly}$, which is also a member of $A^*$.
+Then the concatenation $a_1 \tuplecat s_1 \tuplecat a_2 \tuplecat s_2 \tuplecat a_3 \tuplecat s_3 \tuplecat a_4 \tuplecat s_4 \tuplecat a_5$ is
+<i>John finishes his homework always swiftly</i>.
 \end{example}
 
 The definition of $\leq_A$ makes it clear that the relation is transitive.
@@ -184,7 +187,7 @@ is not defined as there is no string from which both sentences can be obtained b
 
 The counterpart of a meet semilattice is a **join semilattice**.
 The join, **supremum**, or **least upper bound** (lub) of $a$ and $b$ is $a \vee b$.
-Join is defined analogously to meet: $c = a \vee b$ iff $c \geq a$ and $c \geq b$ and for every $d$ with $d \geq a$ and $d \leq b$, it holds that $d \leq c$.
+Join is defined analogously to meet: $c = a \vee b$ iff $c \geq a$ and $c \geq b$ and for every $d$ with $d \geq a$ and $d \geq b$, it holds that $d \geq c$.
 A poset $\tuple{P, \leq}$ is a join semilattice iff it holds for all $a,b \in P$ that $a \vee b \in P$.
 
 Note that $\tuple{A_L(s), \leq_A}$ is not a join semilattice.
@@ -232,43 +235,25 @@ Suppose $L$ contains the following strings:
 </ul>
 
 Assume furthermore that $A$ only contains
-*loudly*,
-*definitely*, and
-*yesterday*.
+<i>loudly</i>,
+<i>definitely</i>, and
+<i>yesterday</i>.
 Draw the semilattice $\tuple{A_L(\text{John snored loudly})}$
 (feel free to truncate the words to their first letter:
-*J*,
-*s*,
-*l*,
-*d*, and
-*y*).
+<i>J</i>,
+<i>s</i>,
+<i>l</i>,
+<i>d</i>, and
+<i>y</i>).
 Then compute all of the following for this semilattice:
 
 <ol>
-<li>The meet of
-<i>John snored yesterday</i>
-and
-<i>Yesterday John snored</i>.</li>
-<li>The join of
-<i>John snored yesterday</i>
-and
-<i>Yesterday John snored</i>.</li>
-<li>The join of
-<i>John definitely snored</i>
-and
-<i>Yesterday John snored</i>.</li>
-<li>The meet of
-<i>John definitely snored loudly yesterday</i>
-and
-<i>Yesterday John snored</i>.</li>
-<li>The meet of
-<i>Mary slept</i>
-and
-<i>Mary slept yesterday</i>.</li>
-<li>The join of
-<i>John snored</i>
-and
-<i>John snored</i>.</li>
+<li>The meet of <i>John snored yesterday</i> and <i>Yesterday John snored</i>.</li>
+<li>The join of <i>John snored yesterday</i> and <i>Yesterday John snored</i>.</li>
+<li>The join of <i>John definitely snored</i> and <i>Yesterday John snored</i>.</li>
+<li>The meet of <i>John definitely snored loudly yesterday</i> and <i>Yesterday John snored</i>.</li>
+<li>The meet of <i>Mary slept</i> and <i>Mary slept yesterday</i>.</li>
+<li>The join of <i>John snored</i> and <i>John snored</i>.</li>
 </ol>
 
 If the meet or join does not exist, say so.
@@ -364,7 +349,7 @@ But adjuncts do not seem to be happy with this arrangement.
 1. John invited Mary without preparing the dinner.
 1. $^*$The dinner, John invited Mary without preparing.
 
-This is known as the *adjunct island constraint* because it seems that adjuncts want to form an island of their own, rather than having parts moved across the sentence.
+This is known as the **adjunct island constraint** because it seems that adjuncts want to form an island of their own, rather than having parts moved across the sentence.
 
 Many solutions have been offered over the years, and the jury is still out on what exactly is going on.
 We will not be able to completely solve the mystery, but we can add an intriguing new perspective to the mix.
@@ -381,7 +366,7 @@ All of a sudden, the adjunct island constraint is no longer an odd quirk of lang
 
 But there is also another thing we expect to see: if removing the adjunct still yields a well-formed sentence, then the adjunct island constraint does not necessarily apply anymore.
 That's because the AIC is due to ungrammaticality traveling upward, but in the described case the relevant sentence isn't ungrammatical.
-This is exactly what we find in English with so-called *parasitic gaps*.
+This is exactly what we find in English with so-called **parasitic gaps**.
 
 1. This book, John reviewed without reading.
 
