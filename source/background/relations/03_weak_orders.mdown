@@ -1,0 +1,46 @@
+# Weak order relations
+
+Antisymmetry means that the relation allows for no cycles except those created by reflexivity.
+Or in other words, a relation is antisymmetric if it avoids as much symmetry as possible without losing reflexivity.
+
+\begin{definition}
+Let $R$ be a relation over $D$.
+Then $R$ is *antisymmetric* iff $a R b$ and $b R a$ jointly imply $a = b$ for all $a, b \in D$.
+\end{definition}
+
+\begin{example}
+The sibling relation is not antisymmetric.
+That John is a sibling of Mary and Mary is a sibling of John does not entail that John and Mary are the same person.
+
+<br>
+But $\leq$ is antisymmetric since $x \leq y$ and $y \leq x$ cannot both be true unless $x = y$.
+
+<br>
+Curiously, $<$ is also antisymmetric because there are no $x$ and $y$ such that $x < y$ and $y < x$ both hold.
+\end{example}
+
+## Totality
+
+A relation is **total** iff all nodes are related to each other.
+Pictorially, there has to be some line between any two given nodes. 
+This also requires every node to have a loop from itself to itself.
+So totality implies reflexivity.
+
+\begin{definition}
+A relation $R$ over set $D$ is **total** iff $a \mathrel{R} b$ or $b \mathrel{R} a$ holds for all $a, b \in D$.
+\end{definition}
+
+\begin{exercise}
+Indicate in the table below which properties hold of the relations.
+\end{exercise}
+
+| Relation                      | Transitive | Reflexive | Antisymmetric | Total | 
+| :--                           | :--        | :--       | :--           | :--   | 
+| substring                     |            |           |               |       |
+| $\subsetneq$                  |            |           |               |       | 
+| alphabetical order            |            |           |               |       | 
+| ordering all humans by height |            |           |               |       | 
+
+\begin{exercise}
+Give a real-world example of a weak partial order that is not a total order.
+\end{exercise}
