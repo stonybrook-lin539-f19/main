@@ -4,50 +4,173 @@
 
 # Explaining a syntactic universal: the Adjunct Island Constraint
 
-The ideas encountered in the previous units can also be applied to syntax to explain a rather odd universal of syntax: the **Adjunct Island Constraint** (AIC).
-The AIC builds on the long-standing distinction between **arguments** and **adjuncts** and states that the latter are opaque to extraction.
-Well that's quite a mouthful, so let's look at a concrete example first before we try to make sense of the terminology.
-Declarative clauses that start with *that* are arguments, whereas *because*-clauses are adjuncts.
-A **wh-phrase** like *which movie* usually appears at the beginning of the sentence, but this is not possible if the wh-phrase is part of a *because*-clause.
+The Person Case Constraint in the previous unit was an instance of monotonicity regulating the shape of sentences, i.e. the **syntax** of a language.
+It probably won't surprise you to hear that there is more to syntax than just the Person Case Constraint.
+After all, the study of syntax has been around since at least the late 50s, and who would want to spend over 60 years studying just one phenomenon?
+Syntax is a smorgasbord of intriguing, somewhat odd phenomena.
+One of them is the **Adjunct Island Constraint**, or simply **AIC**.
+The AIC is a condition that holds in every natural language we currently know.
+It seems to be a universal law of natural language.
+So what it is about?
+It is about a peculiar contrast, illustrated below for English.
 
-1.  **Argument**
-    1. John complained [that Mary wants to watch which movie]? (good)
-    1. Which movie did John complain [that Mary wants to watch]? (good)
-1.  **Adjunct**
-    1. John complained [because Mary wants to watch which movie]? (good)
-    1. Which movie did John complain [because Mary wants to watch]? (bad)
+(@) John asserted [that Mary wants to watch which movie]? (good)
+(@) Which movie did John assert [that Mary wants to watch]? (good)
+(@) John cried [because Mary wants to watch which movie]? (good)
+(@) \*Which movie did John cried [because Mary wants to watch]? (bad)
 
-We will see in a moment what exactly is going on here, and why it may be regarded as yet another monotonicity requirement.
+The last sentence is not okay in English, which --- following linguists' convention --- we indicate with an asterisk.
+But why isn't this sentence okay.
+It has all the needed words, and its meaning is perfectly clear.
+Why isn't that okay?
+The culprit is the AIC, or, as we will see in this unit, monotonicity all over again.
+But in order to get to that point, we first have to put in place some linguistic basics.
+If you're already familiar with the AIC, skip ahead to the section on adjunct extensions.
 
 
-## Arguments versus adjuncts
+## Linguistic background
 
-The distinction between arguments and adjuncts is well-established.
+### Arguments versus adjuncts
+
+The AIC builds on the long-standing distinction in linguistics between **arguments** and **adjuncts**, and it states that the latter **block movement**.
+Well that's quite a mouthful, so let's take it step by step, starting with the split between arguments and adjuncts.
+
 An argument is a phrase that is introduced and required by some other word in the sentence.
-For example, in *John devoured twelve pounds of pasta yesterday*, both *John* and *twelve pounds of pasta* are arguments of the verb *devour*.
-Neither one can be easily removed --- *devoured twelve pounds of pasta yesterday* is not well-formed, and neither is *John devoured yesterday*.
+For example, in *Yesterday, John devoured twelve pounds of pasta*, both *John* and *twelve pounds of pasta* are arguments of the verb *devour*.
+Neither one can be easily removed --- *Yesterday, devoured twelve pounds of pasta* is not well-formed, and neither is *Yesterday, John devoured*.
 So the arguments of the verb are a necessary part of the sentence.
-We cannot freely throw in additional arguments, either: *John devoured Mary twelve pounds of pasta yesterday the whole bowl* is not a good sentence of English.
+We cannot freely throw in additional arguments, either: *Yesterday, John devoured Mary twelve pounds of pasta the whole bowl* is not a good sentence of English.
 
 Adjuncts, on the other hand, are much less tightly controlled than arguments.
 They can be removed and added without problem.
-The adverb *yesterday* in *John devoured twelve pounds of pasta yesterday* is an adjunct, and indeed it can be removed without reducing the well-formedess of the string.
-We can also add additional adverbs, e.g. the adverb *quickly* or the adjective *delicious*.
+The adverb *yesterday* in *Yesterday, John devoured twelve pounds of pasta* is an adjunct, and indeed it can be removed without reducing the well-formedess of the string.
+We can also add additional adjuncts, e.g. the adverb *quickly* or the adjective *delicious*.
 
-1. John quickly devoured twelve pounds of pasta yesterday.
-1. John devoured twelve pounds of delicious pasta yesterday.
-1. John quickly devoured twelve pounds of delicious pasta yesterday.
+(@) Yesterday, John quickly devoured twelve pounds of pasta.
+(@) Yesterday, John devoured twelve pounds of delicious pasta. 
+(@) Yesterday, John quickly devoured twelve pounds of delicious pasta.
 
-Note that we can establish an order between the sentences above based on whether one can be obtained from the other by adding 0 or more adjuncts.
-Let us denote this relation by $\leq_A$.
-Then
+Metaphorically speaking, arguments are the essential parts that make up the basic structure of the sentence, like a sentence skeleton.
+Adjuncts are the nice but ultimately optional embellishments that we hang from the bones of this skeleton.
+That isn't to say that adjuncts are useless --- they often provide useful or even essential information, like *yesterday* in the examples above.
+But in contrast to arguments, adjuncts aren't needed for a sentence to be well-formed.
 
-- *John devoured twelve pounds of pasta* $\leq_A$ *John (quickly) devoured twelve (delicious) pounds of pasta (yesterday)*,
-- *John quickly devoured twelve pounds of pasta* $\leq_A$ *John quickly devoured twelve (delicious) pounds of pasta (yesterday)*,
-- *John devoured twelve pounds of pasta yesterday* $\leq_A$ *John (quickly) devoured twelve (delicious) pounds of pasta yesterday*,
-- and so on.
 
-We say that $y$ is an **adjunct extension** of $x$ iff $x \leq y$.
+### Movement
+
+When you compare specific sentences of a language, it often looks like a part of the sentence has been moved around.
+For instance, in the sentences below it looks like *this car* has moved from its position next to the verb to the beginning of the sentence.
+
+(@) Mary really likes this car.
+(@) This car, Mary really likes.
+
+Linguists call this phenomenon **movement** or **displacement**.
+Apparently the structure of sentences isn't fully rigid, parts can be shifted around.
+Sometimes they move to the left, like in the example above, and sometimes to the right, as in the example below.
+
+(@) The museum displayed a very old mosaic, which dates back all the way to 200BC and allegedly depicts an Etruscan goddess, at its most recent exhibition.
+(@) The museum displayed at its most recent exhibition a very old mosaic, which dates back all the way to 200BC and allegedly depicts an Etruscan goddess.
+
+But movement isn't all willy-nilly, there are some restrictions.
+For instance, we can't move around the verb in the example below.
+
+(@) The museum closed its exhibition early.
+(@) \*Closed, the museum its exhibition early.
+
+This shows that movement, just like most other aspects of language, is subject to an elaborate system of rules and laws.
+The AIC is one of those laws.
+
+
+### The AIC
+
+Let's go back to our initial examples.
+The first one contains the clause *that Mary wants to watch which movie*, repeated here:
+
+(@) John asserted [that Mary wants to watch which movie]?
+
+This clause is an argument of the verb *asserted*.
+Removing the argument leaves us with the rather odd *John asserted*.
+In this sentence, we can move *which movie* all the way to the left.
+As a peculiarity of English, this also requires a form of *do* to appear after *which movie* (in many other languages this doesn't happen).
+
+(@good) Which movie did John assert [that Mary wants to watch]?
+
+Now let's contrast this against the other two example sentences.
+
+(@) John cried [because Mary wants to watch which movie]?
+(@bad) \*Which movie did John cry [because Mary wants to watch]?
+
+As you can see, *which movie* in (@bad) no longer gets to move to the left edge of the sentence as it did (@good).
+So apparently some law of movement has been violated.
+And that law is the AIC.
+You see, there is a crucial difference between (@good) and (@bad): a clause that starts with *because* is an adjunct, not an argument.
+We can completely remove it from a well-formed sentence and the result is still well-formed.
+
+(@) John cried.
+
+Since the *because*-clause is an adjunct, the AIC does not allow anything to be moved out of it.
+When *which movie* tries to sneak all the way to the left edge of the sentence, it is in violation of the AIC. 
+As a result, the sentence is ill-formed.
+
+This is the standard linguistic story, and it is supported by tons of evidence.
+The AIC seems to be active in every natural language that's currently known to linguists.
+But why should the world be this way?
+The AIC looks like a pretty arbitrary law, yet it is enforced so stringently.
+Why would languages limit movement out of adjuncts but not out of arguments?
+Why isn't there a single language that bucks the trend and forbids movement out of arguments instead of adjuncts?
+Clearly this isn't some conspiracy where all languages congregated in a smoky backroom and decided that those free-spirited adjuncts need to be taken down a notch.
+
+No, the answer is much simpler.
+It's just good ol' monotonicity again.
+
+
+## Adjunct extensions
+
+If monotonicity is involved, then there must also be some underlying order over some set.
+Remember, monotonicity states that $x \leq y$ implies $f(x) \leq f(y)$ --- if there is no order $\leq$ to being with, then monotonicity is vacuous.
+We can get such an order directly from the notion of adjuncts.
+
+Given two sentences $s$ and $t$, we can order them with respect to each other based on various criteria.
+For instance, we could say $s \leq_l t$ iff the length of $s$ does not exceed the length of $t$.
+Or we could say $s \leq_s t$ iff $s$ contains at most as many slurs as $t$.
+
+\begin{exercise}
+Show that both $\leq_l$ and $\leq_s$ are weak partial orders.
+That is to say, they are binary relations that are transitivie, antisymmetric, and reflexive.
+\end{exercise}
+
+Neither $\leq_l$ nor $\leq_s$ are of any use for our problem, though; we need something a bit more sophisticated.
+Instead, we will establish an order $\leq_A$ between sentences based on whether one can be obtained from the other by adding 0 or more adjuncts.
+In other words, $x \leq_A y$ iff we can turn $x$ into $y$ by adding 0 or more adjuncts.
+We say that $y$ is an **adjunct extension** of $x$ iff $x \leq_A y$.
+
+\begin{example}
+Among the adjunct extensions of <i>John devoured twelve pounds of pasta</i>, we find, among many others:
+
+<ol>
+<li><i>John quickly devoured twelve pounds of pasta.</i></li>
+<li><i>John devoured twelve delicious pounds of pasta.</i></li>
+<li><i>John devoured twelve pounds of pasta yesterday.</i></li>
+<li><i>John quickly devoured twelve delicious pounds of pasta.</i></li>
+<li><i>John quickly devoured twelve pounds of pasta yesterday.</i></li>
+<li><i>John devoured twelve delicious pounds of pasta yesterday.</i></li>
+<li><i>John quickly devoured twelve delicious pounds of pasta yesterday.</i></li>
+</ol>
+
+Note that <i>John devoured twelve pounds of pasta</i> is an adjunct extension of itself.
+Using parentheses, we can represent all of this more succinctly as
+
+<ul>
+<li><i>John devoured twelve pounds of pasta</i> $\leq_A$ <i>John (quickly) devoured twelve (delicious) pounds of pasta (yesterday)</i></li>
+</ul>
+
+Besides that, all of the following also hold.
+
+<ol>
+<li><i>John quickly devoured twelve pounds of pasta</i> $\leq_A$ <i>John quickly devoured twelve (delicious) pounds of pasta (yesterday)</i></li>
+<li><i>John devoured twelve pounds of pasta yesterday</i> $\leq_A$ <i>John (quickly) devoured twelve (delicious) pounds of pasta yesterday</i></li>
+</ol>
+\end{example}
 
 \begin{exercise}
 Fill the gaps with $\leq_A$ or $\geq_A$ as appropriate.
@@ -61,221 +184,141 @@ If neither $\leq_A$ nor $\geq_A$ hold, leave the gap empty.
 </ol>
 \end{exercise}
 
-As we will see next, $\leq_A$ is a weak partial order that interacts with well-formedness in a particular way.
-Understanding this interaction will allow us to explain the AIC.
+\begin{exercise}
+Show that $\leq_A$ is a weak partial order.
+That is to say, it is a binary relation that is transitivie, antisymmetric, and reflexive.
+\end{exercise}
 
-## The adjunct extension relation $\leq_A$
-
-For the sake of simplicity, we will assume that sentences are strings rather than trees.
-There's a good chance that any syntactician reading this sentence just had an aneurysm.
-But rest assured, we're not going to brush aside a century of syntactic research.
-What we are about to discuss works just as well with trees.
-In fact, using trees instead of strings is the superior perspective and fixes some problems that are glossed over here.
-But trees make the math a bit more complicated, which is why the general ideas surface more clearly with strings.
-
-Another disclaimer: rather than developing a linguistically informed theory of adjuncts, we will just assume that we are given some fixed $A \subseteq \Sigma^*$ of adjunct phrases.
-fixme: explain use of $A \subseteq \Sigma^*$
-
-\begin{example}
-For English, $A$ would contain
-<i>quickly</i>,
-<i>old</i>,
-<i>because John left</i>,
-<i>after reviewing</i>,
-and many more.
-\end{example}
-
-Given a string $s \is s_1 \cdots s_n$ over alphabet $\Sigma$ and some string $t$ over alphabet $\Sigma$, it holds that $s \leq_A t$ iff there are $a_1, \ldots, a_{n+1} \in A^*$ such that $t = a_1 \tuplecat s_1 \tuplecat \cdots a_n \tuplecat s_n \tuplecat a_{n+1}$.
-In other words, $t$ can be obtained by adding finitely many adjunct phrases from $A$ to $s$ (this includes adding none at all).
-Note that each $a_i$ is a member of $A^*$ and may hence consist of multiple adjuncts, e.g. *always swiftly*.
-
-\begin{example}
-Suppose $A$ contains only
-<i>always</i> and
-<i>swiftly</i>.
-Then
-$\text{\emph{John finishes his homework}} \leq_A \text{\emph{John finishes his homework always swiftly}}$.
-We show this in two steps.
-First, we decompose <i>John finishes his homework</i> into its components:
-
-<ol>
-<li>$s_1 = \text{John}$</li>
-<li>$s_2 = \text{finishes}$</li>
-<li>$s_3 = \text{his}$</li>
-<li>$s_4 = \text{homework}$</li>
-</ol>
-
-Next, let $a_1$, $a_2$, $a_3$, and $a_4$ be the empty string $\emptystring$.
-Keep in mind that $\emptystring \in A^*$, so that's a valid choice for $a_1$, $a_2$, $a_3$, and $a_4$.
-We set $a_5 = \emph{always swiftly}$, which is also a member of $A^*$.
-Then the concatenation $a_1 \tuplecat s_1 \tuplecat a_2 \tuplecat s_2 \tuplecat a_3 \tuplecat s_3 \tuplecat a_4 \tuplecat s_4 \tuplecat a_5$ is
-<i>John finishes his homework always swiftly</i>.
-\end{example}
-
-The definition of $\leq_A$ makes it clear that the relation is transitive.
-Reflexivity holds because each $a_i$ may be $\emptystring$.
-Finally, $\leq_A$ is antisymmetric because the only case where $s \leq_A t$ and $t \leq_A s$ is when $s = t$.
-So $\leq_A$ is transitive, reflexive, and antisymmetric, which makes it a weak partial order.
-
-\begin{example}
-Illustrate each property with one pair or triple of sentences, using the format in the previous example.
-\end{example}
-
-Since $\leq_A$ is a weak partial order, any string language can be endowed with additional structure.
-Usually, a string language is just a "flat" set of strings.
-But once we fix a set of $A$ of adjuncts, we can order the strings by $\leq_A$.
-This turns a string language from a set $L$ into a partially ordered set, or simply **poset**, $\tuple{L, \leq_A}$.
-
-In principle, this is no different from taking the flat set $\setof{1,2,3}$ of person features and defining a hierarchy over it.
-But the structure induced by $\leq_A$ is not as intuitively obvious.
-And in contrast to all the linguistic structures we have seen so far, $\tuple{L, \leq_A}$ can be infinite.
+As we will see next, $\leq_A$ interacts with well-formedness in a particular way.
+Understanding this interaction will allow us to derive the AIC from monotonicity.
 
 
 ## The adjunct extension semilattice
 
-Before moving on, let us consider the structure of $\tuple{L, \leq_A}$ in more detail.
-This is not essential for the general argument, but with such abstract structures it always helps to study their shape more carefully. 
+Let $L$ be the set of all sentences that can be built using only English words.
+Note that these sentences do not have to be well-formed, so $L$ contains both *Mary drives a fancy car* and *car Mary a fancy fancy drive because aardvark this seventeen allegedly*.
+The point of $L$ is that we want to have a collection of all the sentences that English could in principle have if there were absolutely no restrictions on what a natural language may look like.
 
-For any string $s \in L$, we can restrict $\tuple{L, \leq_A}$ to just those strings that are adjunct extensions of $s$.
-We denote this set by $A_L(s)$.
+We can order the sentences in $L$ according to the adjunct extension relation $\leq_A$.
+Now pick some sentence $s \in L$.
+We will write $A_L(s)$ to denote the set of sentences in $L$ that are adjunct extensions of $s$.
+$$A_L(s) \is \setof{ t \mid t \in L \text{ and } s \leq_A t}$$
 
 \begin{example}
-Let $s$ be the string
+Let $s$ be the sentence
 <i>John really likes Mary</i>.
-For English, $A_L(s)$ contains infinitely many strings, including
+Then $A_L(s)$ contains infinitely many sentences, including
 
 <ul>
-<li>John really likes Mary,</li>
-<li>John really, really likes Mary,</li>
-<li>John really likes Mary because she looks like Sue,</li>
-<li>and much more.</li>
+<li>John really likes Mary.</li>
+<li>John really, really likes Mary.</li>
+<li>John really likes Mary because she looks like Sue.</li>
+<li>and so on</li>
 </ul>
+
+But it also includes infinitely many sentences that wouldn't actually be good English sentences, e.g. <i>John because yesterday she looks like Sue adores really Mary really red</i>.
 \end{example}
-
-While $\tuple{L, \leq_A}$ is a poset, $\tuple{A_L(s), \leq_A}$ satisfies the stronger condition of being a **meet semilattice**.
-The meet of two elements $a$ and $b$ is $a \wedge b$.
-It is the greatest element that is still less than $a$ and $b$.
-So $c = a \wedge b$ iff $c \leq a$ and $c \leq b$ and for every $d$ with $d \leq a$ and $d \leq b$, it holds that $d \leq c$.
-The meet of $a$ and $b$ is also called its **greatest lower bound** (glb) or **infimum**.
-A poset $\tuple{P, \leq}$ is a meet semilattice iff it holds for all $a,b \in P$ that $a \wedge b \in P$.
-
-\begin{example}
-Consider the strings
-<i>John snored yesterday</i>
-and
-<i>John snored loudly</i>.
-Their meet is 
-<i>John snored</i>.
-The meet of
-<i>John snored loudly yesterday</i>
-and
-<i>John snored loudly</i>
-is
-<i>John snored loudly</i>.
-The meet of
-<i>John snored loudly yesterday</i>
-and
-<i>John always snored loudly</i>
-is also
-<i>John snored loudly</i>.
-The meet of
-<i>John snored</i>
-and
-<i>John slept</i>
-is not defined as there is no string from which both sentences can be obtained by adding only adjuncts.
-\end{example}
-
-The counterpart of a meet semilattice is a **join semilattice**.
-The join, **supremum**, or **least upper bound** (lub) of $a$ and $b$ is $a \vee b$.
-Join is defined analogously to meet: $c = a \vee b$ iff $c \geq a$ and $c \geq b$ and for every $d$ with $d \geq a$ and $d \geq b$, it holds that $d \geq c$.
-A poset $\tuple{P, \leq}$ is a join semilattice iff it holds for all $a,b \in P$ that $a \vee b \in P$.
-
-Note that $\tuple{A_L(s), \leq_A}$ is not a join semilattice.
-In general, the lub of two strings in $A(s)$ is not well-defined.
-
-\begin{example}
-For
-<i>John slept well</i>
-and
-<i>John slept really well</i>,
-it would be easy to define the lub as
-<i>John slept really well</i>.
-But in many cases, there is no unique lub.
-For example, the lub of
-<i>John slept yesterday</i>
-and
-<i>John slept indeed</i>
-could be chosen to be
-<i>John slept indeed yesterday</i> or
-<i>John slept yesterday indeed</i>.
-So now there are two distinct $c$ and $d$ such that $c \geq a$, $c \geq b$, $d \geq a$, and $d \geq b$, yet neither $c \leq d$ nor $d \leq c$ hold.
-Hence $c$ is not the lub of $a$ and $b$, and neither is $d$.
-\end{example}
-
-So we conclude that $\tuple{A_L(s), \leq_A}$ is a meet semilattice, but not a join semilattice.
 
 \begin{exercise}
-Suppose $L$ contains the following strings:
-
-<ul>
-<li>John snored</li>
-<li>John snored loudly</li>
-<li>John definitely snored</li>
-<li>John snored yesterday</li>
-<li>John definitely snored loudly</li>
-<li>John definitely snored yesterday</li>
-<li>John snored yesterday definitely</li>
-<li>John snored loudly yesterday</li>
-<li>Yesterday John snored</li>
-<li>Yesterday John definitely snored</li>
-<li>Yesterday John snored loudly</li>
-<li>John definitely snored loudly yesterday</li>
-<li>Mary slept</li>
-<li>Mary slept yesterday</li>
-</ul>
-
-Assume furthermore that $A$ only contains
-<i>loudly</i>,
-<i>definitely</i>, and
-<i>yesterday</i>.
-Draw the semilattice $\tuple{A_L(\text{John snored loudly})}$
-(feel free to truncate the words to their first letter:
-<i>J</i>,
-<i>s</i>,
-<i>l</i>,
-<i>d</i>, and
-<i>y</i>).
-Then compute all of the following for this semilattice:
-
-<ol>
-<li>The meet of <i>John snored yesterday</i> and <i>Yesterday John snored</i>.</li>
-<li>The join of <i>John snored yesterday</i> and <i>Yesterday John snored</i>.</li>
-<li>The join of <i>John definitely snored</i> and <i>Yesterday John snored</i>.</li>
-<li>The meet of <i>John definitely snored loudly yesterday</i> and <i>Yesterday John snored</i>.</li>
-<li>The meet of <i>Mary slept</i> and <i>Mary slept yesterday</i>.</li>
-<li>The join of <i>John snored</i> and <i>John snored</i>.</li>
-</ol>
-
-If the meet or join does not exist, say so.
+Suppose that $s$ is <i>The old men quickly manned the boat</i>.
+Write down five members of $A_L(s)$.
 \end{exercise}
 
-The poset $\tuple{L, \leq_A}$ is the union of such semilattices.
-From a linguistic perspective, each string $s$ that does not contain any adjuncts is the bottom element of one join semilattice that consists of $s$ and all its adjunct extensions.
-We may call this the **pure argument strings**.
-The pure argument strings are not related by $\leq_A$.
+When we order $L$ with the partial order $\leq_A$, we turn it into a partially ordered set, i.e. a **poset**.
+We can do the same thing with $A_L(s)$.
+
+\begin{example}
+Let's consider a small fragment of $A_L(\mathit{John\ snored})$.
+It contains
+
+<ol>
+<li>John snored.</li>
+<li>John snored yesterday.</li>
+<li>John really snored.</li>
+<li>John really snored yesterday.</li>
+<li>Allegedly, John really snored yesterday.</li>
+<li>John really, really snored yesterday.</li>
+<li>John really, really, really snored yesterday.</li>
+</ol>
+
+When we order these sentences by $\leq_A$, we get the structure depicted below.
+
+\input_mid{./adjunctextension.tikz}
+
+We could've also drawn it upside-down with <i>John snored</i> at the top, this does not make a difference.
+\end{example}
+
+\begin{exercise}
+Continuing the previous exercise, draw the corresponding figure for your fragment of $A_L(s)$.
+\end{exercise}
+
+When we order $A_L(s)$ with $\leq_A$, we don't just get any poset, we get a particular type of poset that's a **semilattice**.
+More precisely, it is a **meet semilattice**.
+Nice, another fancy term for your vocabulary, but this one sounds a lot scarier than it actually is.
+You can check out the backgrounds section for all the math, but for our purposes here a visual example suffices.
+
+\begin{example}
+Consider once more the fragment from the previous example, sorted by $\leq_A$.
+Pick two elements $x$ and $y$, for instance <i>Allegedly, John really snored yesterday</i> and <i>John really, really, really snored yesterday</i>.
+Put your fingers and those sentences.
+Now move your fingers downward, tracing a path towards the bottom element <i>John snored</i>.
+The <b>meet</b> $x \wedge y$ is the earliest point where your fingers can meet.
+In the case at hand, that's <i>John really snored yesterday</i>.
+
+The meet of <i>John really, really, really snored yesterday</i> and <i>John really, really snored yesterday</i> is just <i>John really, really snored yesterday</i>.
+After all, the earliest point your fingers can meet is if you move the higher one down by one step while keeping the lower where it is.
+\end{example}
+
+A poset is a meet semilattice iff it holds for all elements $x$ and $y$ that they have a unique meet.
+This is the case for $A_L(s)$ no matter what sentence we pick for $s$.
+But there are posets that do not meet this condition.
+
+\begin{example}
+Consider the structure below.
+Even though it is a poset, it is not a meet semilattice because $a$ and $b$ have no meet.
+
+\input_mid{./poset_nomeet.tikz}
+\end{example}
+
+\begin{example}
+The structure below is also a poset that fails to be a meet semilattice.
+
+\input_mid{./poset_nouniquemeet.tikz}
+
+In this case, the problem is that there is no unique meet for $a$ and $b$. 
+Both $c$ and $d$ are viable choices, which violates the requirement that the meet must be unique.
+\end{example}
+
+\begin{exercise}
+Suppose we take the set of natural numbers and order it by $\leq$ in the usual way, yielding a single line of numbers.
+Is this a meet semilattice?
+Justify your answer.
+\end{exercise}
+
+\begin{example}
+Finally, the structure below isn't a meet semilattice either.
+Even though it consists of two parts, each one of which forms a semilattice, there's many pairs of elements that do not have meet, e.g. $c$ and $x$.
+As one missing meet is enough to prevent a poset from being a semilattice, this shows that the structure isn't as semilattice.
+
+\input_mid{./poset_union.tikz}
+\end{example}
+
+The structure in the last example is exactly what we find with the poset $L$ ordered by $\leq_A$.
+Each sentence $s$ that does not contain any adjuncts is the bottom element of a meet semilattice that consists of $s$ and all its adjunct extensions.
+But $L$, even though it is a collection of such meet semilattices, is not itself a meet semilattice because adjunct extensions of distinct sentences simply have no meet.
 Their semilattices are like little islands with no land connection between them.
-The poset $\tuple{L, \leq_A}$ is the archipelago that consists of all these islands.
+The poset $L$ ordered by $\leq_A$ is the archipelago that consists of all these islands.
 
 \input_large{./aic_semilattices.tikz}
 
 
 ## Optionality and well-formedness entailments
 
-All the math so far has served the purpose of identifying relations between sentences.
-We represent sentences $s$ and $t$ as strings of words and say that if $t$ can be obtained from $s$ by adding finitely many adjuncts, then $t$ is an adjunct extension of $s$.
-This turns a language from a set into a poset whose structure encodes how strings are related with respect to adjuncts.
+All the math so far has served the purpose of identifying relations between possible sentences.
+We collect all logically conceivable sentences, including ill-formed ones, and say that if $t$ can be obtained from $s$ by adding finitely many adjuncts, then $t$ is an adjunct extension of $s$.
+This turns a language from a simple set of sentences into a poset whose structure encodes how strings are related with respect to adjuncts.
 
-Adjuncts have a crucial property: they are optional.
+Now remember from earlier on that adjuncts have a crucial property: they are optional.
 That is to say, if a sentence containing an adjunct is grammatical, it should still be grammatical after removal of the adjunct.
 
 \begin{example}
@@ -308,73 +351,71 @@ and so are
 and all other adjunct extensions of the sentence.
 \end{example}
 
-If we take optionality in this sense as an intrinsic property of adjuncts, then we can use the structure of $\tuple{L, \leq_A}$ to infer the well-formedness of one string from another.
+If we take optionality in this sense as an intrinsic property of adjuncts, then we can use the structure of $L$ under $\leq_A$ to infer the well-formedness of one string from another.
 In particular, the following two laws follow from optionality:
 
 1. If $s$ is well-formed, then so is every string that $s$ is an adjunct extension of.
 1. If $s$ is ill-formed, then so is every adjunct extension of $s$.
 
-In other words, well-formedness travels downard in each semilattice $\tuple{A_L(s), \leq_A}$, ill-formedness travels upward.
+In other words, well-formedness travels downward in each meet semilattice $A_L(s)$, and ill-formedness travels upward.
 
 \begin{exercise}
 Explain why these entailments follow from the optionality of adjuncts.
 \end{exercise}
 
-## Connection to monotonicity
 
-Another way of stating the entailment is that well-formedness evaluation is, you guessed it, monotonic.
-Consider any function $f$ from $\tuple{L, \leq_A}$ to **2**, the structure of truth values T and F with $F \leq_2 T$.
+## Monotonicity derives the AIC
+
+Alright, so we've covered a lot of linguistics ground, with arguments, adjuncts, and movement, and we've covered a lot of math ground, with meet semilattices.
+But I promised you an explanation of the AIC, and in particular I promised you an explanation in terms of monotonicity.
+Nothing said so far has anything to do with monotonicity.
+But the connection is easily made.
+Here's another way of saying that grammaticality travels downward and ungrammaticality travels upward: the mapping from $L$ ordered by $\leq_A$ into the poset $\mathbf{2}$ of truth values must be --- you guessed it --- monotonic!
+
+Consider any function $f$ from $L$ to $\mathbf{2}$, the structure of truth values $T$ and $F$.
+Usually the order on $\mathbf{2}$ states $F \leq_2 T$, but we will switch it to $T \leq_2 F$ (this is innocuous, it only means that the relevant mapping will be monotonically increasing instead of monotonically decreasing).
 If $f(s) = T$, then $s$ is well-formed, otherwise it is ill-formed.
+
 Now consider two strings $s$ and $t$ such that $s \leq_A t$.
 Suppose $f(t) = T$.
 Since grammaticality travels downward, this entails $f(s) = T$.
-On the other hand, if $f(s) = F$, then $f(t) = F$ because ungrammaticality travels upward.
-Hence it holds for all $s$ and $t$ with $s \leq_A t$ that $f(t) \leq_2 f(s)$.
-So rather than being monotonically increasing, the map $f$ is monotonically decreasing in this case.
-If we switch the order in **2** so that $T \leq_2 F$, then $f$ is monotonically increasing.
+But we get the very same inference from monotonicity:
 
-The fact that the well-formedness mapping for $\tuple{L, \leq_A}$ is monotonic guarantees that we can mechanically calculate well-formedness for certain sentences.
-This is the key to solving the AIC.
+1. If $s \leq_A t$, then $f(s) \leq_2 f(t)$.
+1. We know that $f(t) = T$, and therefore $f(s) \leq_2 T$.
+1. But $T \leq_2 F$, so $f(s) \leq_2$ implies $f(s) = T$.
 
-## Explaining the Adjunct Island Constraint
+Now let us look at the other case.
+Suppose $f(s) = F$.
+Then $f(t) = F$ because ungrammaticality travels upward.
+Once again monotonicity gives us the same inference:
 
-Syntacticians have known for a long time that adjuncts are more finicky than arguments in certain respects.
-Arguments are usually fine with having parts of them moved to a different position in the sentence.
+1. If $s \leq_A t$, then $f(s) \leq_2 f(t)$.
+1. We know that $f(s) = F$, and therefore $F \leq_2 f(t)$.
+1. But $T \leq_2 F$, so $F \leq_2 f(t)$ implies $f(t) = F$.
 
-1. John invited the supervisor of this girl.
-1. This girl, John invited the supervisor of.
+And this is the key to the AIC.
+To recap, here's what we've done so far:
 
-But adjuncts do not seem to be happy with this arrangement.
+1. We have adopted the linguistic distinction between arguments and adjuncts.
+1. We have ordered the set of all conceivable (but not necessarily well-formed sentences) by the adjunct extension.
+   This gives us a poset that is a collection of meet semilattices.
+1. Because adjuncts are optional, grammaticality travels downwards in this poset, whereas ungrammaticality travels upward.
+1. We have shown that the way grammaticality and ungrammaticality travel through the structure is once again an instance of monotonicity.
 
-1. John invited Mary without preparing the dinner.
-1. $^*$The dinner, John invited Mary without preparing.
+At this point, we have actually derived the AIC from monotonicity.
+You might not see it clearly yet, but think about it.
+Consider once more the contrast this unit started out with (I know, that was ages ago).
 
-This is known as the **adjunct island constraint** because it seems that adjuncts want to form an island of their own, rather than having parts moved across the sentence.
+(@) John asserted [that Mary wants to watch which movie]? (good)
+(@) Which movie did John assert [that Mary wants to watch]? (good)
+(@) John cried [because Mary wants to watch which movie]? (good)
+(@bad2) \*Which movie did John cried [because Mary wants to watch]? (bad)
 
-Many solutions have been offered over the years, and the jury is still out on what exactly is going on.
-We will not be able to completely solve the mystery, but we can add an intriguing new perspective to the mix.
-
-As you know by now, well-formedness is monotonic over adjunct extension structures.
-So a sentence containing an adjunct can be well-formed only if the result of removing the adjunct is a well-formed sentence.
-Let us try this with the ill-formed *the supervisor, John invited Mary without telling*.
-This is an adjunct extension of *the dinner, John invited Mary* (we cannot treat *the dinner without preparing* as a discontinuous adjunct phrase because each adjunct must form a substring).
-But *the dinner, John invited Mary* is not a well-formed sentence of English.
-Due to how ungrammaticality travels upward, the ungrammaticality of *the dinner, John invited Mary* necessarily entails that *the dinner, John invited Mary without preparing* is not well-formed either.
-Hence the adjunct island constraint follows immediately from the monotonicity of well-formedness over adjunct extension structures, which is a consequence of adjuncts being optional.
-
-All of a sudden, the adjunct island constraint is no longer an odd quirk of language but rather the inevitable result of adjuncts being optional and monotonicity playing a major role in linguistic mappings.
-
-But there is also another thing we expect to see: if removing the adjunct still yields a well-formed sentence, then the adjunct island constraint does not necessarily apply anymore.
-That's because the AIC is due to ungrammaticality traveling upward, but in the described case the relevant sentence isn't ungrammatical.
-This is exactly what we find in English with so-called **parasitic gaps**.
-
-1. This book, John reviewed without reading.
-
-Here it seems like the phrase *this book* was originally both the object of the verb *review* and the gerund *reading* inside the adjunct *without reading*.
-Such parasitic gap constructions are allowed in English, but not in certain other languages like German.
-This is pretty much what we expect in our system.
-Removing the adjunct phrase *without reading* leaves the sentence *this book, John reviewed*, which is well-formed.
-Since the well-formedness of $s$ does not tell us anything about the well-formedness of any adjunct extension $t$ of $s$, $t$ may be well-formed or not, it depends on the language at hand.
-
-To sum up, we have subsumed yet another phenomenon under the umbrella of a monotonicity requirement over linguistic structures.
-In fact, two phenomena have been captured: monotonicity rigorously enforces the AIC, but it still allows languages to exempt certain constructions such as adjuncts with parasitic gaps.
+We have to explain why (@bad2) is bad.
+But we already have!
+The sentence in (@bad2) contains a *because*-clause, which is an adjunct.
+This means that (@bad2) is an adjunct extension of *which movie did John cried*.
+That's not a grammatical sentence of English.
+But if *which movie did John cried* is ungrammatical, then by monotonicity this must also be true for all its adjunct extensions, including (@bad2).
+So there you have it, the explanation of the AIC: it's not that movement out of an adjunct isn't allowed, but rather the optionality of adjuncts creates monotonic entailment relations that simply make it impossible for such a sentence to be allowed.
