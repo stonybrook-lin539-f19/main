@@ -17,7 +17,7 @@ It is about a peculiar contrast, illustrated below for English.
 (@) John asserted [that Mary wants to watch which movie]? (good)
 (@) Which movie did John assert [that Mary wants to watch]? (good)
 (@) John cried [because Mary wants to watch which movie]? (good)
-(@) \*Which movie did John cried [because Mary wants to watch]? (bad)
+(@) \*Which movie did John cry [because Mary wants to watch]? (bad)
 
 The last sentence is not okay in English, which --- following linguists' convention --- we indicate with an asterisk.
 But why isn't this sentence okay.
@@ -410,12 +410,12 @@ Consider once more the contrast this unit started out with (I know, that was age
 (@) John asserted [that Mary wants to watch which movie]? (good)
 (@) Which movie did John assert [that Mary wants to watch]? (good)
 (@) John cried [because Mary wants to watch which movie]? (good)
-(@bad2) \*Which movie did John cried [because Mary wants to watch]? (bad)
+(@bad2) \*Which movie did John cry [because Mary wants to watch]? (bad)
 
 We have to explain why (@bad2) is bad.
 But we already have!
 The sentence in (@bad2) contains a *because*-clause, which is an adjunct.
-This means that (@bad2) is an adjunct extension of *which movie did John cried*.
+This means that (@bad2) is an adjunct extension of *which movie did John cry*.
 That's not a grammatical sentence of English.
-But if *which movie did John cried* is ungrammatical, then by monotonicity this must also be true for all its adjunct extensions, including (@bad2).
+But if *which movie did John cry* is ungrammatical, then by monotonicity this must also be true for all its adjunct extensions, including (@bad2).
 So there you have it, the explanation of the AIC: it's not that movement out of an adjunct isn't allowed, but rather the optionality of adjuncts creates monotonic entailment relations that simply make it impossible for such a sentence to be allowed.
