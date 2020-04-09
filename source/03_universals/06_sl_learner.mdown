@@ -4,7 +4,7 @@
 
 # The lattice space of $n$-gram grammars
 
-The general take-home message of this unit has been that a surprising number of seemingly unrelated language universals can be stated as monotonicity properties over ordered sets.
+The general take-home message of this chapter has been that a surprising number of seemingly unrelated language universals can be stated as monotonicity properties over ordered sets.
 This includes both substantive universals ($^*$ABA, PCC) and formal universals (adjunct island constraint).
 But monotonicity is even more general.
 We conclude our journey with a brief look at how language acquisition might be informed by monotonicity, too.
@@ -12,8 +12,10 @@ We conclude our journey with a brief look at how language acquisition might be i
 
 ## SL and learning
 
-Alright, time to rack your brain: do you still remember what a (negative) strictly $n$-local (SL-$n$) grammar is?
+Alright, time to rack your brain: do you still remember what a negative strictly $n$-local (SL-$n$) grammar is?
 It's a finite set of $n$-grams such that a string is well-formed iff it does not contain any of the $n$-grams as a substring (after adding $n-1$ instances of \$ on each side of the string).
+A positive strictly $n$-local grammar is the counterpart where a string may only consists of $n$-grams that are allowed by the grammar.
+Every negative SL grammar can be translated into a positive one, and the other way round.
 
 \begin{exercise}
 As a reminder for yourself, write down an SL grammar for an attested linguistic phenomenon.
@@ -33,33 +35,149 @@ Languages are very complex systems, yet children master them effortlessly withou
 Think back to the unit on negative polarity items and *ever*.
 Unless you had prior linguistic training, you were completely unaware of the laws that govern the use of *ever*, yet you've obeyed them your whole life.
 If we look at the sentences that children hear around them while growing up, *ever* isn't all that common.
-There isn't millions of sentences with *ever* that the child could study to figure out how those negative polarity items work.
+There isn't millions of sentences with *ever* that the child could study in order to figure out how those negative polarity items work.
 The child takes the astonishingly little data it gets and still solves the problem almost effortlessly.
 We have no idea how children do this --- it truly is a miracle.
 
 Learning is also of supreme importance for practical applications, e.g. voice recognition or machine translation. 
 Computational linguists do not design those systems by hand.
 That would be an impossible task.
-There is some manual design for some very small and specialized domains like reading out numbers ($1729$ as a year is *seventeen hundred twenty nine*, but as a phone number it is *one seven two nine*).
+It is sometimes done for very small and specialized domains like reading out numbers ($1729$ as a year is *seventeen hundred twenty nine*, but as a phone number it is *one seven two nine*).
 But in general grammars are learned automatically from an enormous collection of data, which is also called a **corpus**.
 The process of inducing a grammar or model from a corpus is called **machine learning** or **grammatical inference**.
 Needless to say, grammatical inference is impossible without a learning algorithm.
 
 So whether you care about the mysteries of the human mind or just want to see better closed captioning on Youtube, learning is extremely important.
 It is also a huge and very demanding research area.
-The learning algorithm for SL provides a good sneak peek of what the field of grammatical inference is like as it is both simple and very efficient.
+The learning algorithm for SL is very simple but also pretty clever.
+That makes it a good sneak peek of what the field of grammatical inference is like.
 
-## The lattice of grammars
 
-Suppose that we pick a fixed value for $n$ and write down all positive $n$-gram grammars.
-We could also use all negative grammars, but using positive grammars makes things more intuitive later on.
-Either way we have a finite set of $n$-gram grammars, which we call $\mathcal{G}$.
+## Learning by memorization
+
+Let's conduct a thought experiment.
+Suppose that you have to learn the phonotactics of a new language (recall that phonotactics is the collection of rules and laws that govern the distribution of sounds).
+The only think you are told about the language is is that its phonotactics are at most strictly $3$-local.
+The rest you have to figure out from the data, which is a never-ending stream of well-formed examples, one after the other.
+How could you do this?
+
+Well, I don't know how you're going to approach it, but here's my strategy, which is guaranteed to work. 
+First, since the phonotactics are at most strictly $3$-local, I will assume that they are exactly strictly $3$-local, no more, no less.
+I am allowed to do that because every a strictly $n$-local language is also strictly $n+1$-local, so even if the language is in fact strictly $1$-local or strictly $2$-local, it doesn't hurt me to assume that it is strictly $3$-local.
+Next, I will use the fact that every strictly $3$-local language can be described by a positive SL-$3$ grammar, which is a finite set of allowed trigrams.
+This means that I only have to figure out what this finite set of allowed trigrams is.
+And that is easy: I look at every example string and memorize which trigrams occur in it.
+Since there can be only finitely many allowed trigrams, eventually I will have seen all of them, and at that point I have learned the phonotactics of the language.
+
+\begin{example}
+Suppose that we have to learn the (infinite) SL-$2$ language of all strings that start with either $a$ or $b$ and where $a$ and $b$ have to alternate.
+This language contains the following strings, starting from the shortest:
+
+<ol>
+<li>$\String{a}$</li>
+<li>$\String{b}$</li>
+<li>$\String{ab}$</li>
+<li>$\String{ba}$</li>
+<li>$\String{aba}$</li>
+<li>$\String{bab}$</li>
+<li>$\String{abab}$</li>
+<li>$\String{baba}$</li>
+<li>$\String{ababab}$</li>
+<li>$\String{bababa}$</li>
+<li>and so on</li>
+</ol>
+
+Just so we're on the same page, here's the positive SL-$2$ grammar that generates this language.
+
+<ol>
+<li>$\String{\$a}$</li>
+<li>$\String{\$b}$</li>
+<li>$\String{ab}$</li>
+<li>$\String{ba}$</li>
+<li>$\String{a\$}$</li>
+<li>$\String{b\$}$</li>
+<li>and so on</li>
+</ol>
+
+That's the grammar we want to learn from the examples.
+
+Now assume that the first example we get to look at is $\String{ab}$.
+We extract all the bigrams, giving you a short list of allowed bigrams.
+
+<ol>
+<li>$\String{\$a}$</li>
+<li>$\String{ab}$</li>
+<li>$\String{b\$}$</li>
+</ol>
+
+This grammar can only generate one string, namely the example $\String{ab}$ that we derived it from.
+That's not particularly interesting, we've looked at one well-formed example and have constructed a grammar that only allows for this one example.
+
+Well, let's look at the next example.
+Let's assume that it is $\String{baba}$.
+Once again we extract the bigrams and add them to what we have so far, giving us the list below.
+
+<ol>
+<li>$\String{\$a}$</li>
+<li>$\String{\$b}$</li>
+<li>$\String{ab}$</li>
+<li>$\String{ba}$</li>
+<li>$\String{a\$}$</li>
+<li>$\String{b\$}$</li>
+</ol>
+
+Lo and behold, it's the grammar for the target language.
+Two examples were enough to learn the whole infinite set of well-formed strings!
+\end{example}
+
+\begin{exercise}
+Suppose that you have the SL-$3$ language $(\String{abc})^+$, which contains $\String{abc}$, $\String{abcabc}$, $\String{abcabcabc}$, and so on.
+Write down the positive trigram grammar for this language.
+Then write down a single example from which one can immediately infer the whole grammar.
+\end{exercise}
+
+As you can see, learning SL-$n$ languages is easy as long as there is a fixed upper bound on the value of $n$.
+In that case, we simply memorize all $n$-grams we see in the examples, and eventually we will have seen all well-formed $n$-grams.
+At that point, we have learned the language.
+
+But hold on a second, how many examples do we actually need to look at?
+In the examples above one or two examples are enough, but those are toy examples.
+Maybe real languages require us to see trillions of examples, in which case our learning strategy would be completely useless in practice.
+In order for a learning algorithm to perform well, it should work with as little data as possible.
+So let's do some calculations.
+
+
+## Learning efficiency and the grammar lattice
+
+At first glance, you might think that the math looks pretty bad for learning SL languages.
+Let's consider the problem of learning a specific SL-$5$ language $L$ over an alphabet of about 50 symbols.
+This is realistic for the phonotactics of natural languages, were at least some processes are SL-$4$ or SL-$5$, and many languages have 50 to 100 different sounds.
+With 50 symbols, there are $50^5$ different $5$-grams.
+That's $312,500,000$ different $n$-grams.
+Okay, that's big.
+But it absolutely pales in comparison to the number of possible $5$-grams grammars, which is $2^{312,500,000}$.
+This number is so large we would need a new word to describe it adequately.
+It is greater that the number of seconds since the Big Bang.
+If you were given $2^{312,500,000}$ sheets of paper and used them to build a paper tower from New York City to the sun, you would still be left with 99,99999\ldots\% of the paper afterwards.
+Whatever you think is a large number, it isn't even a drop in the ocean compared to $2^{312,500,000}$.
+And among those $2^{312,500,000}$ grammars, we have to find one for $L$.
+Talk about looking for a needle in a haystack.
+
+But the learning procedure we sketched above is actually much smarter than this.
+It never looks at all possible grammars, it just keeps track of $n$-grams, and that greatly cuts down the space of options.
+To see why, we will have to look at the structure of the space of possible grammars.
+As it turns out, this is a very peculiar structure for $n$-gram grammars.
+
+Given a fixed value for $n$, we can look at the set of all possible positive $n$-gram grammars.
+Let's call this set $\mathcal{G}$.
+As we just saw, $\mathcal{G}$ can be huge, but it will always be finite.
 Since each $n$-gram grammar is itself a set, we can order the set of $n$-gram grammars by the subset relation.
-We refer to this resulting structure as $\mathbb{G} \is \tuple{\mathcal{G}, \subseteq}$.
+This gives us a poset, which we will refer to by $\mathbb{G}$.
 
 \begin{example}
 Suppose $n = 2$ and our alphabet $\Sigma$ contains only $a$.
-Once we add the edge marker, there are 16 distinct bigram grammars over $\Sigma_\$$.
+We add the edge marker to $\Sigma$ to give us the extended alphabet $\Sigma_\$$.
+There are 16 distinct bigram grammars over $\Sigma_\$$.
 
 <ol>
 <li>$\emptyset$</li>
