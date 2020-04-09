@@ -9,12 +9,15 @@ This includes both substantive universals ($^*$ABA, PCC) and formal universals (
 But monotonicity is even more general.
 We conclude our journey with a brief look at how language acquisition might be informed by monotonicity, too.
 
+
 ## SL and learning
 
-Recall that a (negative) strictly $n$-local (SL-$n$) grammar is a finite set of $n$-grams such that a string is well-formed iff it does not contain any of the $n$-grams as a substring (after adding $n-1$ instances of \$ on each side of the string).
+Alright, time to rack your brain: do you still remember what a (negative) strictly $n$-local (SL-$n$) grammar is?
+It's a finite set of $n$-grams such that a string is well-formed iff it does not contain any of the $n$-grams as a substring (after adding $n-1$ instances of \$ on each side of the string).
 
 \begin{exercise}
 As a reminder for yourself, write down an SL grammar for an attested linguistic phenomenon.
+A simple option is word-final devoicing or intervocalic voicing, but feel free to mix it up a bit.
 \end{exercise}
 
 Suppose we have a phenomenon that is SL.
@@ -23,15 +26,28 @@ But how exactly do we come up with the grammar?
 And more generally, how can this phenomenon be acquired?
 Is there some algorithm that a child might use to identify the correct grammar for an SL process?
 
-One answer might be: move on, nobody cares.
-But learning is in fact the most important question in linguistics.
-Every linguistic phenomenon must be learnable from limited input data, for the simple reason that this is exactly what millions of children do on a daily basis.
-And if you consider yourself to be solely interested in computational applications, the problem actually gets more pressing.
-Computational linguists rarely write grammars by hand.
-This happens in some very small and specialized domains, but in general grammars are learned automatically from a data sample.
-Grammatical inference of this kind requires a robust learning algorithm.
+Depending on your background, you might wonder why anybody would care how children find the right grammar for their language.
+As long as they actually do it and learn the grammar, everything's fine and we don't need to worry about this.
+But learning is in fact the most important question of linguistics because it is, to put it bluntly, a freaking miracle.
+Languages are very complex systems, yet children master them effortlessly without explicit instruction and with very little data.
+Think back to the unit on negative polarity items and *ever*.
+Unless you had prior linguistic training, you were completely unaware of the laws that govern the use of *ever*, yet you've obeyed them your whole life.
+If we look at the sentences that children hear around them while growing up, *ever* isn't all that common.
+There isn't millions of sentences with *ever* that the child could study to figure out how those negative polarity items work.
+The child takes the astonishingly little data it gets and still solves the problem almost effortlessly.
+We have no idea how children do this --- it truly is a miracle.
 
-For SL, the learning algorithm is very simple, and that's thanks to monotonicity.
+Learning is also of supreme importance for practical applications, e.g. voice recognition or machine translation. 
+Computational linguists do not design those systems by hand.
+That would be an impossible task.
+There is some manual design for some very small and specialized domains like reading out numbers ($1729$ as a year is *seventeen hundred twenty nine*, but as a phone number it is *one seven two nine*).
+But in general grammars are learned automatically from an enormous collection of data, which is also called a **corpus**.
+The process of inducing a grammar or model from a corpus is called **machine learning** or **grammatical inference**.
+Needless to say, grammatical inference is impossible without a learning algorithm.
+
+So whether you care about the mysteries of the human mind or just want to see better closed captioning on Youtube, learning is extremely important.
+It is also a huge and very demanding research area.
+The learning algorithm for SL provides a good sneak peek of what the field of grammatical inference is like as it is both simple and very efficient.
 
 ## The lattice of grammars
 
