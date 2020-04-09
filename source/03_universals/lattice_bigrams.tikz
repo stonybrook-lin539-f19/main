@@ -1,6 +1,5 @@
 \documentclass[tikz]{standalone}
 \usetikzlibrary{positioning}
-\newcommand{\setof}[1]{\ensuremath{\left \{ #1 \right \}}}
 \begin{document}
 \begin{tikzpicture}
     % level 0
