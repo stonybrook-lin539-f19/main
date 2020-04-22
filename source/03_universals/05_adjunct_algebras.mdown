@@ -135,8 +135,10 @@ For instance, we could say $s \leq_l t$ iff the length of $s$ does not exceed th
 Or we could say $s \leq_s t$ iff $s$ contains at most as many slurs as $t$.
 
 \begin{exercise}
-Show that both $\leq_l$ and $\leq_s$ are weak partial orders.
-That is to say, they are binary relations that are transitivie, antisymmetric, and reflexive.
+Neither $\leq_l$ nor $\leq_s$ are weak partial orders.
+Remember that a relation is a weak partial order iff it is transitive, antisymmetric, and reflexive.
+Which of these properties do not hold of $\leq_l$ or $\leq_s$?
+Justify your answer.
 \end{exercise}
 
 Neither $\leq_l$ nor $\leq_s$ are of any use for our problem, though; we need something a bit more sophisticated.
@@ -186,7 +188,7 @@ If neither $\leq_A$ nor $\geq_A$ hold, leave the gap empty.
 
 \begin{exercise}
 Show that $\leq_A$ is a weak partial order.
-That is to say, it is a binary relation that is transitivie, antisymmetric, and reflexive.
+That is to say, it is a binary relation that is transitive, antisymmetric, and reflexive.
 \end{exercise}
 
 As we will see next, $\leq_A$ interacts with well-formedness in a particular way.
