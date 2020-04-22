@@ -67,6 +67,6 @@ Let $S$ be the set of all substrings of the word <i>poset</i>.
 Draw the strict poset $\tuple{S, \sqsubset}$, where $\sqsubset$ is the proper substring relation: $x \sqsubset y$ iff there is some $z \neq \emptystring$ such that $x \stringcat z = y$.
 
 <br>
-Now suppose that we used $\sqsubseteq$ instead: $x \sqsubset y$ iff there is some (possibly empty) $z$ such that $x \stringcat z = y$.
+Now suppose that we used $\sqsubseteq$ instead: $x \sqsubseteq y$ iff there is some (possibly empty) $z$ such that $x \stringcat z = y$.
 Do you have to change anything about your figure?
 \end{exercise}
