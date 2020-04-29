@@ -15,7 +15,7 @@
     \node (ee-ea) [above left=3.5em and 6em of ee.center, anchor=center] {$\setof{\$\$, \$a}$};
     \node (ee-ae) [above=3.5em of ee.center, anchor=center] {$\setof{\$\$, a\$}$};
     \node (ee-aa) [above=3.5em of ea.center, anchor=center] {$\setof{\$\$, aa}$};
-    \node (ea-ae) [above=3.5em of ae.center, anchor=center] {$\setof{\$a, \$a}$};
+    \node (ea-ae) [above=3.5em of ae.center, anchor=center] {$\setof{\$a, a\$}$};
     \node (ea-aa) [above=3.5em of aa.center, anchor=center] {$\setof{\$a, aa}$};
     \node (ae-aa) [above right=3.5em and 6em of aa.center, anchor=center] {$\setof{a\$, aa}$};
 

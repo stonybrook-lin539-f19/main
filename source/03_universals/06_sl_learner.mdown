@@ -57,7 +57,7 @@ That makes it a good sneak peek of what the field of grammatical inference is li
 
 Let's conduct a thought experiment.
 Suppose that you have to learn the phonotactics of a new language (recall that phonotactics is the collection of rules and laws that govern the distribution of sounds).
-The only think you are told about the language is that its phonotactics are at most strictly $3$-local.
+The only thing you are told about the language is that its phonotactics are at most strictly $3$-local.
 The rest you have to figure out from the data, which is a never-ending stream of well-formed examples, one after the other.
 How could you do this?
 
@@ -212,7 +212,7 @@ In other words, $\mathcal{G}$ is both a meet semilattice and a join semilattice.
 This makes $\mathbb{G}$ a **lattice**.
 
 \begin{exercise}
-Suppose $G_1 \is \setof{\$\$, \$, aa}$ and $G_2 \is \setof{a\$}$.
+Suppose $G_1 \is \setof{\$\$, \$a, aa}$ and $G_2 \is \setof{a\$}$.
 Compute $G_{1 \wedge 2}$ and $G_{1 \vee 2}$.
 \end{exercise}
 
@@ -386,7 +386,7 @@ The downside of picking a large value for $n$ is that the lattice becomes much b
 
 \begin{example}
 Suppose the target language is SL-4 but our learner assumes an SL-10 language.
-With just 10 alphbet symbols there are $2^{10^{10}} = 2^{10,000,000,000}$ distinct SL-10 grammars.
+With just 10 alphabet symbols there are $2^{10^{10}} = 2^{10,000,000,000}$ distinct SL-10 grammars.
 This is once again a huge number, and the grammar lattice $10,000,000,001$ levels.
 Quite a bit.
 
